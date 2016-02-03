@@ -1,0 +1,11 @@
+h1,h2,h3,h4{
+  font-family: 'Lato', sans-serif;
+	font-weight: 300;
+}
+
+/*Light 300, Normal 400, Bold 700, UltraBold 900*/
+
+body{
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+}
