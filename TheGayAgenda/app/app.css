@@ -1,7 +1,22 @@
 /* app css stylesheet */
 
+h1,h2,h3,h4{
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
 
+body{
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
 
+#view1{
+  background-color: red; 
+}
+
+#view2{
+  background-color: blue; 
+}
 
 .menu {
   list-style: none;
