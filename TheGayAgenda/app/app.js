@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
+  'myApp.landing',
   'myApp.view1',
   'myApp.view2',
   'myApp.profile',
@@ -11,13 +12,13 @@ angular.module('myApp', [
   'myApp.restaurants',
   'myApp.safePlaces',
   'myApp.shopping',
-  'myApp.sports',
   'myApp.nightlife',
   'myApp.volunteer',
   'myApp.version',
   'ngMaterial',
   'ngMessages',
-  'ngSanitize'
+  'ngSanitize',
+  'firebase'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/view1'});
@@ -69,12 +70,12 @@ config(['$routeProvider', function($routeProvider) {
 	}
 	})
 	.controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-	$scope.close = function () {
-	  $mdSidenav('left').close()
-	    .then(function () {
-	      $log.debug("close LEFT is done");
-	    });
-	};
+		$scope.close = function () {
+		  $mdSidenav('left').close()
+		    .then(function () {
+		      $log.debug("close LEFT is done");
+		    });
+		};
 	})
 	.controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
 	$scope.close = function () {

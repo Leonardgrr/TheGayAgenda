@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Lato:400,300,900' rel='stylesheet' type='text/css'>
+  <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
 </head>
 <body>
     
@@ -35,10 +36,10 @@
         <span>The Gay Agenda</span>
       </h2>
       <span flex></span>
-      <md-button class="md-icon-button" aria-label="Favorite">
-        <md-icon class="material-icons">favorite</md-icon>
+      <md-button href="#/profile" class="md-icon-button" aria-label="Favorite">
+        <md-icon class="material-icons">person_pin_circle</md-icon>
       </md-button>
-      <md-button class="md-icon-button" aria-label="More">
+      <md-button href="#/landing" class="md-icon-button" aria-label="Home">
         <md-icon class="material-icons">home</md-icon>
       </md-button>
     </div>
@@ -51,20 +52,20 @@
 <!--  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"> -->
   <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="">
     <md-toolbar class="md-theme-indigo">
-      <h1 class="md-toolbar-tools">Menu</h1>
+      <h1 layout="column" layout-align="center" class="md-toolbar-tools">Menu</h1>
     </md-toolbar>
     <md-content layout-padding >
-      <ul>
-        <li><md-button href="#/view1">View 1</md-button></li>
-        <li><md-button href="#/view2">View 2</md-button></li>
-        <li><md-button href="#/profile">Profile</md-button></li>
-        <li><md-button href="#/sports">Sports</md-button></li>
-        <li><md-button href="#/family">Family</md-button></li>
-        <li><md-button href="#/nightlife">Nightlife</md-button></li>
-        <li><md-button href="#/shopping">Shopping</md-button></li>
-        <li><md-button href="#/restaurants">Restaurants</md-button></li>
-        <li><md-button href="#/volunteer">Volunteer</md-button></li>
-        <li><md-button href="#/safePlaces">Safe Places</md-button></li>
+      <ul >
+        <!-- <li><md-button href="#/view1">View 1</md-button></li>
+        <li><md-button href="#/view2">View 2</md-button></li> -->
+        <li layout="column" layout-align="center"><md-button id="btn0" href="#/profile">Profile</md-button></li>
+        <li layout="column" layout-align="center"><md-button id="btn1" href="#/sports">Sports</md-button></li>
+        <li layout="column" layout-align="center"><md-button id="btn2" href="#/family">Family</md-button></li>
+        <li layout="column" layout-align="center"><md-button id="btn3" href="#/nightlife">Nightlife</md-button></li>
+        <li layout="column" layout-align="center"><md-button id="btn4" href="#/shopping">Shopping</md-button></li>
+        <li layout="column" layout-align="center"><md-button id="btn5" href="#/restaurants">Restaurants</md-button></li>
+        <li layout="column" layout-align="center"><md-button id="btn6" href="#/volunteer">Volunteer</md-button></li>
+        <li layout="column" layout-align="center"><md-button id="btn7" href="#/safePlaces">Safe Places</md-button></li>
       </ul>
 
 <!--       <md-button ng-click="close()" class="md-primary" hide-gt-md>
@@ -125,6 +126,7 @@
   <script src="app.js"></script>
   <script src="view1/view1.js"></script>
   <script src="view2/view2.js"></script>
+  <script src="views/landing/landing.js"></script>
   <script src="views/profile/profile.js"></script>
   <script src="views/sports/sports.js"></script>
   <script src="views/family/family.js"></script>
@@ -144,6 +146,11 @@
   <script src="bower_components/angular-material/angular-material.js"></script>
   <script src="bower_components/angular-messages/angular-messages.js"></script>
   <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+
+  <!-- Firebase  -->
+  <script src="bower_components/firebase/firebase.js"></script>
+  <script src="bower_components/angularfire/dist/angularfire.js"></script>
+
 
 
 

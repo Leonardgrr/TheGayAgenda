@@ -1,4 +1,10 @@
 /* app css stylesheet */
+.thumb{
+  width: 100px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
 
 h1,h2,h3,h4{
   font-family: 'Lato', sans-serif;
@@ -46,3 +52,44 @@ body{
   content: "";
   padding: 0;
 }
+
+
+#btn0{
+  font-weight: 900;
+}
+
+#btn1{
+  color: #AA1100;
+  font-weight: 900;
+}
+
+#btn2{
+  color: #FF4400;
+  font-weight: 900;
+}
+
+#btn3{
+  color: #FFBB11;
+  font-weight: 900;
+}
+
+#btn4{
+  color: #55AA00;
+  font-weight: 900;
+}
+
+#btn5{
+  color: #04048E;
+  font-weight: 900;
+}
+
+#btn6{
+  color: #310062;
+  font-weight: 900;
+}
+
+#btn7{
+  color: #ED1E79;
+  font-weight: 900;
+}
+
