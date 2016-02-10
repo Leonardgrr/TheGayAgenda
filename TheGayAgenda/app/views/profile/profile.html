@@ -1,6 +1,9 @@
-<div layout="column" layout-align="center center">
-	<h1>Profile</h1>
-
+<div layout="column" layout-align="center center" ng-controller="loginCtrl" ng-show="userData">
+  <h1>Hello {{userData.google.displayName}}</h1>
+      <md-button class="md-icon-button">
+        <a ng-href="#/home" ng-click="logout()"><md-icon class="material-icons">exit_to_app</md-icon></a>
+        <md-tooltip>Sign Out</md-tooltip>
+      </md-button>
 	<md-content class="md-padding" layout-xs="column" layout="row">
 
 <!-- Profile Card -->

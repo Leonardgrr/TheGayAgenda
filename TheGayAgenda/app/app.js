@@ -3,8 +3,8 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
-  'myApp.landing',
-  'myApp.view1',
+  'myApp.login',
+  'myApp.home',
   'myApp.view2',
   'myApp.profile',
   'myApp.family',
@@ -14,6 +14,7 @@ angular.module('myApp', [
   'myApp.shopping',
   'myApp.nightlife',
   'myApp.volunteer',
+  'myApp.detail',
   'myApp.version',
   'ngMaterial',
   'ngMessages',
@@ -21,7 +22,7 @@ angular.module('myApp', [
   'firebase'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/home'});
 }])
 
 .controller('homeCtrl', function ($scope, $timeout, $mdSidenav, $log) {
