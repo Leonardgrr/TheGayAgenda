@@ -1,14 +1,66 @@
 /* app css stylesheet */
+
+
 .thumb{
   width: 100px;
   margin: 0 auto;
   padding-top: 50px;
 }
 
+.nightlife{
+  background-color: #FFBB11;
+  color: white; 
+}
+
+.family{
+  background-color: #FF4400;
+  color: white; 
+}
+
+.restaurants{
+  background-color: #04048E;
+  color: white; 
+}
+
+.safePlaces{
+  background-color: #ED1E79;
+  color: white; 
+}
+
+.shopping{
+  background-color: #55AA00;
+  color: white; 
+}
+
+.sports{
+  background-color: #AA1100;
+  color: white; 
+}
+
+.volunteer{
+  background-color: #310062;
+  color: white; 
+}
+.pinThumb{
+  padding-left: 10px;
+  max-width: 50px
+}
+
+
+.pinThumbCheckIn{
+  margin-right: 20px;
+  max-width: 50px
+}
 
 h1,h2,h3,h4{
   font-family: 'Lato', sans-serif;
   font-weight: 300;
+  position: center;
+}
+
+h4{
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
 }
 
 body{
@@ -92,4 +144,19 @@ body{
   color: #ED1E79;
   font-weight: 900;
 }
+
+
+.checkIn{
+  color: white;
+  background-color: #FFBB11;
+  font-weight: 900;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.checked-In{
+  color: #FFBB11;
+  font-weight: 900;
+  border:solid;
+}
+
 
