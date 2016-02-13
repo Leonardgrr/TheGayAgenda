@@ -1,19 +1,75 @@
-<md-content flex layout-padding>
-	<h1 layout="column" layout-align="center center">Detail Title</h1>
-	<img layout="column" layout-align="center center" src="media/ember.png">
+<!-- Start Toolbar -->
+<md-content ng-controller="homeCtrl">
+  <md-toolbar>
+    <div class="md-toolbar-tools" >
+      <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleLeft()">
+        <md-icon class="material-icons">menu</md-icon>
+      </md-button>
+      <h2>
+        <span>The Gay Agenda</span>
+      </h2>
+      <span flex></span>
+      <md-button href="#/profile" class="md-icon-button" aria-label="Favorite">
+        <md-icon class="material-icons">person_pin_circle</md-icon>
+      </md-button>
+      <md-button href="#/home" class="md-icon-button" aria-label="Home">
+        <md-icon class="material-icons">home</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+</md-content>
+
+
+
+<section layout="row" flex>
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="">
+    <md-toolbar class="md-theme-indigo">
+      <h1 layout="column" layout-align="center" class="md-toolbar-tools">Menu</h1>
+    </md-toolbar>
+    <md-content layout-padding>
+      <ul>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/listing">listing</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/profile">Profile</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn1" href="#/sports">Sports</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn2" href="#/family">Family</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn3" href="#/nightlife">Nightlife</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn4" href="#/shopping">Shopping</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn5" href="#/restaurants">Restaurants</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn6" href="#/volunteer">Volunteer</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn7" href="#/safePlaces">Safe Places</md-button></li>
+      </ul>
+
+      <div>
+      <md-button ng-click="close()" class="md-primary" ng-controller="LeftCtrl">
+          Close Menu
+      </md-button>
+      </div>
+      <p hide-md show-gt-md>
+        This sidenav, use it to explore the different categories acitivities. Each event and venue will have a color associated with it and level up your pin, have fun!.
+      </p>
+    </md-content>
+  </md-sidenav>
+</section>
+<!-- End Tool Bar -->
+
+
+<md-content flex layout-padding ng-repeat="place in places" ng-show="currentDetail === place.$id">
+	<h1 layout="column" layout-align="center center">{{place.eventName}}</h1>
+	<img layout="column" layout-align="center center" src="{{place.image}}">
 
 <div layout="row">
   <div flex>
     <p>
-		<strong>Venue Title</strong><br>
-		Hours of Operation<br>
-		Contact<br>
-		Location<br>
+		<strong>{{place.venueName}}</strong><br>
+		<strong>Hours</strong> {{place.time}}<br>
+		<strong>Contact</strong> {{place.contact}}<br>
+		<strong>Address</strong> {{place.address}}<br>
+    <strong>Address</strong> {{place.image}}<br>
 	</p>
 	<md-button>Get Directions</md-button>
   </div>
 	<div flex>
-	<form ng-submit="newCheckIn()">
+	<form ng-submit="newCheckIn()" ng-controller="profileCtrl" ng-show="place.type === 'place'">
 		<md-content layout="row" layout-align="end center">
 			<md-content aria-label="Player Pin">
 				<img class="pinThumbCheckIn" src="media/coloredPin.png"></img>
@@ -22,17 +78,41 @@
 		<div layout="" layout-sm="column" ng-hide="true">
 			<md-input-container flex="">
 			  <label>category</label>
-			  <input name="category"  ng-model="newCategory.category" ng-init="newCategory.category='nightlife'" ></input>
+			  <input name="category"  ng-model="newCategory.category" ng-init="newCategory.category=place.categoryTitle" ></input>
 			</md-input-container>
 			<md-input-container flex="">
 			  <label>points</label>
-			  <input name="points" ng-model="newPoints.points" ng-init="newPoints.points=5"></input>
+			  <input name="points" ng-model="newPoints.points" ng-init="newPoints.points=place.points"></input>
 			</md-input-container>
 		</div>
-		<md-content layout="row" layout-align="end center">
+		<md-content layout="row" layout-align="end center" ng-show="place.type === 'place'">
 			<md-button type="submit" class="checkIn">Check In</md-button>
 		</md-content>
 	</form>
+
+  <form ng-submit="newRSVP()" ng-controller="profileCtrl" ng-show="place.type === 'event'">
+    <md-content layout="row" layout-align="end center">
+      <md-content aria-label="Player Pin">
+        <img class="pinThumbCheckIn" src="media/coloredPin.png"></img>
+      </md-content>
+    </md-content>
+    <div layout="" layout-sm="column" ng-hide="true">
+      <md-input-container flex="">
+        <label>category</label>
+        <input name="category"  ng-model="newCategory.category" ng-init="newCategory.category=place.categoryTitle" ></input>
+      </md-input-container>
+      <md-input-container flex="">
+        <label>points</label>
+        <input name="points" ng-model="newPoints.points" ng-init="newPoints.points=place.points"></input>
+      </md-input-container>
+    </div>
+    <md-content layout="row" layout-align="end center" ng-show="place.type === 'place'">
+      <md-button type="submit" class="checkIn">Check In</md-button>
+    </md-content>
+    <md-content layout="row" layout-align="end center" >
+      <md-button type="submit" class="checkIn">RSVP</md-button>
+    </md-content>
+  </form>
 	</div>
 </div>
 
@@ -48,7 +128,7 @@
 
 	<p>
 		<strong>About</strong><br>
-		Ember is reminiscent of the easy-going social taverns seen all over Europe and the Mediterranean. Open air seating. Drinks. Delicious menu options. Ember is a cared for environment where you can gather for an evening and get lost in the experience.
+		{{place.about}}
 	</p>
 
 

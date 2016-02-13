@@ -16,6 +16,7 @@ angular.module('myApp.profile', ['ngRoute'])
 	$scope.authObj = $firebaseAuth(ref);
 	$scope.users = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"));
 	$scope.checkIn = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/checkIn"));
+	$scope.rsvp = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/rsvp"));
 	$scope.authObj.$onAuth(function(authData) {
 		$rootScope.authorize(authData);
 	});
@@ -36,31 +37,27 @@ angular.module('myApp.profile', ['ngRoute'])
 		// }
 	}
 
+$scope.test = function(){
+	console.log("hello world");
+}
 
-
-	// User Check In Function
-	$scope.checkIn = function(){
+	//User Check In Function
+	$scope.newCheckIn = function(){
 		console.log("did it check in?");
 		$scope.checkIn.$add({
-			userId : $scope.userData.uid,
-			picture: $scope.newCheckIn.userCheckIn,
+			category : $scope.newCategory.category,
+			points: $scope.newPoints.points,
 		})
-		$scope.newCheckIn.userCheckIn = "";
 	}
 
-
-	//user can save a link to their picture
-	// $scope.userAddPicture = function(){
-	// 	$scope.pictures.$add({
-	// 		userId : $scope.userData.uid,
-	// 		picture: $scope.newPicture.userPic
-	// 	})
-	// 	$scope.newPicture.userPic = "";
-	// }
-
-
-
-
+	// User RSVP Function
+	$scope.newRSVP = function(){
+		console.log("did it RSVP?");
+		$scope.rsvp.$add({
+			category : $scope.newCategory.category,
+			points: $scope.newPoints.points,
+		})
+	}
 
 
 

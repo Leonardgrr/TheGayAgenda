@@ -1,4 +1,7 @@
 /* app css stylesheet */
+.mdsubhead {
+    color: white;
+}
 
 
 .thumb{
@@ -152,6 +155,21 @@ body{
   font-weight: 900;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
+
+.btnsafePlaces{
+  color: white;
+  background-color: green;
+  font-weight: 900;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.btnnightlife{
+  color: white;
+  background-color: red;
+  font-weight: 900;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
 
 .checked-In{
   color: #FFBB11;

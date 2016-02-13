@@ -14,6 +14,7 @@ angular.module('myApp', [
   'myApp.shopping',
   'myApp.nightlife',
   'myApp.volunteer',
+  'myApp.listing',
   'myApp.detail',
   'myApp.version',
   'ngMaterial',

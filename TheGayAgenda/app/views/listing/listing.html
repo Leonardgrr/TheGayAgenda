@@ -1,0 +1,132 @@
+<!-- Start Toolbar -->
+<md-content ng-controller="homeCtrl">
+  <md-toolbar>
+    <div class="md-toolbar-tools" >
+      <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleLeft()">
+        <md-icon class="material-icons">menu</md-icon>
+      </md-button>
+      <h2>
+        <span>The Gay Agenda</span>
+      </h2>
+      <span flex></span>
+      <md-button href="#/profile" class="md-icon-button" aria-label="Favorite">
+        <md-icon class="material-icons">person_pin_circle</md-icon>
+      </md-button>
+      <md-button href="#/home" class="md-icon-button" aria-label="Home">
+        <md-icon class="material-icons">home</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+</md-content>
+
+
+
+<section layout="row" flex>
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="">
+    <md-toolbar class="md-theme-indigo">
+      <h1 layout="column" layout-align="center" class="md-toolbar-tools">Menu</h1>
+    </md-toolbar>
+    <md-content layout-padding>
+      <ul>
+      	<li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/listing">listing</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/profile">Profile</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn1" href="#/sports">Sports</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn2" href="#/family">Family</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn3" href="#/nightlife">Nightlife</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn4" href="#/shopping">Shopping</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn5" href="#/restaurants">Restaurants</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn6" href="#/volunteer">Volunteer</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn7" href="#/safePlaces">Safe Places</md-button></li>
+      </ul>
+
+      <div>
+      <md-button ng-click="close()" class="md-primary" ng-controller="LeftCtrl">
+          Close Menu
+      </md-button>
+      </div>
+      <p hide-md show-gt-md>
+        This sidenav, use it to explore the different categories acitivities. Each event and venue will have a color associated with it and level up your pin, have fun!.
+      </p>
+    </md-content>
+  </md-sidenav>
+</section>
+<!-- End Tool Bar -->
+
+<li ng-repeat="item in list | filter:name">{{ item | json }}</li>
+<div layout="column" layout-align="center center">
+	<!-- FEED -->
+	<h2>Listing</h2>
+	<div ng-repeat="place in places">
+		<md-content layout="column">
+			<p><strong>about</strong> {{place.about}}</p>
+			<p><strong>address</strong> {{place.address}}</p>
+			<p><strong>categoryTitle</strong> {{place.categoryTitle}}</p>
+			<p><strong>categoryColor</strong> {{place.categoryColor}}</p>
+			<p><strong>type</strong> {{place.type}}</p>
+			<p><strong>contact</strong> {{place.contact}}</p>
+			<p><strong>time</strong> {{place.time}}</p>
+			<p><strong>points</strong> {{place.points}}</p>
+			<p><strong>eventName</strong> {{place.eventName}}</p>
+			<p><strong>area</strong> {{place.area}}</p>
+			<p><strong>id</strong> {{place.$id}}</p>
+
+		</md-content>
+	</div>
+</div>
+
+
+<div layout="column" layout-align="center center">
+	<h1>Volunteer</h1>
+
+<div >
+	<!-- START CARDS -->
+  <md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="place in places">
+	<md-card class="{{place.categoryColor}}" >
+		<md-card-header>
+		  <md-card-avatar>
+		    <img ng-show="place.type === 'place'" src="media/mapThumb.png"/>
+		    <img ng-show="place.type === 'event'" src="media/calendarThumb.png"/>
+		  </md-card-avatar>
+		  <md-card-header-text>
+		    <span class="md-title">{{place.eventName}}</span>
+		    <span class="mdsubhead">{{place.area}}</span>
+		  </md-card-header-text>
+		</md-card-header>
+		<img src="{{place.image}}" class="md-card-image" alt="Washed Out">
+		<md-card-title>
+		  <md-card-title-text>
+		    <span class="md-headline">{{place.venueName}}</span>
+		  </md-card-title-text>
+		</md-card-title>
+		<md-card-content>
+			<p>
+			{{place.about}}
+			</p>
+			<!-- Player Pins -->
+			<md-card-actions layout="row" layout-align="start center">
+				<!-- <md-button href="#/detail">View Details</md-button> -->
+				<md-button href="#/detail/{{place.$id}}">View Details</md-button>
+				<md-card-icon-actions>
+				<md-card-avatar aria-label="Player Pin">
+					<img class="pinThumb" src="media/pinThumb.png"></img>
+				</md-card-avatar>
+				<md-card-avatar aria-label="Player Pin">
+					<img class="pinThumb" src="media/pinThumb.png"></img>
+				</md-card-avatar>
+				<md-card-avatar aria-label="Player Pin">
+					<img class="pinThumb" src="media/pinThumb.png"></img>
+				</md-card-avatar>
+				</md-card-icon-actions>
+			</md-card-actions>
+		</md-card-content>
+	</md-card>
+</div>
+
+
+
+
+
+
+</div>
+

@@ -1,3 +1,57 @@
+<!-- Start Toolbar -->
+<md-content ng-controller="homeCtrl">
+  <md-toolbar>
+    <div class="md-toolbar-tools" >
+      <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleLeft()">
+        <md-icon class="material-icons">menu</md-icon>
+      </md-button>
+      <h2>
+        <span>The Gay Agenda</span>
+      </h2>
+      <span flex></span>
+      <md-button href="#/profile" class="md-icon-button" aria-label="Favorite">
+        <md-icon class="material-icons">person_pin_circle</md-icon>
+      </md-button>
+      <md-button href="#/home" class="md-icon-button" aria-label="Home">
+        <md-icon class="material-icons">home</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+</md-content>
+
+
+
+<section layout="row" flex>
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="">
+    <md-toolbar class="md-theme-indigo">
+      <h1 layout="column" layout-align="center" class="md-toolbar-tools">Menu</h1>
+    </md-toolbar>
+    <md-content layout-padding>
+      <ul>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/profile">Profile</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn1" href="#/sports">Sports</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn2" href="#/family">Family</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn3" href="#/nightlife">Nightlife</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn4" href="#/shopping">Shopping</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn5" href="#/restaurants">Restaurants</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn6" href="#/volunteer">Volunteer</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn7" href="#/safePlaces">Safe Places</md-button></li>
+      </ul>
+
+      <div>
+      <md-button ng-click="close()" class="md-primary" ng-controller="LeftCtrl">
+          Close Menu
+      </md-button>
+      </div>
+      <p hide-md show-gt-md>
+        This sidenav, use it to explore the different categories acitivities. Each event and venue will have a color associated with it and level up your pin, have fun!.
+      </p>
+    </md-content>
+  </md-sidenav>
+</section>
+<!-- End Tool Bar -->
+
+
 <div layout="column" layout-align="center center">
 	<h1>Shopping</h1>
 

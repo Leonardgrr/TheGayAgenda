@@ -21,105 +21,6 @@
 </head>
 <body>
     
-
-
-
-
-
-  <!-- Toolbar -->
-<md-content ng-controller="homeCtrl">
-  <md-toolbar>
-    <div class="md-toolbar-tools" >
-      <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleLeft()">
-        <md-icon class="material-icons">menu</md-icon>
-      </md-button>
-      <h2>
-        <span>The Gay Agenda</span>
-      </h2>
-      <span flex></span>
-      <md-button href="#/profile" class="md-icon-button" aria-label="Favorite">
-        <md-icon class="material-icons">person_pin_circle</md-icon>
-      </md-button>
-      <md-button href="#/home" class="md-icon-button" aria-label="Home">
-        <md-icon class="material-icons">home</md-icon>
-      </md-button>
-      <!-- <md-button ng-controller="loginCtrl" ng-hide="userData" href="#/login" aria-label="signin">
-        Sign In | Sign Up
-      </md-button> -->
-    </div>
-  </md-toolbar>
-</md-content>
-
-
-
-<section layout="row" flex>
-<!--  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"> -->
-  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="">
-    <md-toolbar class="md-theme-indigo">
-      <h1 layout="column" layout-align="center" class="md-toolbar-tools">Menu</h1>
-    </md-toolbar>
-    <md-content layout-padding>
-      <ul>
-        <!-- <li><md-button href="#/view1">View 1</md-button></li>
-        <li><md-button href="#/view2">View 2</md-button></li> -->
-        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/profile">Profile</md-button></li>
-        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn1" href="#/sports">Sports</md-button></li>
-        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn2" href="#/family">Family</md-button></li>
-        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn3" href="#/nightlife">Nightlife</md-button></li>
-        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn4" href="#/shopping">Shopping</md-button></li>
-        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn5" href="#/restaurants">Restaurants</md-button></li>
-        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn6" href="#/volunteer">Volunteer</md-button></li>
-        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn7" href="#/safePlaces">Safe Places</md-button></li>
-      </ul>
-
-<!--       <md-button ng-click="close()" class="md-primary" hide-gt-md>
-        Close Sidenav Left
-      </md-button> -->
-      <div>
-      <md-button ng-click="close()" class="md-primary" ng-controller="LeftCtrl">
-          Close Menu
-      </md-button>
-      </div>
-      <p hide-md show-gt-md>
-        This sidenav, use it to explore the different categories acitivities. Each event and venue will have a color associated with it and level up your pin, have fun!.
-      </p>
-    </md-content>
-  </md-sidenav>
-
-
-<!--   <md-content flex layout-padding>
-    <div layout="column" layout-fill layout-align="top center">
-      <p>
-      The left sidenav will 'lock open' on a medium (>=960px wide) device.
-      </p>
-      <p>
-      The right sidenav will focus on a specific child element.
-      </p>
-      <div>
-        <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
-        <md-button ng-click="toggleLeft()" class="md-primary">
-          Toggle left
-        </md-button>
-      </div>
-      <div>
-        <md-button ng-click="toggleRight()"
-          ng-hide="isOpenRight()"
-          class="md-primary">
-          Toggle right
-        </md-button>
-      </div>
-    </div>
-    <div flex></div>
-  </md-content> -->
-</section>
-
-<!--   <h1> Hello World </h1>
-
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul> -->
-
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -148,6 +49,7 @@
   <script src="views/restaurants/restaurants.js"></script>
   <script src="views/volunteer/volunteer.js"></script>
   <script src="views/safePlaces/safePlaces.js"></script>
+  <script src="views/listing/listing.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
