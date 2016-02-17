@@ -3,7 +3,6 @@
     color: white;
 }
 
-
 .thumb{
   width: 100px;
   margin: 0 auto;
@@ -44,6 +43,7 @@
   background-color: #310062;
   color: white; 
 }
+
 .pinThumb{
   padding-left: 10px;
   max-width: 50px
@@ -55,13 +55,13 @@
   max-width: 50px
 }
 
-h1,h2,h3,h4{
+h1,h2{
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   position: center;
 }
 
-h4{
+h4, h3{
   font-family: 'Lato', sans-serif;
   font-weight: 900;
 }
@@ -147,7 +147,6 @@ body{
   color: #ED1E79;
   font-weight: 900;
 }
-
 
 .checkIn{
   color: white;

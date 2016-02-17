@@ -17,6 +17,7 @@ angular.module('myApp', [
   'myApp.listing',
   'myApp.detail',
   'myApp.version',
+  'myApp.admin',
   'ngMaterial',
   'ngMessages',
   'ngSanitize',

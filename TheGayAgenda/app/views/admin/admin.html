@@ -1,0 +1,137 @@
+<!-- Start Toolbar -->
+<md-content ng-controller="homeCtrl">
+  <md-toolbar>
+    <div class="md-toolbar-tools" >
+      <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleLeft()">
+        <md-icon class="material-icons">menu</md-icon>
+      </md-button>
+      <h2>
+        <span>The Gay Agenda</span>
+      </h2>
+      <span flex></span>
+      <md-button href="#/profile" class="md-icon-button" aria-label="Favorite">
+        <md-icon class="material-icons">person_pin_circle</md-icon>
+      </md-button>
+      <md-button href="#/home" class="md-icon-button" aria-label="Home">
+        <md-icon class="material-icons">home</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+</md-content>
+
+
+
+<section layout="row" flex>
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="">
+    <md-toolbar class="md-theme-indigo">
+      <h1 layout="column" layout-align="center" class="md-toolbar-tools">Menu</h1>
+    </md-toolbar>
+    <md-content layout-padding>
+      <ul>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/listing">listing</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/profile">Profile</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn1" href="#/sports">Sports</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn2" href="#/family">Family</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn3" href="#/nightlife">Nightlife</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn4" href="#/shopping">Shopping</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn5" href="#/restaurants">Restaurants</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn6" href="#/volunteer">Volunteer</md-button></li>
+        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn7" href="#/safePlaces">Safe Places</md-button></li>
+      </ul>
+
+      <div>
+      <md-button ng-click="close()" class="md-primary" ng-controller="LeftCtrl">
+          Close Menu
+      </md-button>
+      </div>
+      <p hide-md show-gt-md>
+        This sidenav, use it to explore the different categories acitivities. Each event and venue will have a color associated with it and level up your pin, have fun!.
+      </p>
+    </md-content>
+  </md-sidenav>
+</section>
+<!-- End Tool Bar -->
+
+
+
+<h1>Hello Admin</h1>
+
+
+<md-content layout="column">
+  <md-content class="md-padding">
+    <md-card >
+      <md-card-content>
+        <h2 class="md-title">Form</h2>
+        <br>
+        <br>
+      <!-- FORM SECTION -->
+      <form ng-submit="neweventplace()">
+        <div layout-gt-sm="row">
+          <md-input-container>
+            <label>Category</label>
+            <md-select ng-model="newCategory.category">
+              <md-option ng-repeat="category in categories" value="{{category}}">{{category}}</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container >
+            <label>Points</label>
+            <md-select ng-model="newPoints.points">
+              <md-option ng-repeat="point in points" value="{{point}}">{{point}}</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container >
+            <label>Type</label>
+            <md-select ng-model="newType.type">
+              <md-option ng-repeat="type in types" value="{{type}}">{{type}}</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container >
+            <label>Area</label>
+            <md-select ng-model="newArea.area">
+              <md-option ng-repeat="area in areas" value="{{area}}">{{area}}</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Address</label>
+            <input ng-model="newAddress.address"></input>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Venue Name</label>
+            <input ng-model="newVenueName.venueName"></input>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Contact</label>
+            <input ng-model="newContact.contact"></input>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Hours</label>
+            <input ng-model="newHours.hours"></input>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Image</label>
+            <input ng-model="newImage.image"></input>
+          </md-input-container>
+        </div>
+        <md-input-container class="md-block">
+          <label>About</label>
+          <textarea rows="5" md-select-on-focus ng-model="newAbout.about"></textarea>
+        </md-input-container>
+        <div class="md-actions" layout="row" layout-align="end center">
+          <md-button type="submit">
+            <md-icon class="material-icons">send</md-icon>
+            <md-tooltip>Submit</md-tooltip>
+          </md-button>
+        </div>
+      </form> <!-- END FORM SECTION -->
+      </md-card-content>
+    </md-card>
+  </md-content>
+</md-content>
+
+

@@ -53,11 +53,11 @@
 <!-- End Tool Bar -->
 
 <li ng-repeat="item in list | filter:name">{{ item | json }}</li>
-<div layout="column" layout-align="center center">
-	<!-- FEED -->
+<!-- <div layout="column" layout-align="center center">
+
 	<h2>Listing</h2>
 	<div ng-repeat="place in places">
-		<md-content layout="column">
+		<md-content ng-repeat="place in places">
 			<p><strong>about</strong> {{place.about}}</p>
 			<p><strong>address</strong> {{place.address}}</p>
 			<p><strong>categoryTitle</strong> {{place.categoryTitle}}</p>
@@ -72,16 +72,17 @@
 
 		</md-content>
 	</div>
-</div>
+</div> -->
 
 
 <div layout="column" layout-align="center center">
 	<h1>Volunteer</h1>
-
+</div>
 <div >
 	<!-- START CARDS -->
-  <md-content class="md-padding" layout-xs="column" layout="row">
-    <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="place in places">
+	<md-content class="md-padding" layout-xs="column" layout="row">
+	<!-- broken cards start here? -->
+	<div flex-xs flex-gt-xs="50" layout="column" ng-repeat="place in places">
 	<md-card class="{{place.categoryColor}}" >
 		<md-card-header>
 		  <md-card-avatar>
@@ -93,7 +94,8 @@
 		    <span class="mdsubhead">{{place.area}}</span>
 		  </md-card-header-text>
 		</md-card-header>
-		<img src="{{place.image}}" class="md-card-image" alt="Washed Out">
+		<!-- <img src="{{place.image}}" class="md-card-image" alt="Washed Out"> -->
+		<img src="{{place.image}}" class="md-card-image">
 		<md-card-title>
 		  <md-card-title-text>
 		    <span class="md-headline">{{place.venueName}}</span>
@@ -121,12 +123,9 @@
 			</md-card-actions>
 		</md-card-content>
 	</md-card>
+	</div>
+
+	</md-content>
 </div>
 
-
-
-
-
-
-</div>
 
