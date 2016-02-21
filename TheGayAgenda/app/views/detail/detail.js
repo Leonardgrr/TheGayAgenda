@@ -15,6 +15,7 @@ angular.module('myApp.detail', ['ngRoute'])
 	$scope.authObj = $firebaseAuth(ref);
 	// $scope.users = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"));
 	$scope.places = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"));
+	$scope.eventplace = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"));
 
 	//console.log($scope.places);
 
@@ -23,8 +24,9 @@ angular.module('myApp.detail', ['ngRoute'])
 	// console.log(list);
 	
 	var detailRef = new Firebase("https://thegayagenda.firebaseio.com/places/"+$routeParams.placeID);
-	// grabs the slected place set as 'currentImage' for use in HTML ng-show line 64
 	$scope.currentDetail = $routeParams.placeID;
 	console.log($scope.currentDetail);
+	
+
 
 }]);

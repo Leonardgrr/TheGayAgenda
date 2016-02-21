@@ -13,33 +13,7 @@ angular.module('myApp.admin', ['ngRoute'])
 	function($rootScope, $scope, $firebaseAuth, $firebaseObject, $firebaseArray, $route, $routeParams, user, Auth) {
 	var ref = new Firebase("https://thegayagenda.firebaseio.com");
 	$scope.authObj = $firebaseAuth(ref);
-	// $scope.users = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"));
-	$scope.places = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"));
 	$scope.eventplace = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/eventplace"));
-
-	//console.log($scope.places);
-
-	var list = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"));
-	$scope.list = list;
-	// console.log(list);
-	
-	var detailRef = new Firebase("https://thegayagenda.firebaseio.com/places/"+$routeParams.placeID);
-	// grabs the slected place set as 'currentImage' for use in HTML ng-show line 64
-	$scope.currentDetail = $routeParams.placeID;
-	// console.log($scope.currentDetail);
-
-
-
-	// $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
- //    'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
- //    'WY').split(' ').map(function(state) {
- //        return {abbrev: state};
- //      })
-
- 	// $scope.categories = ('sports family nightlife shopping restaurants volunteer safePlaces')
- 	// .split(' ').map(function(category) {
-  //       return {abbrev: category};
-  //   })
 
  	$scope.categories = [
 		"sports",
@@ -68,16 +42,7 @@ angular.module('myApp.admin', ['ngRoute'])
 		15
     ];
 
-    $scope.sizes = [
-          "small (12-inch)",
-          "medium (14-inch)",
-          "large (16-inch)",
-          "insane (42-inch)"
-    ];
 
-	$scope.test = function(){
-		console.log("hello world");
-	}
 
 	//User Check In Function
 	$scope.neweventplace = function(){
@@ -95,14 +60,5 @@ angular.module('myApp.admin', ['ngRoute'])
 			image : $scope.newImage.image
 		})
 	}
-
-
-	// var nameInput = document.getElementById('testingForm');
-
-	// document.querySelector('form.pure-form').addEventListener('submit', function (e) {
-	//     //prevent the normal submission of the form
-	//     e.preventDefault();
-	//     console.log(nameInput.value);    
-	// });
 
 }]);
