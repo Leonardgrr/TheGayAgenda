@@ -63,9 +63,9 @@
 </section>
 <!-- End Tool Bar -->
 
-
-<md-content flex layout-padding ng-repeat="item in eventplace" ng-show="currentDetail === item.$id">
-	<h1 layout="column" layout-align="center center">{{item.eventName}}</h1>
+<md-content layout="row" layout-align="center center">
+<md-content flex layout-padding ng-repeat="item in eventplace" ng-show="currentDetail === item.$id" id="detailThing">
+	<h1 layout="column" layout-align="center center">{{item.venueName}}</h1>
 	<img layout="column" layout-align="center center" src="{{item.image}}">
 
 <div layout="row">
@@ -143,7 +143,8 @@
 	</p>
 
 
-
-
-
 </md-content>
+</md-content>
+
+
+

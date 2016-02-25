@@ -3,12 +3,21 @@
     color: white;
 }
 
+/*.thumb{
+  width: 100px;
+  margin: 0 auto;
+  padding-top: 50px;
+}*/
+
 .thumb{
   width: 100px;
   margin: 0 auto;
   padding-top: 50px;
 }
 
+img{
+  min-height: 0;
+}
 .nightlife{
   background-color: #FFBB11;
   color: white; 
@@ -59,6 +68,7 @@ h1,h2{
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   position: center;
+  text-transform: uppercase;
 }
 
 h4, h3{
@@ -176,4 +186,20 @@ body{
   border:solid;
 }
 
+md-card>:not(md-card-content) img, md-card>img {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 0 auto;
+  width: 100%;
+  height: 100% !important;
+  min-height: 0;
+}
+
+md-card{
+  max-width: 400px;
+}
+
+#detailThing{
+  max-width: 800px;
+}
 

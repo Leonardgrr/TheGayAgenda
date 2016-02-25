@@ -90,10 +90,9 @@
 <div layout="column" layout-align="center center">
 	<h1>{{category}}</h1>
 </div>
-<div >
+<div layout="row" layout-align="center center">
 	<!-- START CARDS -->
-	<md-content class="md-padding" layout-xs="column" layout="row">
-	<!-- broken cards start here? -->
+	<md-content class="md-padding" layout-xs="column" layout-md="column" layout-lg="column" layout="row">
 	<div flex layout="column" >
 	<!-- <div flex layout="column" ng-repeat="item in eventplace"> -->
 	<div flex-xs flex-gt-xs="50" layout="column" ng-repeat="item in eventplace">
@@ -141,6 +140,7 @@
 	</div>
 
 	</md-content>
+
 </div>
 
 

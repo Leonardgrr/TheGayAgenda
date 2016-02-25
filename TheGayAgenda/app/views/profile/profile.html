@@ -25,7 +25,7 @@
 
 
 
-<section layout="row" flex>
+<section layout="row">
 <!--  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"> -->
   <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="">
     <md-toolbar class="md-theme-indigo">
@@ -62,54 +62,57 @@
   </md-sidenav>
 </section>
 
-<div layout="column" layout-align="center center" ng-controller="loginCtrl" ng-show="userData">
+<div layout="column" layout-align="center center" ng-controller="loginCtrl" ng-show="userData" flex="none">
   <h1>Hello {{userData.google.displayName}}</h1>
       <md-button class="md-icon-button">
         <a ng-href="#/home" ng-click="logout()"><md-icon class="material-icons">exit_to_app</md-icon></a>
         <md-tooltip>Sign Out</md-tooltip>
       </md-button>
-	<md-content class="md-padding" layout-xs="column" layout="row">
-
+<md-content class="md-padding" layout-xs="column" layout="row" flex="none">
+<div flex-xs="none" flex-gt-xs="50" layout="column">
 <!-- Profile Card -->
+
       <md-card>
         <img class="thumb" src="media/pin.png">
-        <md-card-title>
+        <md-card-title flex="none">
           <md-card-title-text>
             <span class="md-headline">Player Pin</span>
           </md-card-title-text>
         </md-card-title>
-        <md-card-content>
+        <md-card-content flex="none">
           <p>
             This is your player pin, it levels up with each place that you check in at as well as the events you RSVP. 
           </p>
         </md-card-content>
-        <md-card-actions layout="row" layout-align="end center">
+        <md-card-actions layout="row" layout-align="end center" flex="none">
           <md-button ng-controller="homeCtrl" ng-click="toggleLeft()">Explore</md-button>
         </md-card-actions>
       </md-card>
-
+</div>
 <!-- Events Card -->
+<div flex-xs="none" flex-gt-xs="50" layout="column">
       <md-card>
         <img class="thumb" src="media/calendar.png">
-        <md-card-title>
+        <md-card-title flex="none">
           <md-card-title-text>
             <span class="md-headline">Events</span>
           </md-card-title-text>
         </md-card-title>
-        <md-card-content>
+        <md-card-content flex="none">
           <p>
             You have no RSVP! When you RSVP an event, it will be added here and organized by the most recent event.
           </p>
         </md-card-content>
-        <md-card-actions layout="row" layout-align="end center">
+        <md-card-actions layout="row" layout-align="end center" flex="none">
           <md-button ng-controller="homeCtrl" ng-click="toggleLeft()">Explore</md-button>
         </md-card-actions>
       </md-card>
-
+</div>
 <!-- Places Card -->
+<div flex-xs="none" flex-gt-xs="50" layout="column">
       <md-card>
         <img class="thumb" src="media/map.png">
-        <md-card-title>
+        <md-card-title flex="none">
           <md-card-title-text>
             <span class="md-headline">Places</span>
           </md-card-title-text>
@@ -125,6 +128,6 @@
       </md-card>
 
 	</md-content>
-
+</div>
 
 </div>

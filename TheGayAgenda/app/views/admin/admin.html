@@ -63,7 +63,22 @@
 </section>
 <!-- End Tool Bar -->
 
+<input id="fileInput" type="file">
+<md-button class="md-raised" ng-click="uploadImage()">
+  <label>AwesomeButtonName</label>
+</md-button>
 
+<div >
+  <form ng-submit="uploadImage()">
+    <div>
+      <input type="file" name="image"/>
+      <input type="submit" value="Upload Image" />
+    </div>
+    <div class="fb-uploading" >
+      Uploading...
+    </div>
+  </form>
+</div>
 
 <h1>Hello Admin</h1>
 
