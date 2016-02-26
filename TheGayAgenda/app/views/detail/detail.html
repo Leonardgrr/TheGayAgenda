@@ -63,6 +63,12 @@
 </section>
 <!-- End Tool Bar -->
 
+    <md-content >
+    <form ng-submit="test()" ng-controller="profileCtrl">
+      <md-button type="submit">click me</md-button>
+    </form>
+    </md-content>
+
 <md-content layout="row" layout-align="center center">
 <md-content flex layout-padding ng-repeat="item in eventplace" ng-show="currentDetail === item.$id" id="detailThing">
 	<h1 layout="column" layout-align="center center">{{item.venueName}}</h1>
@@ -70,31 +76,42 @@
 
 <div layout="row">
   <div flex>
-    <p>
-		<strong>{{item.venueName}}</strong><br>
-		<strong>Hours</strong> {{item.hours}}<br>
-		<strong>Contact</strong> {{item.contact}}<br>
-		<strong>Address</strong> {{item.address}}<br>
-    <strong>Address</strong> {{item.image}}<br>
-	</p>
-	<md-button>Get Directions</md-button>
+    <h2>{{item.venueName}}</h2><br>
+      <md-button href="https://maps.google.com?saddr=Current+Location&daddr={{item.address}}">
+    Get Directions
+  </md-button>
+  <md-button ng-hide="hours" ng-click="hours=true" href="">
+    Show Hours
+  </md-button>
+  <md-button ng-show="hours" ng-click="hours=false" href="">
+    Hide Hours
+  </md-button>
+    <!-- <a href="" ng-click="hours=true">Show Hours</a>
+    <button ng-click="hours=false">Hide Hours</button> <br> -->
+    <!-- <p ng-hide="hours">It will appear here!</p><br> -->
+   <!--  <h2 ng-show="hours">This is mah content, yo!</h2> -->
+   <p>
   </div>
 	<div flex>
 	<form ng-submit="newCheckIn()" ng-controller="profileCtrl" ng-show="item.type === 'place'">
 		<md-content layout="row" layout-align="end center">
 			<md-content aria-label="Player Pin">
-				<img class="pinThumbCheckIn" src="media/coloredPin.png"></img>
+				<img class="pinThumbCheckIn" src="media/pin.png"></img>
 			</md-content>
 		</md-content>
 		<div layout="" layout-sm="column" ng-hide="true">
 			<md-input-container flex="">
 			  <label>category</label>
-			  <input name="category"  ng-model="newCategory.category" ng-init="newCategory.category=item.categoryTitle" ></input>
+			  <input name="category"  ng-model="newCategory.category" ng-init="newCategory.category=item.category" ></input>
 			</md-input-container>
 			<md-input-container flex="">
 			  <label>points</label>
 			  <input name="points" ng-model="newPoints.points" ng-init="newPoints.points=item.points"></input>
 			</md-input-container>
+      <md-input-container flex="">
+        <label>user</label>
+        <input name="user" ng-model="currentUser" ng-init="newUser.user=currentUser"></input>
+      </md-input-container>
 		</div>
 		<md-content layout="row" layout-align="end center" ng-show="item.type === 'place'">
 			<md-button type="submit" class="checkIn">Check In</md-button>
@@ -104,7 +121,7 @@
   <form ng-submit="newRSVP()" ng-controller="profileCtrl" ng-show="item.type === 'event'">
     <md-content layout="row" layout-align="end center">
       <md-content aria-label="Player Pin">
-        <img class="pinThumbCheckIn" src="media/coloredPin.png"></img>
+        <img class="pinThumbCheckIn" src="media/pin.png"></img>
       </md-content>
     </md-content>
     <div layout="" layout-sm="column" ng-hide="true">
@@ -116,6 +133,14 @@
         <label>points</label>
         <input name="points" ng-model="newPoints.points" ng-init="newPoints.points=item.points"></input>
       </md-input-container>
+      <md-input-container flex="">
+        <label>user</label>
+        <input name="user" ng-model="currentUser" ng-init="newUser.user=currentUser"></input>
+      </md-input-container>
+      <!-- <md-input-container flex="">
+        <label>user</label>
+        <input name="user" ng-model="userData.uid" ng-init="newUser.points=item.user"></input>
+      </md-input-container> -->
     </div>
     <md-content layout="row" layout-align="end center" ng-show="item.type === 'place'">
       <md-button type="submit" class="checkIn">Check In</md-button>
@@ -137,10 +162,31 @@
 		<md-button>RSVP</md-button>
 	</md-content> -->
 
-	<p>
-		<strong>About</strong><br>
-		{{item.about}}
-	</p>
+  <br>
+<!--     <p ng-show="hours">
+      <strong>Monday</strong> <em ng-show="hours">{{item.monday}}</em><br>
+      <strong>Tuesday</strong> <em ng-show="hours">{{item.tuesday}}</em><br>
+      <strong>Wednesday</strong> <em ng-show="hours">{{item.wednesday}}</em><br>
+      <strong>Thursday</strong> <em ng-show="hours">{{item.thursday}}</em><br>
+      <strong>Friday</strong> <em ng-show="hours">{{item.friday}}</em><br>
+      <strong>Saturday</strong> <em ng-show="hours">{{item.saturday}}</em><br>
+      <strong>Sunday</strong> <em ng-show="hours">{{item.sunday}}</em><br>
+    </p> -->
+    <div>
+      <strong ng-show="hours">Monday</strong><em ng-show="hours">{{item.monday}}</em><br ng-show="hours">
+      <strong ng-show="hours">Tuesday</strong><em ng-show="hours">{{item.tuesday}}</em><br ng-show="hours">
+      <strong ng-show="hours">Wednesday</strong><em ng-show="hours">{{item.wednesday}}</em><br ng-show="hours">
+      <strong ng-show="hours">Thursday</strong><em ng-show="hours">{{item.thursday}}</em><br ng-show="hours">
+      <strong ng-show="hours">Friday</strong><em ng-show="hours">{{item.friday}}</em><br ng-show="hours">
+      <strong ng-show="hours">Saturday</strong><em ng-show="hours">{{item.saturday}}</em><br ng-show="hours">
+      <strong ng-show="hours">Sunday</strong><em ng-show="hours">{{item.sunday}}</em><br ng-show="hours">
+      <strong>Contact</strong> {{item.contact}}<br>
+      <strong>Address</strong> {{item.address}}<br>
+    </div>
+    <p>
+  		<strong>About</strong><br>
+  		{{item.about}}
+  	</p>
 
 
 </md-content>

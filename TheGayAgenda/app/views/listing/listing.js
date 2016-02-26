@@ -29,7 +29,7 @@ angular.module('myApp.listing', ['ngRoute'])
 
 	var listingRef = new Firebase("https://thegayagenda.firebaseio.com/eventplace/"+$routeParams.category);
 	$scope.category = $routeParams.category;
-	console.log($scope.category);
+	// console.log($scope.category);
 	
 
 }]);

@@ -25,7 +25,9 @@ angular.module('myApp.detail', ['ngRoute'])
 	
 	var detailRef = new Firebase("https://thegayagenda.firebaseio.com/places/"+$routeParams.placeID);
 	$scope.currentDetail = $routeParams.placeID;
-	console.log($scope.currentDetail);
+	// console.log($scope.currentDetail);
+	
+
 	
 
 

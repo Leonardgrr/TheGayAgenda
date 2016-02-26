@@ -63,35 +63,20 @@
 </section>
 <!-- End Tool Bar -->
 
-<input id="fileInput" type="file">
-<md-button class="md-raised" ng-click="uploadImage()">
-  <label>AwesomeButtonName</label>
-</md-button>
 
-<div >
-  <form ng-submit="uploadImage()">
-    <div>
-      <input type="file" name="image"/>
-      <input type="submit" value="Upload Image" />
-    </div>
-    <div class="fb-uploading" >
-      Uploading...
-    </div>
-  </form>
-</div>
 
-<h1>Hello Admin</h1>
 
 
 <md-content layout="column">
   <md-content class="md-padding">
-    <md-card >
+    <div>
       <md-card-content>
-        <h2 class="md-title">Form</h2>
+        <h2 class="md-title">Add a Place or Event Form</h2>
         <br>
         <br>
       <!-- FORM SECTION -->
       <form ng-submit="neweventplace()">
+        <h3>Details</h3>
         <div layout-gt-sm="row">
           <md-input-container>
             <label>Category</label>
@@ -126,16 +111,14 @@
         </div>
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
+            <label>Event Name</label>
+            <input ng-model="newEventName.eventName"></input>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
             <label>Venue Name</label>
             <input ng-model="newVenueName.venueName"></input>
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Contact</label>
-            <input ng-model="newContact.contact"></input>
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Hours</label>
-            <input ng-model="newHours.hours"></input>
           </md-input-container>
         </div>
         <div layout-gt-sm="row">
@@ -144,19 +127,70 @@
             <input ng-model="newImage.image"></input>
           </md-input-container>
         </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Contact</label>
+            <input ng-model="newContact.contact"></input>
+          </md-input-container>
+
+        </div>
         <md-input-container class="md-block">
           <label>About</label>
           <textarea rows="5" md-select-on-focus ng-model="newAbout.about"></textarea>
         </md-input-container>
+        <h3>Hours</h3>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Monday</label>
+            <input ng-model="newMonday.monday"></input>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Tuesday</label>
+            <input ng-model="newTuesday.tuesday"></input>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Wednesday</label>
+            <input ng-model="newWednesday.wednesday"></input>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Thursday</label>
+            <input ng-model="newThursday.thursday"></input>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Friday</label>
+            <input ng-model="newFriday.friday"></input>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Saturday</label>
+            <input ng-model="newSaturday.saturday"></input>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Sunday</label>
+            <input ng-model="newSunday.sunday"></input>
+          </md-input-container>
+        </div>
         <div class="md-actions" layout="row" layout-align="end center">
           <md-button type="submit">
+          Sumbit
             <md-icon class="material-icons">send</md-icon>
             <md-tooltip>Submit</md-tooltip>
           </md-button>
         </div>
       </form> <!-- END FORM SECTION -->
       </md-card-content>
-    </md-card>
+    </div>
   </md-content>
 </md-content>
 

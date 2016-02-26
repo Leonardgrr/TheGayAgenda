@@ -53,71 +53,19 @@ angular.module('myApp.admin', ['ngRoute'])
 			address : $scope.newAddress.address,
 			venueName : $scope.newVenueName.venueName,
 			contact : $scope.newContact.contact,
-			hours : $scope.newHours.hours,
+			monday : $scope.newMonday.monday,
+			tuesday : $scope.newTuesday.tuesday,
+			wednesday : $scope.newWednesday.wednesday,
+			thursday : $scope.newThursday.thursday,
+			friday : $scope.newFriday.friday,
+			saturday : $scope.newSaturday.saturday,
+			sunday : $scope.newSunday.sunday,
+			eventName : $scope.newEventName.eventName,
 			about : $scope.newAbout.about,
 			image : $scope.newImage.image
 		})
 	}
 
-
-	$scope.uploadImage = function(imageData, incidentID) {
-		console.log(imageData);
-    var FR = new FileReader();
-    var fb = new Firebase('https://thegayagenda.firebaseio.com/');
-    FR.onload = function(e) {
-    var imageString = e.target.result;
-
-	//create URL that refers to a specific event and add images as an array-like object to hold images
-	var eventReference = fb.child("events/" + incidentID);
-	var syncArray = $firebaseArray(eventReference.child("images"));
-
-      $scope.user = Auth.getUser();
-      var username = $scope.user.username || '';
-      var submitDate = new Date().toISOString().slice(0, 10);
-
-      syncArray.$add({
-          imageString: imageString,
-          username: username,
-          submitDate: submitDate
-	    })
-      .then(function() {
-          console.log('Image has been uploaded');
-      });
-    };
-    FR.readAsDataURL(imageData);
-  };
-
 }]);
 
 
-// angular.module('app.controllers', ['firebase'])
-
-// .controller('AppCtrl', function($scope,$firebaseArray) {
-//   $scope.uploadImage = function(imageData, incidentID) {
-//     var FR = new FileReader();
-
-//     FR.onload = function(e) {
-//       var imageString = e.target.result;
-
-// 	//create URL that refers to a specific event and add images as an array-like object to hold images
-//       var eventReference = fb.child(&quot;events/&quot; + incidentID);
-//       var syncArray = $firebaseArray(eventReference.child(&quot;images&quot;));
-
-//       $scope.user = Auth.getUser();
-//       var username = $scope.user.username || '';
-//       var submitDate = new Date().toISOString().slice(0, 10);
-
-//       syncArray.$add({
-//           imageString: imageString,
-//           username: username,
-//           submitDate: submitDate
-// 	    })
-//       .then(function() {
-//           console.log('Image has been uploaded');
-//       });
-//     };
-//     FR.readAsDataURL(imageData);
-//   });
-
-//   //...other code here...//
-// });

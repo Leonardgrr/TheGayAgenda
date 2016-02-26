@@ -24,6 +24,8 @@ angular.module('myApp.profile', ['ngRoute'])
 	$rootScope.authorize = function(authData){
 		if (authData) {
 		  	$scope.userData = authData;
+		  	$rootScope.currentUser = authData.uid;
+		  	console.log($rootScope.currentUser);
 		  	var user = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"+authData.uid));
 		  	if (authData.provider === "google"){
 			  	user.profilePic = authData.google.profileImageURL;
@@ -37,8 +39,12 @@ angular.module('myApp.profile', ['ngRoute'])
 		// }
 	}
 
+
+
+
 $scope.test = function(){
 	console.log("hello world");
+	console.log("current user is ", $rootScope.currentUser);
 }
 
 	//User Check In Function
@@ -47,6 +53,7 @@ $scope.test = function(){
 		$scope.checkIn.$add({
 			category : $scope.newCategory.category,
 			points: $scope.newPoints.points,
+			user: $scope.newUser.user
 		})
 	}
 
