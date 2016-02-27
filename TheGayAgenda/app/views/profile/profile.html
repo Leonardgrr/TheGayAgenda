@@ -95,19 +95,51 @@
 <div flex-xs="none" flex-gt-xs="50" layout="column">
 <!-- Profile Card -->
       <md-card>
-        <img class="thumb" src="media/pin.png">
+        <img ng-hide="label" class="thumb" src="media/pin.png">
+        <img ng-show="label === 'Lipstick'" class="thumb" src="media/lipstick.png">
+        <img ng-show="label === 'Chapstick'" class="thumb" src="media/chapstick.png">
+        <img ng-show="label === 'Diesel'" class="thumb" src="media/diesel.png">
+        <img ng-show="label === 'Twink'" class="thumb" src="media/twink.png">
+        <img ng-show="label === 'Bear'" class="thumb" src="media/bear.png">
+        <img ng-show="label === 'Otter'" class="thumb" src="media/otter.png">
+
         <md-card-title flex="none">
           <md-card-title-text>
-            <span class="md-headline">Your animal is : </span>
+            <span class="md-headline" ng-hide="label">This is your player pin.</span>
+            <span class="md-headline" ng-show="label">You are a {{label}}</span>
           </md-card-title-text>
         </md-card-title>
         <md-card-content flex="none">
-          <p>
-            Description of gay label here.  
+          <p ng-hide="label">
+            What label do you self identify with? Player pins will help you to tell what kind of crowd a place or event attracts.
+          </p>
+          <p ng-show="label === 'Diesel'" >
+            A Diesel is a very butch or manly lesbian, especially one who is very aggressive. In some lesbian circles Diesel refers to a very butch Big-Rig (or other heavy equipment) driving lesbian. 
+          </p>
+          <p ng-show="label === 'Chapstick'">
+            A chapstick lesbian is also known as a soft butch or androgynous. She usually dresses quite casually and does not wear make-up. The term Chapstick Lesbian was popularized after an episode of the TV show Ellen.  
+          </p>
+          <p ng-show="label === 'Lipstick'">
+            A lipstick lesbian is a woman who loves other women, but also loves her clothes and makeup and shoes. She tends to dress on the femmy side. Also known as Femme or Fem.
+          </p>
+          <p ng-show="label === 'Twink'">
+            Twinks are generally quite young, skinny, have essentially no body hair. Generally, they act as though the entire world revolves around the fact that they are young and gay.  
+          </p>
+          <p ng-show="label === 'Bear'">
+            The Bear is the polar opposite of the Twink. Bears are large and in charge, wouldn’t dream of shaving ANY of their body hair. Large and jovial, these beasts range from muscle-daddy to Sumo wrestler, are generally a little older and are usually some of the nicest guys you’ll ever meet.  
+          </p>
+          <p ng-show="label === 'Otter'">
+            The Otter a sub-category of Bears. Otters are skinnier, but still rock the full-out body hair. They will usually be short-ish and although skinnier than bears, they usually still have round-ish features.  
           </p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center" flex="none">
-          <md-button ng-controller="homeCtrl" ng-click="toggleLeft()">Explore</md-button>
+        <md-input-container>
+            <label>Pick a label</label>
+            <md-select ng-model="label">
+              <md-option ng-value="label" ng-repeat="label in labels" value="{{label}}">{{label}}</md-option>
+            </md-select>
+        </md-input-container>
+          <md-button ng-controller="homeCtrl" ng-click="toggleLeft()">save</md-button>
         </md-card-actions>
       </md-card>
 </div>
@@ -172,3 +204,4 @@
 </div>
 
 </div>
+
