@@ -14,11 +14,23 @@ angular.module('myApp', [
   'ngMaterial',
   'ngMessages',
   'ngSanitize',
-  'firebase'
+  'firebase',
+  'angular-cloudinary'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/home'});
 }])
+
+.config(function (cloudinaryProvider) {
+  cloudinaryProvider.config({
+    upload_endpoint: 'https://api.cloudinary.com/v1_1/', // default
+    cloud_name: 'dkkcd8ay6', // required
+    upload_preset: 'o4r47vnw', // optional
+  });
+})
+
+
+  
 
 .controller('homeCtrl', function ($scope, $timeout, $mdSidenav, $log) {
 	$scope.toggleLeft = buildDelayedToggler('left');

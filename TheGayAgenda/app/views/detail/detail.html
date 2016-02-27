@@ -33,10 +33,7 @@
     </md-toolbar>
     <md-content layout-padding>
       <ul>
-        <!-- <li><md-button href="#/view1">View 1</md-button></li>
-        <li><md-button href="#/view2">View 2</md-button></li> -->
-        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/admin">admin</md-button></li>
-        <!-- <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/listing">listing</md-button></li> -->
+        <li ng-controller="profileCtrl" ng-show="userData.uid === friller.$value" layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/admin">admin</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/profile">Profile</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn1" href="#/listing/sports">Sports</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn2" href="#/listing/family">Family</md-button></li>
@@ -47,9 +44,6 @@
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn7" href="#/listing/safePlaces">Safe Places</md-button></li>
       </ul>
 
-<!--       <md-button ng-click="close()" class="md-primary" hide-gt-md>
-        Close Sidenav Left
-      </md-button> -->
       <div>
       <md-button ng-click="close()" class="md-primary" ng-controller="LeftCtrl">
           Close Menu
@@ -63,15 +57,15 @@
 </section>
 <!-- End Tool Bar -->
 
-    <md-content >
-    <form ng-submit="test()" ng-controller="profileCtrl">
-      <md-button type="submit">click me</md-button>
-    </form>
-    </md-content>
+<!-- <li ng-controller="profileCtrl" ng-repeat="item in admin | filter:name">{{ item | json }}</li> -->
+
+    <!-- <md-content >
+      <h2>{{currentDetail}}</h2>
+    </md-content> -->
 
 <md-content layout="row" layout-align="center center">
 <md-content flex layout-padding ng-repeat="item in eventplace" ng-show="currentDetail === item.$id" id="detailThing">
-	<h1 layout="column" layout-align="center center">{{item.venueName}}</h1>
+	<h1 layout="column" layout-align="center center">{{item.eventName}}</h1>
 	<img layout="column" layout-align="center center" src="{{item.image}}">
 
 <div layout="row">
@@ -86,10 +80,6 @@
   <md-button ng-show="hours" ng-click="hours=false" href="">
     Hide Hours
   </md-button>
-    <!-- <a href="" ng-click="hours=true">Show Hours</a>
-    <button ng-click="hours=false">Hide Hours</button> <br> -->
-    <!-- <p ng-hide="hours">It will appear here!</p><br> -->
-   <!--  <h2 ng-show="hours">This is mah content, yo!</h2> -->
    <p>
   </div>
 	<div flex>
@@ -111,6 +101,10 @@
       <md-input-container flex="">
         <label>user</label>
         <input name="user" ng-model="currentUser" ng-init="newUser.user=currentUser"></input>
+      </md-input-container>
+      <md-input-container flex="">
+        <label>place/event</label>
+        <input name="venue" ng-model="currentDetail" ng-init="newVenue.venue=currentDetail"></input>
       </md-input-container>
 		</div>
 		<md-content layout="row" layout-align="end center" ng-show="item.type === 'place'">
@@ -137,10 +131,10 @@
         <label>user</label>
         <input name="user" ng-model="currentUser" ng-init="newUser.user=currentUser"></input>
       </md-input-container>
-      <!-- <md-input-container flex="">
-        <label>user</label>
-        <input name="user" ng-model="userData.uid" ng-init="newUser.points=item.user"></input>
-      </md-input-container> -->
+      <md-input-container flex="">
+        <label>place/event</label>
+        <input name="venue" ng-model="currentDetail" ng-init="newVenue.venue=currentDetail"></input>
+      </md-input-container>
     </div>
     <md-content layout="row" layout-align="end center" ng-show="item.type === 'place'">
       <md-button type="submit" class="checkIn">Check In</md-button>
@@ -152,26 +146,8 @@
 	</div>
 </div>
 
-	<!-- Player Pins -->
-	<!-- <md-card-actions layout="row" layout-align="end center">
-		<md-card-avatar aria-label="Player Pin">
-			<img class="pinThumbCheckIn" src="media/coloredPin.png"></img>
-		</md-card-avatar>
-	</md-card-actions>
-	<md-content layout="row" layout-align="end center">
-		<md-button>RSVP</md-button>
-	</md-content> -->
-
   <br>
-<!--     <p ng-show="hours">
-      <strong>Monday</strong> <em ng-show="hours">{{item.monday}}</em><br>
-      <strong>Tuesday</strong> <em ng-show="hours">{{item.tuesday}}</em><br>
-      <strong>Wednesday</strong> <em ng-show="hours">{{item.wednesday}}</em><br>
-      <strong>Thursday</strong> <em ng-show="hours">{{item.thursday}}</em><br>
-      <strong>Friday</strong> <em ng-show="hours">{{item.friday}}</em><br>
-      <strong>Saturday</strong> <em ng-show="hours">{{item.saturday}}</em><br>
-      <strong>Sunday</strong> <em ng-show="hours">{{item.sunday}}</em><br>
-    </p> -->
+
     <div>
       <strong ng-show="hours">Monday</strong><em ng-show="hours">{{item.monday}}</em><br ng-show="hours">
       <strong ng-show="hours">Tuesday</strong><em ng-show="hours">{{item.tuesday}}</em><br ng-show="hours">

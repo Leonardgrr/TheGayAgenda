@@ -12,6 +12,7 @@
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
     "angular-material": "^1.0.4",
-    "cloudinary_ng": "^0.2.0"
+    "cloudinary_ng": "^0.2.0",
+    "angular-cloudinary": "^1.2.2"
   }
 }

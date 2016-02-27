@@ -16,9 +16,6 @@
       <md-button href="#/home" class="md-icon-button" aria-label="Home">
         <md-icon class="material-icons">home</md-icon>
       </md-button>
-      <!-- <md-button ng-controller="loginCtrl" ng-hide="userData" href="#/login" aria-label="signin">
-        Sign In | Sign Up
-      </md-button> -->
     </div>
   </md-toolbar>
 </md-content>
@@ -26,18 +23,13 @@
 
 
 <section layout="row">
-<!--  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"> -->
   <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="">
     <md-toolbar class="md-theme-indigo">
       <h1 layout="column" layout-align="center" class="md-toolbar-tools">Menu</h1>
     </md-toolbar>
     <md-content layout-padding>
       <ul>
-        <!-- <li><md-button href="#/view1">View 1</md-button></li>
-        <li><md-button href="#/view2">View 2</md-button></li> -->
-        <!-- <li ng-show="item.type === 'place'" layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/admin">admin</md-button></li> -->
-        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/admin">admin</md-button></li>
-        <!-- <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/listing">listing</md-button></li> -->
+        <li ng-show="userData.uid === friller.$value" layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/admin">admin</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/profile">Profile</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn1" href="#/listing/sports">Sports</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn2" href="#/listing/family">Family</md-button></li>
@@ -48,9 +40,6 @@
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn7" href="#/listing/safePlaces">Safe Places</md-button></li>
       </ul>
 
-<!--       <md-button ng-click="close()" class="md-primary" hide-gt-md>
-        Close Sidenav Left
-      </md-button> -->
       <div>
       <md-button ng-click="close()" class="md-primary" ng-controller="LeftCtrl">
           Close Menu
@@ -63,9 +52,41 @@
   </md-sidenav>
 </section>
 
+    <md-card-content>
+
+
+      <!-- <md-button class="md-icon-button">
+        <a ng-click="show()">hi</a>
+      </md-button>
+      <pre>{{ friller | json }}</pre> -->
+      <!-- <li ng-repeat="item in theAdmin | filter:name">{{ item | json }}</li> -->
+      <li ng-repeat="item in checkIn | filter:name">{{ item | json }}</li>
+      <h2 class="md-title">Currently Checked in at</h2>
+      
+      <md-content flex=""> 
+        <md-list >
+          <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
+          <md-list-item ng-show="userData.uid === item.user" ng-repeat="item in checkIn" class="md-3-line" >
+            <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar">
+            <div class="md-list-item-text">
+          <h3>{{users[item.user].userName}}</h3>
+          <p>
+          {{item.category}}<br>
+          {{item.points}}<br>
+          {{item.user}}<br>
+          {{item.$id}}<br>
+          </p>
+            </div>
+          </md-list-item>
+        </md-list>
+      </md-content> 
+
+
+
 <div layout="column" layout-align="center center" ng-controller="loginCtrl" ng-show="userData" flex="none">
-  <!-- <h1 ng-show="userData.type === 'admin'" >You are an admin {{userData.type}}</h1> -->
-  <h1>Hello {{userData.google.displayName}}</h1>
+  <h1>{{userData.google.displayName}}</h1>
+  <h1>{{userData.twitter.displayName}}</h1>
+
       <md-button class="md-icon-button">
         <a ng-href="#/home" ng-click="logout()"><md-icon class="material-icons">exit_to_app</md-icon></a>
         <md-tooltip>Sign Out</md-tooltip>
@@ -73,7 +94,25 @@
 <md-content class="md-padding" layout-xs="column" layout="row" flex="none">
 <div flex-xs="none" flex-gt-xs="50" layout="column">
 <!-- Profile Card -->
-
+      <md-card>
+        <img class="thumb" src="media/pin.png">
+        <md-card-title flex="none">
+          <md-card-title-text>
+            <span class="md-headline">Your animal is : </span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content flex="none">
+          <p>
+            Description of gay label here.  
+          </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center" flex="none">
+          <md-button ng-controller="homeCtrl" ng-click="toggleLeft()">Explore</md-button>
+        </md-card-actions>
+      </md-card>
+</div>
+<div flex-xs="none" flex-gt-xs="50" layout="column">
+<!-- Profile Card -->
       <md-card>
         <img class="thumb" src="media/pin.png">
         <md-card-title flex="none">

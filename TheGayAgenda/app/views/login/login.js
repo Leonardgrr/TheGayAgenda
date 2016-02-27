@@ -19,6 +19,8 @@ angular.module('myApp.login', ['ngRoute'])
 	$scope.users = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"));
 	$scope.authObj.$onAuth(function(authData) {
 		$rootScope.authorize(authData);
+		$scope.userData = authData;
+		$rootScope.currentUser = authData.uid;
 	});
 
 	$rootScope.authorize = function(authData){
@@ -29,6 +31,14 @@ angular.module('myApp.login', ['ngRoute'])
 			  	user.profilePic = authData.google.profileImageURL;
 			  	user.userName = authData.google.displayName;
 			  	user.$save();
+		  	}else if (authData.provider === "twitter"){
+		  		user.profilePic = authData.twitter.profileImageURL;
+			  	user.userName = authData.twitter.displayName;
+			  	user.$save();
+		  	}else if (authData.provider === "facebook"){
+		  		user.profilePic = authData.facebook.profileImageURL;
+			  	user.userName = authData.facebook.displayName;
+			  	user.$save();	
 		  	}
 		}
 		//  else {
@@ -42,6 +52,18 @@ angular.module('myApp.login', ['ngRoute'])
 		  console.log("Logged in as:", authData.uid);
 		  console.log(authData);
 		  console.log(authData.google.profileImageURL);
+		  $scope.userData = authData;
+		}).catch(function(error) {
+		  console.error("Authentication failed:", error);
+		})
+	}
+
+	$scope.loginTwitter = function(){
+		console.log("twitter login dialog is here")
+		$scope.authObj.$authWithOAuthPopup("twitter").then(function(authData) {
+		  console.log("Logged in as:", authData.uid);
+		  console.log(authData.twitter.displayName);
+		  console.log(authData.twitter.profileImageURL);
 		  $scope.userData = authData;
 		}).catch(function(error) {
 		  console.error("Authentication failed:", error);

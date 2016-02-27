@@ -75,7 +75,7 @@
         <br>
         <br>
       <!-- FORM SECTION -->
-      <form ng-submit="neweventplace()">
+      <form ng-submit="neweventplace(newEvent)">
         <h3>Details</h3>
         <div layout-gt-sm="row">
           <md-input-container>
@@ -122,10 +122,13 @@
           </md-input-container>
         </div>
         <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Image</label>
-            <input ng-model="newImage.image"></input>
+          <md-input-container>
+            Select a file<input  name="file" ngf-select="uploadFiles($files)" ng-model="newEvent.image">
           </md-input-container>
+          <!-- <md-input-container class="md-block" flex-gt-sm>
+            <label>Image</label>
+            <input type="file" ngf-select="uploadFiles($files)"  required ng-model="newEvent.image"> 
+          </md-input-container> -->
         </div>
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
@@ -193,5 +196,36 @@
     </div>
   </md-content>
 </md-content>
+
+
+
+<!-- 
+<md-content layout="column">
+  <md-content class="md-padding">
+    <div>
+      <md-card-content>
+        <h2 class="md-title">Add an new admin</h2>
+        <br>
+        <br>
+      <form ng-submit="newAdmin()">
+        <h3>Wanna be an admin?</h3>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>user</label>
+            <input ng-model="newAdmin.admin"></input>
+          </md-input-container>
+        </div>
+        <div class="md-actions" layout="row" layout-align="end center">
+          <md-button type="submit">
+          Sumbit
+            <md-icon class="material-icons">send</md-icon>
+            <md-tooltip>Submit</md-tooltip>
+          </md-button>
+        </div>
+      </form>
+      </md-card-content>
+    </div>
+  </md-content>
+</md-content> -->
 
 

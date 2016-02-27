@@ -16,9 +16,6 @@
       <md-button href="#/home" class="md-icon-button" aria-label="Home">
         <md-icon class="material-icons">home</md-icon>
       </md-button>
-      <!-- <md-button ng-controller="loginCtrl" ng-hide="userData" href="#/login" aria-label="signin">
-        Sign In | Sign Up
-      </md-button> -->
     </div>
   </md-toolbar>
 </md-content>
@@ -35,8 +32,7 @@
       <ul>
         <!-- <li><md-button href="#/view1">View 1</md-button></li>
         <li><md-button href="#/view2">View 2</md-button></li> -->
-        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/admin">admin</md-button></li>
-        <!-- <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/listing">listing</md-button></li> -->
+        <li ng-controller="profileCtrl" ng-show="userData.uid === friller.$value" layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/admin">admin</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/profile">Profile</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn1" href="#/listing/sports">Sports</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn2" href="#/listing/family">Family</md-button></li>
@@ -47,9 +43,6 @@
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn7" href="#/listing/safePlaces">Safe Places</md-button></li>
       </ul>
 
-		<!-- <md-button ng-click="close()" class="md-primary" hide-gt-md>
-		Close Sidenav Left
-		</md-button> -->
       <div>
       <md-button ng-click="close()" class="md-primary" ng-controller="LeftCtrl">
           Close Menu
@@ -63,28 +56,7 @@
 </section>
 <!-- End Tool Bar -->
 
-<!-- <li ng-repeat="item in list | filter:name">{{ item | json }}</li> -->
-<li ng-repeat="item in listing | filter:name">{{ item | json }}</li>
-<!-- <div layout="column" layout-align="center center">
-
-	<h2>Listing</h2>
-	<div ng-repeat="place in places">
-		<md-content ng-repeat="place in places">
-			<p><strong>about</strong> {{place.about}}</p>
-			<p><strong>address</strong> {{place.address}}</p>
-			<p><strong>categoryTitle</strong> {{place.categoryTitle}}</p>
-			<p><strong>categoryColor</strong> {{place.categoryColor}}</p>
-			<p><strong>type</strong> {{place.type}}</p>
-			<p><strong>contact</strong> {{place.contact}}</p>
-			<p><strong>time</strong> {{place.time}}</p>
-			<p><strong>points</strong> {{place.points}}</p>
-			<p><strong>eventName</strong> {{place.eventName}}</p>
-			<p><strong>area</strong> {{place.area}}</p>
-			<p><strong>id</strong> {{place.$id}}</p>
-
-		</md-content>
-	</div>
-</div> -->
+<!-- <li ng-repeat="item in listing | filter:name">{{ item | json }}</li> -->
 
 
 <div layout="column" layout-align="center center">
@@ -104,7 +76,7 @@
 		    <img ng-show="item.type === 'event'" src="media/calendarThumb.png"/>
 		  </md-card-avatar>
 		  <md-card-header-text>
-		    <span class="md-title">{{item.venueName}}</span>
+		    <span class="md-title">{{item.eventName}}</span>
 		    <span class="mdsubhead">{{item.area}}</span>
 		  </md-card-header-text>
 		</md-card-header>
@@ -121,7 +93,6 @@
 			</p>
 			<!-- Player Pins -->
 			<md-card-actions layout="row" layout-align="start center">
-				<!-- <md-button href="#/detail">View Details</md-button> -->
 				<md-button href="#/detail/{{item.$id}}">View Details</md-button>
 				<md-card-icon-actions>
 				<md-card-avatar aria-label="Player Pin">
@@ -140,6 +111,8 @@
 	</div>
 
 	</md-content>
+
+
 
 </div>
 
