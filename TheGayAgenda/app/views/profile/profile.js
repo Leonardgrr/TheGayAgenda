@@ -17,6 +17,8 @@ angular.module('myApp.profile', ['ngRoute'])
 	
 	$scope.users = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"));
 	$scope.player_pin = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/player_pin"));
+	$scope.player_pins = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/player_pin/"));
+	$scope.pins = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/player_pin/"));
 	$scope.checkIn = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/checkIn"));
 	$scope.rsvp = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/rsvp"));
 	$scope.authObj.$onAuth(function(authData) {
@@ -29,7 +31,7 @@ angular.module('myApp.profile', ['ngRoute'])
 		if (authData) {
 		  	$scope.userData = authData;
 		  	$rootScope.currentUser = authData.uid;
-		  	console.log($rootScope.currentUser);
+		  	// console.log($rootScope.currentUser);
 		  	var user = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"+authData.uid));
 		  	if (authData.provider === "google"){
 			  	user.profilePic = authData.google.profileImageURL;
@@ -52,21 +54,15 @@ angular.module('myApp.profile', ['ngRoute'])
 	}
 
 
-
-
-$scope.test = function(){
-	console.log("hello world");
-	console.log("current user is ", $rootScope.currentUser);
-}
-
 	//User Check In Function
 	$scope.newCheckIn = function(){
 		console.log("You have checked in");
 		$scope.checkIn.$add({
 			category : $scope.newCategory.category,
 			points: $scope.newPoints.points,
-			user: $scope.currentUser,
-			venue: $scope.newVenue.venue
+			user: $scope.newUser.user,
+			pin: $scope.newPlayerPin.pin,
+			venue: $scope.newVenue.venue	
 		})
 	}
 
@@ -76,6 +72,9 @@ $scope.test = function(){
 		$scope.rsvp.$add({
 			category : $scope.newCategory.category,
 			points: $scope.newPoints.points,
+			user: $scope.newUser.user,
+			pin: $scope.newPlayerPin.pin,
+			venue: $scope.newVenue.venue			
 		})
 	}
 	$scope.friller = $firebaseObject(ref.child('admins').child('users'));
@@ -107,6 +106,8 @@ $scope.test = function(){
 	}
 
 
+// console.log($scope.player_pin);
+$scope.case = $firebaseObject(ref.child('player_pin').child('id').child('user'));
 
 
 }]);

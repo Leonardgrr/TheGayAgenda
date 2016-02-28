@@ -89,18 +89,23 @@
 				<img class="pinThumbCheckIn" src="media/pin.png"></img>
 			</md-content>
 		</md-content>
-		<div layout="" layout-sm="column" ng-hide="true">
-			<md-input-container flex="">
-			  <label>category</label>
-			  <input name="category"  ng-model="newCategory.category" ng-init="newCategory.category=item.category" ></input>
-			</md-input-container>
-			<md-input-container flex="">
-			  <label>points</label>
-			  <input name="points" ng-model="newPoints.points" ng-init="newPoints.points=item.points"></input>
-			</md-input-container>
+		<div layout="" layout-sm="column" ng-hide="false">
+      <md-input-container flex="">
+        <label>category</label>
+        <input name="category"  ng-model="newCategory.category" ng-init="newCategory.category=item.category" ></input>
+      </md-input-container>
+      <md-input-container flex="">
+        <label>points</label>
+        <input name="points" ng-model="newPoints.points" ng-init="newPoints.points=item.points"></input>
+      </md-input-container>
       <md-input-container flex="">
         <label>user</label>
-        <input name="user" ng-model="currentUser" ng-init="newUser.user=currentUser"></input>
+        <input name="user" ng-model="newUser.user" ng-init="newUser.user=currentUser"></input>
+      </md-input-container>
+      <md-input-container flex="" ng-repeat="item in player_pin" ng-show="currentUser === item.user">
+        <label>player pin</label>
+        <input name="user" ng-model="newPlayerPin.pin" ng-init="newPlayerPin.pin=item.$id"></input>
+        <!-- <input name="user" ng-model="newPlayerPin.pin" ng-init="newPlayerPin.pin=pins[item.$id].label"></input> -->
       </md-input-container>
       <md-input-container flex="">
         <label>place/event</label>
@@ -118,10 +123,10 @@
         <img class="pinThumbCheckIn" src="media/pin.png"></img>
       </md-content>
     </md-content>
-    <div layout="" layout-sm="column" ng-hide="true">
+    <div layout="" layout-sm="column" ng-hide="false">
       <md-input-container flex="">
         <label>category</label>
-        <input name="category"  ng-model="newCategory.category" ng-init="newCategory.category=item.categoryTitle" ></input>
+        <input name="category"  ng-model="newCategory.category" ng-init="newCategory.category=item.category" ></input>
       </md-input-container>
       <md-input-container flex="">
         <label>points</label>
@@ -129,7 +134,11 @@
       </md-input-container>
       <md-input-container flex="">
         <label>user</label>
-        <input name="user" ng-model="currentUser" ng-init="newUser.user=currentUser"></input>
+        <input name="user" ng-model="newUser.user" ng-init="newUser.user=currentUser"></input>
+      </md-input-container>
+      <md-input-container flex="" ng-repeat="item in player_pins" ng-show="userData.uid === item.user">
+        <label>player pin</label>
+        <input name="user" ng-model="newPlayerPin.pin" ng-init="newPlayerPin.pin=pins[item.$id].label"></input>
       </md-input-container>
       <md-input-container flex="">
         <label>place/event</label>
@@ -163,6 +172,33 @@
   		<strong>About</strong><br>
   		{{item.about}}
   	</p>
+
+
+        <md-list ng-controller="profileCtrl">
+          <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
+          <md-list-item ng-show="currentDetail === item.venue" ng-repeat="item in checkIn" class="md-3-line" >
+            <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar">
+            <div class="md-list-item-text">
+              <h3>{{users[item.user].userName}}</h3>
+              <p>
+              category is {{item.category}}<br>
+              points for pin {{item.points}}<br>
+              user is {{item.user}}<br>
+              pin id {{item.$id}}<br>
+              venue is {{item.venue}}<br>
+              pin is {{item.pin}}<br>
+              </p>
+              <img ng-show="item.pin === 'Lipstick'" class="thumb" src="media/lipstick.png">
+              <img ng-show="item.pin === 'Chapstick'" class="thumb" src="media/chapstick.png">
+              <img ng-show="item.pin === 'Diesel'" class="thumb" src="media/diesel.png">
+              <img ng-show="item.pin === 'Twink'" class="thumb" src="media/twink.png">
+              <img ng-show="item.pin === 'Bear'" class="thumb" src="media/bear.png">
+              <img ng-show="item.pin === 'Otter'" class="thumb" src="media/otter.png">
+            </div>
+          </md-list-item>
+        </md-list>
+
+
 
 
 </md-content>
