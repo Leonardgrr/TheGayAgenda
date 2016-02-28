@@ -16,6 +16,7 @@ angular.module('myApp.profile', ['ngRoute'])
 	$scope.authObj = $firebaseAuth(ref);
 	
 	$scope.users = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"));
+	$scope.player_pin = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/player_pin"));
 	$scope.checkIn = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/checkIn"));
 	$scope.rsvp = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/rsvp"));
 	$scope.authObj.$onAuth(function(authData) {
@@ -85,40 +86,26 @@ $scope.test = function(){
 		console.log("Current user is ", $scope.userData.uid);
 	}
 
-	$scope.labels = [
-		"Lipstick",
-		"Chapstick",
-		"Diesel",
-		"Twink",
-		"Otter",
-		"Bear"
+	$scope.labels = 
+	[
+	 'Lipstick' ,
+	 'Chapstick' ,
+	 'Diesel' ,
+	 'Twink' ,
+	 'Otter' ,
+	 'Bear'
 	];
 
 
+	//User select a label function
+	$scope.newPlayerPin = function(){
+		console.log("You have selected a label");
+		$scope.player_pin.$add({
+			label : $scope.newlabel.label,
+			user: $scope.currentUser,
+		})
+	}
 
-
-
-
-
-
-
-
-	      $scope.sizes = [
-          "small (12-inch)",
-          "medium (14-inch)",
-          "large (16-inch)",
-          "insane (42-inch)"
-      ];
-      $scope.toppings = [
-        { category: 'meat', name: 'Pepperoni' },
-        { category: 'meat', name: 'Sausage' },
-        { category: 'meat', name: 'Ground Beef' },
-        { category: 'meat', name: 'Bacon' },
-        { category: 'veg', name: 'Mushrooms' },
-        { category: 'veg', name: 'Onion' },
-        { category: 'veg', name: 'Green Pepper' },
-        { category: 'veg', name: 'Green Olives' }
-      ];
 
 
 
