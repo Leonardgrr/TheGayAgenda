@@ -127,6 +127,8 @@ angular.module('myApp.profile', ['ngRoute'])
 	 'Bear'
 	];
 
+	console.log($scope.users);
+
 
 
 }]);

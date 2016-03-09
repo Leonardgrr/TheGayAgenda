@@ -67,7 +67,8 @@
 
 <md-content flex layout-padding ng-repeat="item in eventplace" ng-show="currentDetail === item.$id" id="detailThing">
 	<h1 layout="column" layout-align="center center">{{item.eventName}}</h1>
-	<img layout="column" layout-align="center center" src="{{item.image}}">
+  <!-- UNCOMMENT THIS! -->
+	<!-- <img layout="column" layout-align="center center" src="{{item.image}}"> -->
 
 <div layout="row">
   <div flex>
@@ -91,7 +92,7 @@
 				<img class="pinThumbCheckIn" src="media/pin.png"></img>
 			</md-content>
 		</md-content>
-		<div layout="" layout-sm="column" ng-hide="false">
+		<div layout="" layout-sm="column" ng-hide="true">
       <md-input-container flex="">
         <label>category</label>
         <input name="category"  ng-model="newCheckIn.category" ng-init="newCheckIn.category=item.category" ></input>
@@ -104,14 +105,14 @@
         <label>user</label>
         <input name="user" ng-model="newCheckIn.user" ng-init="newCheckIn.user=currentUser"></input>
       </md-input-container>
-      <md-input-container flex="" ng-repeat="item in player_pin" ng-show="currentUser === item.user">
-        <label>player pin</label>
-        <input name="user" ng-model="newCheckIn.pin" ng-init="newCheckIn.pin=item.$id"></input>
-        <!-- <input name="user" ng-model="newPlayerPin.pin" ng-init="newPlayerPin.pin=pins[item.$id].label"></input> -->
+      <md-input-container flex="">
+        <label>{{userpin.label}}</label>
+        <!-- <input name="user" ng-model="newRSVP.pin" ng-init="newRSVP.pin=pins[item.$id].label"></input> -->
+        <input name="label" ng-model="newCheckIn.pin" ng-init="newCheckIn.pin=userpin.label"></input>
       </md-input-container>
       <md-input-container flex="">
         <label>place/event</label>
-        <input name="venue" ng-model="currentDetail" ng-init="newVenue.venue=currentDetail"></input>
+        <input name="venue" ng-model="newCheckIn.venue" ng-init="newCheckIn.venue=currentDetail"></input>
       </md-input-container>
 		</div>
 		<md-content layout="row" layout-align="end center" ng-show="item.type === 'place'">
@@ -126,7 +127,7 @@
         <img class="pinThumbCheckIn" src="media/pin.png"></img>
       </md-content>
     </md-content>
-    <div layout="" layout-sm="column" ng-hide="false">
+    <div layout="" layout-sm="column" ng-hide="true">
       <md-input-container flex="">
         <label>category</label>
         <input name="category"  ng-model="newRSVP.category" ng-init="newRSVP.category=item.category" ></input>
@@ -139,10 +140,10 @@
         <label>user</label>
         <input name="user" ng-model="newRSVP.user" ng-init="newRSVP.user=currentUser"></input>
       </md-input-container>
-      <md-input-container flex="" ng-repeat="item in player_pins" ng-show="userData.uid === item.user">
-        <label>{{item.label}}</label>
+      <md-input-container flex="">
+        <label>{{userpin.label}}</label>
         <!-- <input name="user" ng-model="newRSVP.pin" ng-init="newRSVP.pin=pins[item.$id].label"></input> -->
-        <input name="label" ng-model="newRSVP.pin" ng-init="newRSVP.pin=pins[item.$id].label"></input>
+        <input name="label" ng-model="newRSVP.pin" ng-init="newRSVP.pin=userpin.label"></input>
       </md-input-container>
       <md-input-container flex="">
         <label>place/event</label>
@@ -173,22 +174,40 @@
   		<strong>About</strong><br>
   		{{item.about}}
   	</p>
-
-
+        <!-- LIST OF CHECKINS -->
         <md-list>
           <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
-          <md-list-item ng-show="currentDetail === item.venue" ng-repeat="item in checkIn" class="md-3-line" >
-            <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar">
+          <!-- <md-list-item ng-show="currentDetail === item.venue" ng-repeat="item in checkIn" class="md-3-line" > -->
+          <md-list-item ng-repeat="item in checkinsForPlace" class="md-3-line" >
+            <!-- <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar"> -->
             <div class="md-list-item-text">
-              <h3>{{users[item.user].userName}}</h3>
+              <!-- <h3>{{users[item.user].userName}}</h3>
               <p>
-              category is {{item.category}}<br>
-              points for pin {{item.points}}<br>
               user is {{item.user}}<br>
-              pin id {{item.$id}}<br>
-              venue is {{item.venue}}<br>
               pin is {{item.pin}}<br>
-              </p>
+              </p> -->
+              <img ng-show="item.pin === 'Lipstick'" class="thumb" src="media/lipstick.png">
+              <img ng-show="item.pin === 'Chapstick'" class="thumb" src="media/chapstick.png">
+              <img ng-show="item.pin === 'Diesel'" class="thumb" src="media/diesel.png">
+              <img ng-show="item.pin === 'Twink'" class="thumb" src="media/twink.png">
+              <img ng-show="item.pin === 'Bear'" class="thumb" src="media/bear.png">
+              <img ng-show="item.pin === 'Otter'" class="thumb" src="media/otter.png">
+            </div>
+          </md-list-item>
+        </md-list>
+
+        <!-- LIST OF RSVPS -->
+        <md-list>
+          <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
+          <!-- <md-list-item ng-show="currentDetail === item.venue" ng-repeat="item in checkIn" class="md-3-line" > -->
+          <md-list-item ng-repeat="item in rsvpsForPlace" class="md-3-line" >
+            <!-- <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar"> -->
+            <div class="md-list-item-text">
+              <!-- <h3>{{users[item.user].userName}}</h3>
+              <p>
+              user is {{item.user}}<br>
+              pin is {{item.pin}}<br>
+              </p> -->
               <img ng-show="item.pin === 'Lipstick'" class="thumb" src="media/lipstick.png">
               <img ng-show="item.pin === 'Chapstick'" class="thumb" src="media/chapstick.png">
               <img ng-show="item.pin === 'Diesel'" class="thumb" src="media/diesel.png">
