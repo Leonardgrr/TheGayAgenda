@@ -53,56 +53,7 @@
 </section>
 
     <md-card-content>
-
-
-      <!-- <md-button class="md-icon-button">
-        <a ng-click="show()">hi</a>
-      </md-button>
-      <pre>{{ friller | json }}</pre> -->
-      <!-- <li ng-repeat="item in theAdmin | filter:name">{{ item | json }}</li> -->
-      <!-- <li ng-repeat="item in player_pin | filter:name">{{ item | json }}</li> -->
-
-      <!-- IMPORTANT! THIS FORM DOESNT WORK INSIDE A CHILD ELEMENT SO DOESNT WORK INSIDE THE CARDS BELOW -->
-      <!-- BECAUSE ANGULAR DOENS'T RECOGNIZE $SCOPE INSIDE CHILD ELEMENTS -->
-      <!-- <li ng-repeat="item in checkIn | filter:name">{{ item | json }}</li> -->
-      <h2 class="md-title">Currently {{currentUser}}</h2>
-      <img ng-hide="newlabel.label" class="thumb" src="media/pin.png">
-        <img ng-show="newlabel.label === 'Lipstick'" class="thumb" src="media/lipstick.png">
-        <img ng-show="newlabel.label === 'Chapstick'" class="thumb" src="media/chapstick.png">
-        <img ng-show="newlabel.label === 'Diesel'" class="thumb" src="media/diesel.png">
-        <img ng-show="newlabel.label === 'Twink'" class="thumb" src="media/twink.png">
-        <img ng-show="newlabel.label === 'Bear'" class="thumb" src="media/bear.png">
-        <img ng-show="newlabel.label === 'Otter'" class="thumb" src="media/otter.png">
-        <p ng-hide="newlabel.label">
-            What label do you self identify with? Player pins will help you to tell what kind of crowd a place or event attracts.
-          </p>
-          <p ng-show="newlabel.label === 'Diesel'" >
-            A Diesel is a very butch or manly lesbian, especially one who is very aggressive. In some lesbian circles Diesel refers to a very butch Big-Rig (or other heavy equipment) driving lesbian. 
-          </p>
-          <p ng-show="newlabel.label === 'Chapstick'">
-            A chapstick lesbian is also known as a soft butch or androgynous. She usually dresses quite casually and does not wear make-up. The term Chapstick Lesbian was popularized after an episode of the TV show Ellen.  
-          </p>
-          <p ng-show="newlabel.label === 'Lipstick'">
-            A lipstick lesbian is a woman who loves other women, but also loves her clothes and makeup and shoes. She tends to dress on the femmy side. Also known as Femme or Fem.
-          </p>
-          <p ng-show="newlabel.label === 'Twink'">
-            Twinks are generally quite young, skinny, have essentially no body hair. Generally, they act as though the entire world revolves around the fact that they are young and gay.  
-          </p>
-          <p ng-show="newlabel.label === 'Bear'">
-            The Bear is the polar opposite of the Twink. Bears are large and in charge, wouldn’t dream of shaving ANY of their body hair. Large and jovial, these beasts range from muscle-daddy to Sumo wrestler, are generally a little older and are usually some of the nicest guys you’ll ever meet.  
-          </p>
-          <p ng-show="newlabel.label === 'Otter'">
-            The Otter a sub-category of Bears. Otters are skinnier, but still rock the full-out body hair. They will usually be short-ish and although skinnier than bears, they usually still have round-ish features.  
-          </p>
-      <form ng-submit="newPlayerPin()">
-        <md-input-container>
-            <label>Pick a label</label>
-            <md-select ng-model="newlabel.label">
-              <md-option ng-repeat="label in labels" value="{{label}}">{{label}}</md-option>
-            </md-select>
-        </md-input-container>
-          <md-button type="submit">save</md-button>
-      </form>
+      
       <md-content flex=""> 
         <md-list >
           <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
@@ -125,16 +76,16 @@
           <h3>{{pins[item.$id].user}}</h3>
           <h3>{{pins[item.$id].label}}</h3>
           <p>
-          label is {{item.label}}<br>
+          label is {{profile.label}}<br>
           user is {{item.user}}<br>
           player pin id is {{item.$id}}<br>
           </p>
-          <img ng-show="item.label === 'Lipstick'" class="thumb" src="media/lipstick.png">
-          <img ng-show="item.label === 'Chapstick'" class="thumb" src="media/chapstick.png">
-          <img ng-show="item.label === 'Diesel'" class="thumb" src="media/diesel.png">
-          <img ng-show="item.label === 'Twink'" class="thumb" src="media/twink.png">
-          <img ng-show="item.label === 'Bear'" class="thumb" src="media/bear.png">
-          <img ng-show="item.label === 'Otter'" class="thumb" src="media/otter.png">
+          <img ng-show="profile.label === 'Lipstick'" class="thumb" src="media/lipstick.png">
+          <img ng-show="profile.label === 'Chapstick'" class="thumb" src="media/chapstick.png">
+          <img ng-show="profile.label === 'Diesel'" class="thumb" src="media/diesel.png">
+          <img ng-show="profile.label === 'Twink'" class="thumb" src="media/twink.png">
+          <img ng-show="profile.label === 'Bear'" class="thumb" src="media/bear.png">
+          <img ng-show="profile.label === 'Otter'" class="thumb" src="media/otter.png">
             </div>
           </md-list-item>
         </md-list>
@@ -143,6 +94,8 @@
 
 
 <div layout="column" layout-align="center center" ng-controller="loginCtrl" ng-show="userData" flex="none">
+  <img ng-src="{{userData.twitter.profileImageURL}}" alt="{{userData.twitter.displayName}}" class="md-avatar">
+  <img ng-src="{{userData.google.profileImageURL}}" alt="{{userData.google.displayName}}" class="md-avatar">
   <h1>{{userData.google.displayName}}</h1>
   <h1>{{userData.twitter.displayName}}</h1>
 
@@ -153,63 +106,54 @@
 <md-content class="md-padding" layout-xs="column" layout="row" flex="none">
 <div flex-xs="none" flex-gt-xs="50" layout="column">
 <!-- Profile Card -->
-        <md-card ng-show="userData.uid === item.user" ng-repeat="item in player_pins">
-        <img ng-show="item.label === 'Lipstick'" class="thumb" src="media/lipstick.png">
-        <img ng-show="item.label === 'Chapstick'" class="thumb" src="media/chapstick.png">
-        <img ng-show="item.label === 'Diesel'" class="thumb" src="media/diesel.png">
-        <img ng-show="item.label === 'Twink'" class="thumb" src="media/twink.png">
-        <img ng-show="item.label === 'Bear'" class="thumb" src="media/bear.png">
-        <img ng-show="item.label === 'Otter'" class="thumb" src="media/otter.png">
+      <md-card>
+        <img ng-hide="profile.label" class="thumb" src="media/pin.png">
+        <img ng-show="profile.label === 'Lipstick'" class="thumb" src="media/lipstick.png">
+        <img ng-show="profile.label === 'Chapstick'" class="thumb" src="media/chapstick.png">
+        <img ng-show="profile.label === 'Diesel'" class="thumb" src="media/diesel.png">
+        <img ng-show="profile.label === 'Twink'" class="thumb" src="media/twink.png">
+        <img ng-show="profile.label === 'Bear'" class="thumb" src="media/bear.png">
+        <img ng-show="profile.label === 'Otter'" class="thumb" src="media/otter.png">
 
         <md-card-title flex="none">
           <md-card-title-text>
-            <span class="md-headline" ng-hide="item.label">This is your player pin.</span>
-            <span class="md-headline" ng-show="item.label">You are a {{item.label}}</span>
+            <span ng-hide="profile.label" class="md-headline" >This is you player pin.</span>
+            <span ng-show="profile.label" class="md-headline" >You are a {{ profile.label }}</span>
           </md-card-title-text>
         </md-card-title>
         <md-card-content flex="none">
-          <p ng-hide="item.label">
-            What label do you self identify with? Player pins will help you to tell what kind of crowd a place or event attracts.
+          <p ng-hide="profile.label">
+            What label do you self identify with? Player pins will help you to tell what kind of crowd a place or event attracts. You can view the available lables below and once you've decide - save your choice. 
           </p>
-          <p ng-show="item.label === 'Diesel'" >
+          <p ng-show="profile.label === 'Diesel'" >
             A Diesel is a very butch or manly lesbian, especially one who is very aggressive. In some lesbian circles Diesel refers to a very butch Big-Rig (or other heavy equipment) driving lesbian. 
           </p>
-          <p ng-show="item.label === 'Chapstick'">
+          <p ng-show="profile.label === 'Chapstick'">
             A chapstick lesbian is also known as a soft butch or androgynous. She usually dresses quite casually and does not wear make-up. The term Chapstick Lesbian was popularized after an episode of the TV show Ellen.  
           </p>
-          <p ng-show="item.label === 'Lipstick'">
+          <p ng-show="profile.label === 'Lipstick'">
             A lipstick lesbian is a woman who loves other women, but also loves her clothes and makeup and shoes. She tends to dress on the femmy side. Also known as Femme or Fem.
           </p>
-          <p ng-show="item.label === 'Twink'">
+          <p ng-show="profile.label === 'Twink'">
             Twinks are generally quite young, skinny, have essentially no body hair. Generally, they act as though the entire world revolves around the fact that they are young and gay.  
           </p>
-          <p ng-show="item.label === 'Bear'">
+          <p ng-show="profile.label === 'Bear'">
             The Bear is the polar opposite of the Twink. Bears are large and in charge, wouldn’t dream of shaving ANY of their body hair. Large and jovial, these beasts range from muscle-daddy to Sumo wrestler, are generally a little older and are usually some of the nicest guys you’ll ever meet.  
           </p>
-          <p ng-show="item.label === 'Otter'">
+          <p ng-show="profile.label === 'Otter'">
             The Otter a sub-category of Bears. Otters are skinnier, but still rock the full-out body hair. They will usually be short-ish and although skinnier than bears, they usually still have round-ish features.  
           </p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center" flex="none">
-        </md-card-actions>
-      </md-card>
-</div>
-<div flex-xs="none" flex-gt-xs="50" layout="column">
-<!-- Profile Card -->
-      <md-card>
-        <img class="thumb" src="media/pin.png">
-        <md-card-title flex="none">
-          <md-card-title-text>
-            <span class="md-headline">Player Pin</span>
-          </md-card-title-text>
-        </md-card-title>
-        <md-card-content flex="none">
-          <p>
-            This is your player pin, it levels up with each place that you check in at as well as the events you RSVP. 
-          </p>
-        </md-card-content>
-        <md-card-actions layout="row" layout-align="end center" flex="none">
-          <md-button ng-controller="homeCtrl" ng-click="toggleLeft()">Explore</md-button>
+          <form ng-submit="saveProfile()">
+              <md-input-container>
+              <label>Pick a label</label>
+                <md-select ng-model="profile.label">
+                  <md-option ng-repeat="label in labels" value="{{label}}">{{label}}</md-option>
+                </md-select>
+              </md-input-container>
+              <md-button type="submit">save</md-button>
+            </form>
         </md-card-actions>
       </md-card>
 </div>

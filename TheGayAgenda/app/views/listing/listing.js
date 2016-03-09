@@ -14,14 +14,10 @@ angular.module('myApp.listing', ['ngRoute'])
 	var ref = new Firebase("https://thegayagenda.firebaseio.com");
 	$scope.authObj = $firebaseAuth(ref);
 	// $scope.users = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"));
-	$scope.places = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"));
 	$scope.eventplace = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"));
 
 	//console.log($scope.places);
 
-	var list = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"));
-	$scope.list = list;
-	console.log(list);
 
 	var listing = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"));
 	$scope.listing = listing;

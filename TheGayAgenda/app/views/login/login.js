@@ -20,7 +20,7 @@ angular.module('myApp.login', ['ngRoute'])
 	$scope.authObj.$onAuth(function(authData) {
 		$rootScope.authorize(authData);
 		$scope.userData = authData;
-		$rootScope.currentUser = authData.uid;
+		// $rootScope.currentUser = authData.uid;
 	});
 
 	$rootScope.authorize = function(authData){

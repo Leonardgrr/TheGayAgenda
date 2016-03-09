@@ -33,7 +33,7 @@
     </md-toolbar>
     <md-content layout-padding>
       <ul>
-        <li ng-controller="profileCtrl" ng-show="userData.uid === friller.$value" layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/admin">admin</md-button></li>
+        <li ng-show="userData.uid === friller.$value" layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/admin">admin</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/profile">Profile</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn1" href="#/listing/sports">Sports</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn2" href="#/listing/family">Family</md-button></li>
@@ -57,13 +57,14 @@
 </section>
 <!-- End Tool Bar -->
 
-<!-- <li ng-controller="profileCtrl" ng-repeat="item in admin | filter:name">{{ item | json }}</li> -->
+<!-- <li ng-repeat="item in admin | filter:name">{{ item | json }}</li> -->
 
     <!-- <md-content >
       <h2>{{currentDetail}}</h2>
     </md-content> -->
 
 <md-content layout="row" layout-align="center center">
+
 <md-content flex layout-padding ng-repeat="item in eventplace" ng-show="currentDetail === item.$id" id="detailThing">
 	<h1 layout="column" layout-align="center center">{{item.eventName}}</h1>
 	<img layout="column" layout-align="center center" src="{{item.image}}">
@@ -83,7 +84,8 @@
    <p>
   </div>
 	<div flex>
-	<form ng-submit="newCheckIn()" ng-controller="profileCtrl" ng-show="item.type === 'place'">
+  <!-- USER CHECK IN FORM -->
+	<form ng-submit="newCheckIn()" ng-show="item.type === 'place'">
 		<md-content layout="row" layout-align="end center">
 			<md-content aria-label="Player Pin">
 				<img class="pinThumbCheckIn" src="media/pin.png"></img>
@@ -92,19 +94,19 @@
 		<div layout="" layout-sm="column" ng-hide="false">
       <md-input-container flex="">
         <label>category</label>
-        <input name="category"  ng-model="newCategory.category" ng-init="newCategory.category=item.category" ></input>
+        <input name="category"  ng-model="newCheckIn.category" ng-init="newCheckIn.category=item.category" ></input>
       </md-input-container>
       <md-input-container flex="">
         <label>points</label>
-        <input name="points" ng-model="newPoints.points" ng-init="newPoints.points=item.points"></input>
+        <input name="points" ng-model="newCheckIn.points" ng-init="newCheckIn.points=item.points"></input>
       </md-input-container>
       <md-input-container flex="">
         <label>user</label>
-        <input name="user" ng-model="newUser.user" ng-init="newUser.user=currentUser"></input>
+        <input name="user" ng-model="newCheckIn.user" ng-init="newCheckIn.user=currentUser"></input>
       </md-input-container>
       <md-input-container flex="" ng-repeat="item in player_pin" ng-show="currentUser === item.user">
         <label>player pin</label>
-        <input name="user" ng-model="newPlayerPin.pin" ng-init="newPlayerPin.pin=item.$id"></input>
+        <input name="user" ng-model="newCheckIn.pin" ng-init="newCheckIn.pin=item.$id"></input>
         <!-- <input name="user" ng-model="newPlayerPin.pin" ng-init="newPlayerPin.pin=pins[item.$id].label"></input> -->
       </md-input-container>
       <md-input-container flex="">
@@ -117,7 +119,8 @@
 		</md-content>
 	</form>
 
-  <form ng-submit="newRSVP()" ng-controller="profileCtrl" ng-show="item.type === 'event'">
+  <!-- USER RSVP FORM -->
+  <form ng-submit="newRSVP()" ng-show="item.type === 'event'">
     <md-content layout="row" layout-align="end center">
       <md-content aria-label="Player Pin">
         <img class="pinThumbCheckIn" src="media/pin.png"></img>
@@ -126,28 +129,26 @@
     <div layout="" layout-sm="column" ng-hide="false">
       <md-input-container flex="">
         <label>category</label>
-        <input name="category"  ng-model="newCategory.category" ng-init="newCategory.category=item.category" ></input>
+        <input name="category"  ng-model="newRSVP.category" ng-init="newRSVP.category=item.category" ></input>
       </md-input-container>
       <md-input-container flex="">
         <label>points</label>
-        <input name="points" ng-model="newPoints.points" ng-init="newPoints.points=item.points"></input>
+        <input name="points" ng-model="newRSVP.points" ng-init="newRSVP.points=item.points"></input>
       </md-input-container>
       <md-input-container flex="">
         <label>user</label>
-        <input name="user" ng-model="newUser.user" ng-init="newUser.user=currentUser"></input>
+        <input name="user" ng-model="newRSVP.user" ng-init="newRSVP.user=currentUser"></input>
       </md-input-container>
       <md-input-container flex="" ng-repeat="item in player_pins" ng-show="userData.uid === item.user">
-        <label>player pin</label>
-        <input name="user" ng-model="newPlayerPin.pin" ng-init="newPlayerPin.pin=pins[item.$id].label"></input>
+        <label>{{item.label}}</label>
+        <!-- <input name="user" ng-model="newRSVP.pin" ng-init="newRSVP.pin=pins[item.$id].label"></input> -->
+        <input name="label" ng-model="newRSVP.pin" ng-init="newRSVP.pin=pins[item.$id].label"></input>
       </md-input-container>
       <md-input-container flex="">
         <label>place/event</label>
-        <input name="venue" ng-model="currentDetail" ng-init="newVenue.venue=currentDetail"></input>
+        <input name="venue" ng-model="currentDetail" ng-init="newRSVP.venue=currentDetail"></input>
       </md-input-container>
     </div>
-    <md-content layout="row" layout-align="end center" ng-show="item.type === 'place'">
-      <md-button type="submit" class="checkIn">Check In</md-button>
-    </md-content>
     <md-content layout="row" layout-align="end center" ng-show="item.type === 'event'">
       <md-button type="submit" class="checkIn">RSVP</md-button>
     </md-content>
@@ -174,7 +175,7 @@
   	</p>
 
 
-        <md-list ng-controller="profileCtrl">
+        <md-list>
           <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
           <md-list-item ng-show="currentDetail === item.venue" ng-repeat="item in checkIn" class="md-3-line" >
             <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar">
@@ -197,7 +198,6 @@
             </div>
           </md-list-item>
         </md-list>
-
 
 
 
