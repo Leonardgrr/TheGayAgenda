@@ -14,11 +14,8 @@ angular.module('myApp.profile', ['ngRoute'])
   function($firebaseObject) {
     return function(username) {
       // create a reference to the database node where we will store our data
-      // var randomRoomId = Math.round(Math.random() * 100000000);
-      // var ref = new Firebase("https://thegayagenda.firebaseio.com/pins/" + randomRoomId);
       var ref = new Firebase("https://thegayagenda.firebaseio.com/pins/");
       var profileRef = ref.child(username);
-
       // return it as a synchronized object
       return $firebaseObject(profileRef);
     }
@@ -46,6 +43,12 @@ angular.module('myApp.profile', ['ngRoute'])
 
 		// CRU USER PIN ALSO AKA USER PROFILE
 		$scope.profile = Profile($rootScope.currentUser);
+		// QUERY TO GET ALL THE USER RSVPS
+		$scope.currentUserRSVP = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/pins/"+$rootScope.currentUser+"/rsvps/"));
+		console.log($scope.currentUserRSVP);
+	    // QUERY TO GET ALL THE USER CHECKINS
+		$scope.currentUserCheckIn = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/pins/"+$rootScope.currentUser+"/checkins/"));
+	    console.log($scope.currentUserCheckIn);
 	    // calling $save() on the synchronized object syncs all data back to our database
 	    $scope.saveProfile = function() {
 	      $scope.profile.$save().then(function() {
@@ -127,7 +130,9 @@ angular.module('myApp.profile', ['ngRoute'])
 	 'Bear'
 	];
 
-	console.log($scope.users);
+	
+	$scope.eventplace = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"));
+	console.log($scope.eventplace);
 
 
 

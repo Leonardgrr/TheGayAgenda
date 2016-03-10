@@ -167,9 +167,23 @@
           </md-card-title-text>
         </md-card-title>
         <md-card-content flex="none">
-          <p>
+          <p ng-hide="currentUserRSVP">
             You have no RSVP! When you RSVP an event, it will be added here and organized by the most recent event.
           </p>
+          <!-- <p ng-show="currentUserRSVP">
+           {{currentUserRSVP | json}}
+          </p> -->
+          <md-list flex>
+            <md-subheader class="md-no-sticky" ng-show="currentUserRSVP">Your RSVPs</md-subheader>
+            <md-list-item class="md-3-line" ng-repeat="item in currentUserRSVP">
+              <img ng-src="{{ eventplace[item.venue].image }}" class="md-avatar" />
+              <div class="md-list-item-text" layout="column">
+                <!-- <h3>{{ item.venue}}</h3> -->
+                <h3>{{ eventplace[item.venue].eventName }}</h3>
+                <p>{{ eventplace[item.venue].venueName }}</p>
+              </div>
+            </md-list-item>
+          </md-list>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center" flex="none">
           <md-button ng-controller="homeCtrl" ng-click="toggleLeft()">Explore</md-button>
@@ -186,9 +200,24 @@
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
-          <p>
+          <p ng-hide="currentUserCheckIn">
             You have not checked in at any places yet! Any places that you check in will show up here, so you can revisit them later.
           </p>
+          <!-- <p ng-show="currentUserCheckIn">
+           {{currentUserRSVP | json}}
+          </p> -->
+          <md-list flex>
+            <md-subheader class="md-no-sticky" ng-show="currentUserCheckIn">Your Check Ins</md-subheader>
+            <md-list-item class="md-3-line" ng-repeat="item in currentUserCheckIn">
+              <img ng-src="{{ eventplace[item.venue].image }}" class="md-avatar" />
+              <div class="md-list-item-text" layout="column">
+                <!-- <h3>{{ item.venue}}</h3> -->
+                <h3>{{ eventplace[item.venue].venueName }}</h3>
+                <p>{{ eventplace[item.venue].eventName }}</p>
+                
+              </div>
+            </md-list-item>
+          </md-list>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
           <md-button ng-controller="homeCtrl" ng-click="toggleLeft()">Explore</md-button>
