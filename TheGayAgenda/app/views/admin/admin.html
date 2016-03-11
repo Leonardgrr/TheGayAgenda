@@ -73,30 +73,24 @@
             <div>
               <md-card-content>
               <!-- FORM SECTION -->
-              <form ng-submit="neweventplace(newEvent)">
-                <h3>Details</h3>
+              <form ng-submit="newplace(newPlace)">
+                <p>Please fill the form below to add an event.</p>
                 <div layout-gt-sm="row">
                   <md-input-container>
                     <label>Category</label>
-                    <md-select ng-model="newCategory.category">
+                    <md-select ng-model="newplace.category">
                       <md-option ng-repeat="category in categories" value="{{category}}">{{category}}</md-option>
                     </md-select>
                   </md-input-container>
                   <md-input-container >
                     <label>Points</label>
-                    <md-select ng-model="newPoints.points">
+                    <md-select ng-model="newplace.points">
                       <md-option ng-repeat="point in points" value="{{point}}">{{point}}</md-option>
                     </md-select>
                   </md-input-container>
                   <md-input-container >
-                    <label>Type</label>
-                    <md-select ng-model="newType.type">
-                      <md-option ng-repeat="type in types" value="{{type}}">{{type}}</md-option>
-                    </md-select>
-                  </md-input-container>
-                  <md-input-container >
                     <label>Area</label>
-                    <md-select ng-model="newArea.area">
+                    <md-select ng-model="newplace.area">
                       <md-option ng-repeat="area in areas" value="{{area}}">{{area}}</md-option>
                     </md-select>
                   </md-input-container>
@@ -104,24 +98,24 @@
                 <div layout-gt-sm="row">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Address</label>
-                    <input ng-model="newAddress.address"></input>
+                    <input ng-model="newplace.address"></input>
                   </md-input-container>
                 </div>
                 <div layout-gt-sm="row">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Event Name</label>
-                    <input ng-model="newEventName.eventName"></input>
+                    <input ng-model="newplace.eventName"></input>
                   </md-input-container>
                 </div>
                 <div layout-gt-sm="row">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Venue Name</label>
-                    <input ng-model="newVenueName.venueName"></input>
+                    <input ng-model="newplace.venueName"></input>
                   </md-input-container>
                 </div>
                 <div layout-gt-sm="row">
                   <md-input-container>
-                    Select a file<input  name="file" ngf-select="uploadFiles($files)" ng-model="newEvent.image">
+                    Select a file<input  name="file" ngf-select="uploadFiles($files)" ng-model="newPlace.image">
                   </md-input-container>
                   <!-- <md-input-container class="md-block" flex-gt-sm>
                     <label>Image</label>
@@ -131,55 +125,55 @@
                 <div layout-gt-sm="row">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Contact</label>
-                    <input ng-model="newContact.contact"></input>
+                    <input ng-model="newplace.contact"></input>
                   </md-input-container>
 
                 </div>
                 <md-input-container class="md-block">
                   <label>About</label>
-                  <textarea rows="5" md-select-on-focus ng-model="newAbout.about"></textarea>
+                  <textarea rows="5" md-select-on-focus ng-model="newplace.about"></textarea>
                 </md-input-container>
                 <h3>Hours</h3>
                 <div layout-gt-sm="row">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Monday</label>
-                    <input ng-model="newMonday.monday"></input>
+                    <input ng-model="newplace.monday"></input>
                   </md-input-container>
                 </div>
                 <div layout-gt-sm="row">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Tuesday</label>
-                    <input ng-model="newTuesday.tuesday"></input>
+                    <input ng-model="newplace.tuesday"></input>
                   </md-input-container>
                 </div>
                 <div layout-gt-sm="row">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Wednesday</label>
-                    <input ng-model="newWednesday.wednesday"></input>
+                    <input ng-model="newplace.wednesday"></input>
                   </md-input-container>
                 </div>
                 <div layout-gt-sm="row">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Thursday</label>
-                    <input ng-model="newThursday.thursday"></input>
+                    <input ng-model="newplace.thursday"></input>
                   </md-input-container>
                 </div>
                 <div layout-gt-sm="row">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Friday</label>
-                    <input ng-model="newFriday.friday"></input>
+                    <input ng-model="newplace.friday"></input>
                   </md-input-container>
                 </div>
                 <div layout-gt-sm="row">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Saturday</label>
-                    <input ng-model="newSaturday.saturday"></input>
+                    <input ng-model="newplace.saturday"></input>
                   </md-input-container>
                 </div>
                 <div layout-gt-sm="row">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Sunday</label>
-                    <input ng-model="newSunday.sunday"></input>
+                    <input ng-model="newplace.sunday"></input>
                   </md-input-container>
                 </div>
                 <div class="md-actions" layout="row" layout-align="end center">

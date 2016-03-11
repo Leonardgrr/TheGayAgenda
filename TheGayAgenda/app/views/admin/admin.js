@@ -14,7 +14,7 @@ angular.module('myApp.admin', ['ngRoute','angular-cloudinary', 'ngMaterialDatePi
 	function($rootScope, $scope, $firebaseAuth, $firebaseObject, $firebaseArray, $route, $routeParams, cloudinary,  user, Auth) {
 	var ref = new Firebase("https://thegayagenda.firebaseio.com");
 	$scope.authObj = $firebaseAuth(ref);
-	$scope.eventplace = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/eventplace"));
+	$scope.places = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places"));
 	$scope.events = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/events"));
 	$scope.admin = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/admin"));
 
@@ -46,33 +46,47 @@ angular.module('myApp.admin', ['ngRoute','angular-cloudinary', 'ngMaterialDatePi
     ];
 
 	//add new event and place function
-	$scope.neweventplace = function(newEvent){
+	$scope.newplace = function(newPlace){
 		console.log("Did it add something?");
 		// newImage.image
-		var imageFile = newEvent.image;
+		var imageFile = newPlace.image;
 		console.log(imageFile);
 		cloudinary.upload(imageFile, { /* cloudinary options here */ })
 			.success(function (resp) {
 				$scope.imageUrl = 'http://res.cloudinary.com/dkkcd8ay6/image/upload/v1456528975/'+resp.public_id+'.'+resp.format;
-				$scope.eventplace.$add({
-					category : $scope.newCategory.category,
-					points : $scope.newPoints.points,
-					type : $scope.newType.type,
-					area : $scope.newArea.area,
-					address : $scope.newAddress.address,
-					venueName : $scope.newVenueName.venueName,
-					contact : $scope.newContact.contact,
-					monday : $scope.newMonday.monday,
-					tuesday : $scope.newTuesday.tuesday,
-					wednesday : $scope.newWednesday.wednesday,
-					thursday : $scope.newThursday.thursday,
-					friday : $scope.newFriday.friday,
-					saturday : $scope.newSaturday.saturday,
-					sunday : $scope.newSunday.sunday,
-					eventName : $scope.newEventName.eventName,
-					about : $scope.newAbout.about,
+				$scope.places.$add({
+					category : $scope.newplace.category,
+					points : $scope.newplace.points,
+					area : $scope.newplace.area,
+					address : $scope.newplace.address,
+					venueName : $scope.newplace.venueName,
+					contact : $scope.newplace.contact,
+					monday : $scope.newplace.monday,
+					tuesday : $scope.newplace.tuesday,
+					wednesday : $scope.newplace.wednesday,
+					thursday : $scope.newplace.thursday,
+					friday : $scope.newplace.friday,
+					saturday : $scope.newplace.saturday,
+					sunday : $scope.newplace.sunday,
+					eventName : $scope.newplace.eventName,
+					about : $scope.newplace.about,
 					image : $scope.imageUrl
 				})
+
+				// CLEAR ALL THE FIELDS IN THE FORM 
+				$scope.newplace.category = "";
+				$scope.newplace.points = "";
+				$scope.newplace.area = "";
+				$scope.newplace.address = "";
+				$scope.newplace.venueName = "";
+				$scope.newplace.contact = "";
+				$scope.myDate = "";
+				$scope.time = "";
+				$scope.newplace.eventName = "";
+				$scope.newplace.about = "";
+				$scope.newplace.image = "";
+				// ALERT THE USER THE FORM HAS SUCCESSFULLY BEEN SAVED
+				alert("New place has successfully been added!");
 			});
 	}
 
@@ -111,7 +125,7 @@ angular.module('myApp.admin', ['ngRoute','angular-cloudinary', 'ngMaterialDatePi
 				$scope.newEvent.eventName = "";
 				$scope.newEvent.about = "";
 				$scope.newEvent.image = "";
-				// ALERT THE NEW USER THE FORM HAS SUCCESSFULLY BEEN SAVED
+				// ALERT THE  USER THE FORM HAS SUCCESSFULLY BEEN SAVED
 				alert("New event has successfully been added!");
 
 			});
