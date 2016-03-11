@@ -15,7 +15,8 @@ angular.module('myApp', [
   'ngMessages',
   'ngSanitize',
   'firebase',
-  'angular-cloudinary'
+  'angular-cloudinary',
+  'ngMaterialDatePicker',
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/home'});

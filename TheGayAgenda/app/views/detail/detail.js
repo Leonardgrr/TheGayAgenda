@@ -114,6 +114,8 @@ angular.module('myApp.detail', ['ngRoute'])
 	$scope.rsvpsForPlace = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"+$routeParams.placeID+'/rsvps/'));
 	// console.log($scope.rsvpsForPlace);
 
+	$scope.didtheycheckintho = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"+$routeParams.placeID+'/rsvps/'));
+
 
 
 }]);

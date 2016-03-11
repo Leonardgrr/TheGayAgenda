@@ -65,137 +65,228 @@
 
 
 
+<md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Place">
+        <md-content layout="column">
+          <md-content class="md-padding">
+            <div>
+              <md-card-content>
+              <!-- FORM SECTION -->
+              <form ng-submit="neweventplace(newEvent)">
+                <h3>Details</h3>
+                <div layout-gt-sm="row">
+                  <md-input-container>
+                    <label>Category</label>
+                    <md-select ng-model="newCategory.category">
+                      <md-option ng-repeat="category in categories" value="{{category}}">{{category}}</md-option>
+                    </md-select>
+                  </md-input-container>
+                  <md-input-container >
+                    <label>Points</label>
+                    <md-select ng-model="newPoints.points">
+                      <md-option ng-repeat="point in points" value="{{point}}">{{point}}</md-option>
+                    </md-select>
+                  </md-input-container>
+                  <md-input-container >
+                    <label>Type</label>
+                    <md-select ng-model="newType.type">
+                      <md-option ng-repeat="type in types" value="{{type}}">{{type}}</md-option>
+                    </md-select>
+                  </md-input-container>
+                  <md-input-container >
+                    <label>Area</label>
+                    <md-select ng-model="newArea.area">
+                      <md-option ng-repeat="area in areas" value="{{area}}">{{area}}</md-option>
+                    </md-select>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Address</label>
+                    <input ng-model="newAddress.address"></input>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Event Name</label>
+                    <input ng-model="newEventName.eventName"></input>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Venue Name</label>
+                    <input ng-model="newVenueName.venueName"></input>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container>
+                    Select a file<input  name="file" ngf-select="uploadFiles($files)" ng-model="newEvent.image">
+                  </md-input-container>
+                  <!-- <md-input-container class="md-block" flex-gt-sm>
+                    <label>Image</label>
+                    <input type="file" ngf-select="uploadFiles($files)"  required ng-model="newEvent.image"> 
+                  </md-input-container> -->
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Contact</label>
+                    <input ng-model="newContact.contact"></input>
+                  </md-input-container>
 
+                </div>
+                <md-input-container class="md-block">
+                  <label>About</label>
+                  <textarea rows="5" md-select-on-focus ng-model="newAbout.about"></textarea>
+                </md-input-container>
+                <h3>Hours</h3>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Monday</label>
+                    <input ng-model="newMonday.monday"></input>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Tuesday</label>
+                    <input ng-model="newTuesday.tuesday"></input>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Wednesday</label>
+                    <input ng-model="newWednesday.wednesday"></input>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Thursday</label>
+                    <input ng-model="newThursday.thursday"></input>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Friday</label>
+                    <input ng-model="newFriday.friday"></input>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Saturday</label>
+                    <input ng-model="newSaturday.saturday"></input>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Sunday</label>
+                    <input ng-model="newSunday.sunday"></input>
+                  </md-input-container>
+                </div>
+                <div class="md-actions" layout="row" layout-align="end center">
+                  <md-button type="submit">
+                  Sumbit
+                    <md-icon class="material-icons">send</md-icon>
+                    <md-tooltip>Submit</md-tooltip>
+                  </md-button>
+                </div>
+              </form> <!-- END FORM SECTION -->
+              </md-card-content>
+            </div>
+          </md-content>
+        </md-content>
+      </md-tab>
+      <md-tab label="Event">
+        <md-content layout="column">
+          <md-content class="md-padding">
+            <div>
+              <md-card-content>
+              <!-- FORM SECTION -->
+              <form ng-submit="newevent(newEvent)">
+                <p>Please fill the form below to add an event.</p>
+                <div layout-gt-sm="row">
+                  <md-input-container>
+                    <label>Category</label>
+                    <md-select ng-model="newEvent.category">
+                      <md-option ng-repeat="category in categories" value="{{category}}">{{category}}</md-option>
+                    </md-select>
+                  </md-input-container>
+                  <md-input-container >
+                    <label>Points</label>
+                    <md-select ng-model="newEvent.points">
+                      <md-option ng-repeat="point in points" value="{{point}}">{{point}}</md-option>
+                    </md-select>
+                  </md-input-container>
+                  <md-input-container >
+                    <label>Area</label>
+                    <md-select ng-model="newEvent.area">
+                      <md-option ng-repeat="area in areas" value="{{area}}">{{area}}</md-option>
+                    </md-select>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <input mdc-datetime-picker="" date="false" time="true" type="text" id="time" short-time="true"
+                      placeholder="Time" min-date="minDate" format="hh:mm a" ng-model="time" class=" 
+                    md-input">
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Address</label>
+                    <input ng-model="newEvent.address"></input>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Event Name</label>
+                    <input ng-model="newEvent.eventName"></input>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Venue Name</label>
+                    <input ng-model="newEvent.venueName"></input>
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container>
+                    Select a file<input  name="file" ngf-select="uploadFiles($files)" ng-model="newEvent.image">
+                  </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Contact</label>
+                    <input ng-model="newEvent.contact"></input>
+                  </md-input-container>
 
-<md-content layout="column">
-  <md-content class="md-padding">
-    <div>
-      <md-card-content>
-        <h2 class="md-title">Add a Place or Event Form</h2>
-        <br>
-        <br>
-      <!-- FORM SECTION -->
-      <form ng-submit="neweventplace(newEvent)">
-        <h3>Details</h3>
-        <div layout-gt-sm="row">
-          <md-input-container>
-            <label>Category</label>
-            <md-select ng-model="newCategory.category">
-              <md-option ng-repeat="category in categories" value="{{category}}">{{category}}</md-option>
-            </md-select>
-          </md-input-container>
-          <md-input-container >
-            <label>Points</label>
-            <md-select ng-model="newPoints.points">
-              <md-option ng-repeat="point in points" value="{{point}}">{{point}}</md-option>
-            </md-select>
-          </md-input-container>
-          <md-input-container >
-            <label>Type</label>
-            <md-select ng-model="newType.type">
-              <md-option ng-repeat="type in types" value="{{type}}">{{type}}</md-option>
-            </md-select>
-          </md-input-container>
-          <md-input-container >
-            <label>Area</label>
-            <md-select ng-model="newArea.area">
-              <md-option ng-repeat="area in areas" value="{{area}}">{{area}}</md-option>
-            </md-select>
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Address</label>
-            <input ng-model="newAddress.address"></input>
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Event Name</label>
-            <input ng-model="newEventName.eventName"></input>
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Venue Name</label>
-            <input ng-model="newVenueName.venueName"></input>
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-          <md-input-container>
-            Select a file<input  name="file" ngf-select="uploadFiles($files)" ng-model="newEvent.image">
-          </md-input-container>
-          <!-- <md-input-container class="md-block" flex-gt-sm>
-            <label>Image</label>
-            <input type="file" ngf-select="uploadFiles($files)"  required ng-model="newEvent.image"> 
-          </md-input-container> -->
-        </div>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Contact</label>
-            <input ng-model="newContact.contact"></input>
-          </md-input-container>
-
-        </div>
-        <md-input-container class="md-block">
-          <label>About</label>
-          <textarea rows="5" md-select-on-focus ng-model="newAbout.about"></textarea>
-        </md-input-container>
-        <h3>Hours</h3>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Monday</label>
-            <input ng-model="newMonday.monday"></input>
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Tuesday</label>
-            <input ng-model="newTuesday.tuesday"></input>
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Wednesday</label>
-            <input ng-model="newWednesday.wednesday"></input>
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Thursday</label>
-            <input ng-model="newThursday.thursday"></input>
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Friday</label>
-            <input ng-model="newFriday.friday"></input>
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Saturday</label>
-            <input ng-model="newSaturday.saturday"></input>
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Sunday</label>
-            <input ng-model="newSunday.sunday"></input>
-          </md-input-container>
-        </div>
-        <div class="md-actions" layout="row" layout-align="end center">
-          <md-button type="submit">
-          Sumbit
-            <md-icon class="material-icons">send</md-icon>
-            <md-tooltip>Submit</md-tooltip>
-          </md-button>
-        </div>
-      </form> <!-- END FORM SECTION -->
-      </md-card-content>
-    </div>
+                </div>
+                <md-input-container class="md-block">
+                  <label>Description</label>
+                  <textarea rows="5" md-select-on-focus ng-model="newEvent.about"></textarea>
+                </md-input-container>
+                <div class="md-actions" layout="row" layout-align="end center">
+                  <md-button type="submit">
+                  Sumbit
+                    <md-icon class="material-icons">send</md-icon>
+                    <md-tooltip>Submit</md-tooltip>
+                  </md-button>
+                </div>
+              </form> <!-- END FORM SECTION -->
+              </md-card-content>
+            </div>
+          </md-content>
+        </md-content>
+      </md-tab>
+    </md-tabs>
   </md-content>
-</md-content>
+
+
+
+
+
 
 
 

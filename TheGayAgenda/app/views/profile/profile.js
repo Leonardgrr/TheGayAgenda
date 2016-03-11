@@ -68,19 +68,6 @@ angular.module('myApp.profile', ['ngRoute'])
 		  	// $rootScope.currentUser = authData.uid;
 		  	// console.log($rootScope.currentUser);
 		  	var user = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"+authData.uid));
-		  	if (authData.provider === "google"){
-			  	user.profilePic = authData.google.profileImageURL;
-			  	user.userName = authData.google.displayName;
-			  	user.$save();
-		  	}else if (authData.provider === "twitter"){
-		  		user.profilePic = authData.twitter.profileImageURL;
-			  	user.userName = authData.twitter.displayName;
-			  	user.$save();
-		  	}else if (authData.provider === "facebook"){
-		  		user.profilePic = authData.facebook.profileImageURL;
-			  	user.userName = authData.facebook.displayName;
-			  	user.$save();	
-		  	}
 		}
 		//  else {
 		//   	//if user not logged in
@@ -130,9 +117,9 @@ angular.module('myApp.profile', ['ngRoute'])
 	 'Bear'
 	];
 
-	
+	// QUERY FOR GETTING THE CHECK CHECKINS/RSVPS FOR PLACES/EVENTS
 	$scope.eventplace = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"));
-	console.log($scope.eventplace);
+	// console.log($scope.eventplace);
 
 
 
