@@ -80,11 +80,16 @@ angular.module('myApp.admin', ['ngRoute','angular-cloudinary', 'ngMaterialDatePi
 				$scope.newplace.address = "";
 				$scope.newplace.venueName = "";
 				$scope.newplace.contact = "";
-				$scope.myDate = "";
-				$scope.time = "";
 				$scope.newplace.eventName = "";
 				$scope.newplace.about = "";
 				$scope.newplace.image = "";
+				$scope.newplace.monday = "";
+				$scope.newplace.tuesday = "";
+				$scope.newplace.wednesday = "";
+				$scope.newplace.thursday = "";
+				$scope.newplace.friday = "";
+				$scope.newplace.saturday = "";
+				$scope.newplace.sunday = "";
 				// ALERT THE USER THE FORM HAS SUCCESSFULLY BEEN SAVED
 				alert("New place has successfully been added!");
 			});
@@ -106,13 +111,14 @@ angular.module('myApp.admin', ['ngRoute','angular-cloudinary', 'ngMaterialDatePi
 					address : $scope.newEvent.address,
 					venueName : $scope.newEvent.venueName,
 					contact : $scope.newEvent.contact,
-					date : $scope.myDate,
-					time : $scope.time,
+					date : $scope.newEvent.date,
+					time : $scope.newEvent.time,
 					eventName : $scope.newEvent.eventName,
-					description : $scope.newEvent.about,
+					about : $scope.newEvent.about,
 					image : $scope.imageUrl
 				})
-
+				console.log($scope.myDate);
+				console.log($scope.time);
 				// CLEAR ALL THE FIELDS IN THE FORM 
 				$scope.newEvent.category = "";
 				$scope.newEvent.points = "";
@@ -120,11 +126,11 @@ angular.module('myApp.admin', ['ngRoute','angular-cloudinary', 'ngMaterialDatePi
 				$scope.newEvent.address = "";
 				$scope.newEvent.venueName = "";
 				$scope.newEvent.contact = "";
-				$scope.myDate = "";
-				$scope.time = "";
 				$scope.newEvent.eventName = "";
 				$scope.newEvent.about = "";
 				$scope.newEvent.image = "";
+				$scope.newEvent.date = "";
+				$scope.newEvent.time = "";
 				// ALERT THE  USER THE FORM HAS SUCCESSFULLY BEEN SAVED
 				alert("New event has successfully been added!");
 

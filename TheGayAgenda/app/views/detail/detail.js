@@ -6,7 +6,7 @@ angular.module('myApp.detail', ['ngRoute'])
   $routeProvider.when('/detail/:placeID', {
     templateUrl: 'views/detail/detail.html',
     controller: 'detailCtrl'
-  });
+  })
 }])
 
 
@@ -16,25 +16,27 @@ angular.module('myApp.detail', ['ngRoute'])
 	var ref = new Firebase("https://thegayagenda.firebaseio.com");
 	$scope.authObj = $firebaseAuth(ref);
 	$scope.places = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"));
-	$scope.eventplace = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"));
-	var list = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"));
-	$scope.list = list;
+	$scope.events = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/events/"));
+	// var list = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"));
+	// $scope.list = list;
 	var detailRef = new Firebase("https://thegayagenda.firebaseio.com/places/"+$routeParams.placeID);
 	$scope.currentDetail = $routeParams.placeID;
 	$scope.users = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"));
-	$scope.player_pin = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/player_pin"));
-	$scope.player_pins = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/player_pin/"));
-	$scope.pins = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/player_pin/"));
+	// $scope.player_pin = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/player_pin"));
+	// $scope.player_pins = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/player_pin/"));
+	// $scope.pins = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/player_pin/"));
 	$scope.authObj.$onAuth(function(authData) {
 		$rootScope.authorize(authData);
 		$scope.userData = authData;
 		// $rootScope.currentUser = authData.uid;
 		// get the users pin label
+		
 		new Firebase("https://thegayagenda.firebaseio.com/pins/"+authData.uid).once('value', function(snap) {
 			$rootScope.userpin = snap.val();
-		   console.log('I fetched a user!', snap.val());
-		   console.log($rootScope.userpin.label);
+			console.log('I fetched a user!', snap.val());
+			console.log("label for place "+$rootScope.userpin.label);
 		});
+
 		var ref = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/pins/"+authData.uid));
 		});
 

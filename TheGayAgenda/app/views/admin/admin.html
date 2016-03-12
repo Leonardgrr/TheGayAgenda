@@ -207,7 +207,7 @@
                   <md-input-container >
                     <label>Points</label>
                     <md-select ng-model="newEvent.points">
-                      <md-option ng-repeat="point in points" value="{{point}}">{{point}}</md-option>
+                      <md-option ng-repeat="point in points" value={{point}}>{{point}}</md-option>
                     </md-select>
                   </md-input-container>
                   <md-input-container >
@@ -217,7 +217,7 @@
                     </md-select>
                   </md-input-container>
                 </div>
-                <div layout-gt-sm="row">
+                <!-- <div layout-gt-sm="row">
                   <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
                 </div>
                 <div layout-gt-sm="row">
@@ -225,6 +225,16 @@
                     <input mdc-datetime-picker="" date="false" time="true" type="text" id="time" short-time="true"
                       placeholder="Time" min-date="minDate" format="hh:mm a" ng-model="time" class=" 
                     md-input">
+                  </md-input-container>
+                </div> -->
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Time</label>
+                    <input ng-model="newEvent.time"></input>
+                  </md-input-container>
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Date</label>
+                    <input ng-model="newEvent.date"></input>
                   </md-input-container>
                 </div>
                 <div layout-gt-sm="row">

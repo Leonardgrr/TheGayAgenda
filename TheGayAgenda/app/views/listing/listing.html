@@ -61,59 +61,116 @@
 
 <div layout="column" layout-align="center center">
 	<h1>{{category}}</h1>
+
+
+<md-content layout-xs="column" layout-md="column" layout-lg="column">
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="places">
+        	<!-- START CARDS -->
+			<md-content class="md-padding" layout-xs="column" layout-md="column" layout-lg="column" layout="row">
+				<div flex layout="column" >
+				<!-- <div flex layout="column" ng-repeat="item in places"> -->
+				<div flex-xs flex-gt-xs="50" layout="column" ng-repeat="item in places">
+				<md-card class="{{item.category}}" ng-show="item.category === '{{category}}'" >
+				<!-- <md-card class="{{item.category}}" ng-show="item.category === '{{category}}'"> -->
+					<md-card-header>
+					  <md-card-avatar>
+					    <img src="media/mapThumb.png"/>
+					  </md-card-avatar>
+					  <md-card-header-text>
+					    <span class="md-title">{{item.eventName}}</span>
+					    <span class="mdsubhead">{{item.area}}</span>
+					  </md-card-header-text>
+					</md-card-header>
+					<!-- <img src="{{place.image}}" class="md-card-image" alt="Washed Out"> -->
+					<img src="{{item.image}}" class="md-card-image">
+					<md-card-title>
+					  <md-card-title-text>
+					    <span class="md-headline">{{item.venueName}}</span>
+					  </md-card-title-text>
+					</md-card-title>
+					<md-card-content>
+						<p>
+						{{item.about}}
+						</p>
+						<!-- Player Pins -->
+						<md-card-actions layout="row" layout-align="start center">
+							<md-button href="#/detail/{{item.$id}}">View Details</md-button>
+							<md-card-icon-actions>
+							<md-card-avatar aria-label="Player Pin">
+								<img class="pinThumb" src="media/pinThumb.png"></img>
+							</md-card-avatar>
+							<md-card-avatar aria-label="Player Pin">
+								<img class="pinThumb" src="media/pinThumb.png"></img>
+							</md-card-avatar>
+							<md-card-avatar aria-label="Player Pin">
+								<img class="pinThumb" src="media/pinThumb.png"></img>
+							</md-card-avatar>
+							</md-card-icon-actions>
+						</md-card-actions>
+					</md-card-content>
+				</md-card>
+				</div>
+				</div>
+
+			</md-content>
+      </md-tab>
+      <md-tab label="events">
+        	<!-- START CARDS -->
+			<md-content class="md-padding" layout-xs="column" layout-md="column" layout-lg="column" layout="row">
+			<div flex layout="column" >
+			<!-- <div flex layout="column" ng-repeat="item in places"> -->
+			<div flex-xs flex-gt-xs="50" layout="column" ng-repeat="item in events">
+			<md-card class="{{item.category}}" ng-show="item.category === '{{category}}'" >
+			<!-- <md-card class="{{item.category}}" ng-show="item.category === '{{category}}'"> -->
+				<md-card-header>
+				  <md-card-avatar>
+				    <img src="media/calendarThumb.png"/>
+				  </md-card-avatar>
+				  <md-card-header-text>
+				    <span class="md-title">{{item.eventName}}</span>
+				    <span class="mdsubhead">{{item.area}}</span>
+				  </md-card-header-text>
+				</md-card-header>
+				<!-- <img src="{{place.image}}" class="md-card-image" alt="Washed Out"> -->
+				<img src="{{item.image}}" class="md-card-image">
+				<md-card-title>
+				  <md-card-title-text>
+				    <span class="md-headline">{{item.venueName}}</span>
+				  </md-card-title-text>
+				</md-card-title>
+				<md-card-content>
+					<p>
+					{{item.about}}
+					</p>
+					<!-- Player Pins -->
+					<md-card-actions layout="row" layout-align="start center">
+						<md-button href="#/detail/{{item.$id}}">View Details</md-button>
+						<md-card-icon-actions>
+						<md-card-avatar aria-label="Player Pin">
+							<img class="pinThumb" src="media/pinThumb.png"></img>
+						</md-card-avatar>
+						<md-card-avatar aria-label="Player Pin">
+							<img class="pinThumb" src="media/pinThumb.png"></img>
+						</md-card-avatar>
+						<md-card-avatar aria-label="Player Pin">
+							<img class="pinThumb" src="media/pinThumb.png"></img>
+						</md-card-avatar>
+						</md-card-icon-actions>
+					</md-card-actions>
+				</md-card-content>
+			</md-card>
+			</div>
+
+			</md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+
+
+
+
 </div>
-<div layout="row" layout-align="center center">
-	<!-- START CARDS -->
-	<md-content class="md-padding" layout-xs="column" layout-md="column" layout-lg="column" layout="row">
-	<div flex layout="column" >
-	<!-- <div flex layout="column" ng-repeat="item in eventplace"> -->
-	<div flex-xs flex-gt-xs="50" layout="column" ng-repeat="item in eventplace">
-	<md-card class="{{item.category}}" ng-show="item.category === '{{category}}'" >
-	<!-- <md-card class="{{item.category}}" ng-show="item.category === '{{category}}'"> -->
-		<md-card-header>
-		  <md-card-avatar>
-		    <img ng-show="item.type === 'place'" src="media/mapThumb.png"/>
-		    <img ng-show="item.type === 'event'" src="media/calendarThumb.png"/>
-		  </md-card-avatar>
-		  <md-card-header-text>
-		    <span class="md-title">{{item.eventName}}</span>
-		    <span class="mdsubhead">{{item.area}}</span>
-		  </md-card-header-text>
-		</md-card-header>
-		<!-- <img src="{{place.image}}" class="md-card-image" alt="Washed Out"> -->
-		<img src="{{item.image}}" class="md-card-image">
-		<md-card-title>
-		  <md-card-title-text>
-		    <span class="md-headline">{{item.venueName}}</span>
-		  </md-card-title-text>
-		</md-card-title>
-		<md-card-content>
-			<p>
-			{{item.about}}
-			</p>
-			<!-- Player Pins -->
-			<md-card-actions layout="row" layout-align="start center">
-				<md-button href="#/detail/{{item.$id}}">View Details</md-button>
-				<md-card-icon-actions>
-				<md-card-avatar aria-label="Player Pin">
-					<img class="pinThumb" src="media/pinThumb.png"></img>
-				</md-card-avatar>
-				<md-card-avatar aria-label="Player Pin">
-					<img class="pinThumb" src="media/pinThumb.png"></img>
-				</md-card-avatar>
-				<md-card-avatar aria-label="Player Pin">
-					<img class="pinThumb" src="media/pinThumb.png"></img>
-				</md-card-avatar>
-				</md-card-icon-actions>
-			</md-card-actions>
-		</md-card-content>
-	</md-card>
-	</div>
 
-	</md-content>
-
-
-
-</div>
 
 

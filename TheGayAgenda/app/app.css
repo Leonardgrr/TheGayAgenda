@@ -207,5 +207,24 @@ img {
   max-width: 100%;
 }
 
+.address{
+  margin-top: 16px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.contact{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+.directions{
+  text-decoration: none;
+  color: #ED1E79;
+  text-transform: uppercase;
+}
+
 
 

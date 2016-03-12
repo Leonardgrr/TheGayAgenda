@@ -64,28 +64,30 @@
 
 <md-content layout="row" layout-align="center center">
 
-<md-content flex layout-padding ng-repeat="item in eventplace" ng-show="currentDetail === item.$id" id="detailThing">
+<md-content flex layout-padding ng-repeat="item in places" ng-show="currentDetail === item.$id" id="detailThing">
+
 	<h1 layout="column" layout-align="center center">{{item.eventName}}</h1>
   <!-- UNCOMMENT THIS! -->
 	<img layout="column" layout-align="center center" src="{{item.image}}">
 
 <div layout="row">
   <div flex>
-    <h2>{{item.venueName}}</h2><br>
-      <md-button href="https://maps.google.com?saddr=Current+Location&daddr={{item.address}}">
-    Get Directions
-  </md-button>
-  <md-button ng-hide="hours" ng-click="hours=true" href="">
-    Show Hours
-  </md-button>
-  <md-button ng-show="hours" ng-click="hours=false" href="">
-    Hide Hours
-  </md-button>
+    <h2>{{item.venueName}}<br>
+    </h2>
+    <p>
+      <strong>Mon</strong><em>{{item.monday}}</em><br>
+      <strong>Tue</strong><em>{{item.tuesday}}</em><br>
+      <strong>Wed</strong><em>{{item.wednesday}}</em><br>
+      <strong>Thu</strong><em>{{item.thursday}}</em><br>
+      <strong>Fri</strong><em>{{item.friday}}</em><br>
+      <strong>Sat</strong><em>{{item.saturday}}</em><br>
+      <strong>Sun</strong><em>{{item.sunday}}</em><br>
+    </p>
    <p>
   </div>
 	<div flex>
   <!-- USER CHECK IN FORM -->
-	<form ng-submit="newCheckIn()" ng-show="item.type === 'place'">
+	<form ng-submit="newCheckIn()" >
 		<md-content layout="row" layout-align="end center">
 			<md-content aria-label="Player Pin">
 				<img class="pinThumbCheckIn" src="media/pin.png"></img>
@@ -107,58 +109,30 @@
       <md-input-container flex="">
         <label>{{userpin.label}}</label>
         <!-- <input name="user" ng-model="newRSVP.pin" ng-init="newRSVP.pin=pins[item.$id].label"></input> -->
-        <input name="label" ng-model="newCheckIn.pin" ng-init="newCheckIn.pin=userpin.label"></input>
+        <input name="label" ng-model="newRSVP.pin" ng-init="newRSVP.pin=userpin.label"></input>
       </md-input-container>
       <md-input-container flex="">
         <label>place/event</label>
         <input name="venue" ng-model="newCheckIn.venue" ng-init="newCheckIn.venue=currentDetail"></input>
       </md-input-container>
 		</div>
-		<md-content layout="row" layout-align="end center" ng-show="item.type === 'place'">
-			<md-button type="submit" class="checkIn">Check In</md-button>
+		<md-content layout="row" layout-align="end center">
+			<md-button type="submit" class="{{item.category}}">Check In</md-button>
 		</md-content>
 	</form>
-
-  <!-- USER RSVP FORM -->
-  <form ng-submit="newRSVP()" ng-show="item.type === 'event'">
-    <md-content layout="row" layout-align="end center">
-      <md-content aria-label="Player Pin">
-        <img class="pinThumbCheckIn" src="media/pin.png"></img>
-      </md-content>
-    </md-content>
-    <div layout="" layout-sm="column" ng-hide="true">
-      <md-input-container flex="">
-        <label>category</label>
-        <input name="category"  ng-model="newRSVP.category" ng-init="newRSVP.category=item.category" ></input>
-      </md-input-container>
-      <md-input-container flex="">
-        <label>points</label>
-        <input name="points" ng-model="newRSVP.points" ng-init="newRSVP.points=item.points"></input>
-      </md-input-container>
-      <md-input-container flex="">
-        <label>user</label>
-        <input name="user" ng-model="newRSVP.user" ng-init="newRSVP.user=currentUser"></input>
-      </md-input-container>
-      <md-input-container flex="">
-        <label>{{userpin.label}}</label>
-        <!-- <input name="user" ng-model="newRSVP.pin" ng-init="newRSVP.pin=pins[item.$id].label"></input> -->
-        <input name="label" ng-model="newRSVP.pin" ng-init="newRSVP.pin=userpin.label"></input>
-      </md-input-container>
-      <md-input-container flex="">
-        <label>place/event</label>
-        <input name="venue" ng-model="currentDetail" ng-init="newRSVP.venue=currentDetail"></input>
-      </md-input-container>
-    </div>
-    <md-content layout="row" layout-align="end center" ng-show="item.type === 'event'">
-      <md-button type="submit" class="checkIn">RSVP</md-button>
-    </md-content>
-  </form>
 	</div>
 </div>
 
   <br>
 
-    <div>
+    <!-- STILL WORKING ON A WAY TO BETTER DISPLAY HOURS OF OPERATION -->
+    <!-- <div>
+      <md-button ng-hide="hours" ng-click="hours=true" href="">
+        Open Times
+      </md-button><br>
+      <md-button ng-show="hours" ng-click="hours=false" href="">
+        Hide Hours
+      </md-button><br>
       <strong ng-show="hours">Monday</strong><em ng-show="hours">{{item.monday}}</em><br ng-show="hours">
       <strong ng-show="hours">Tuesday</strong><em ng-show="hours">{{item.tuesday}}</em><br ng-show="hours">
       <strong ng-show="hours">Wednesday</strong><em ng-show="hours">{{item.wednesday}}</em><br ng-show="hours">
@@ -166,9 +140,14 @@
       <strong ng-show="hours">Friday</strong><em ng-show="hours">{{item.friday}}</em><br ng-show="hours">
       <strong ng-show="hours">Saturday</strong><em ng-show="hours">{{item.saturday}}</em><br ng-show="hours">
       <strong ng-show="hours">Sunday</strong><em ng-show="hours">{{item.sunday}}</em><br ng-show="hours">
+    </div> -->
+    <p class="contact">
       <strong>Contact</strong> {{item.contact}}<br>
+    </p>
+    <p class="address">
       <strong>Address</strong> {{item.address}}<br>
-    </div>
+    </p>
+    <a class="directions" href="https://maps.google.com?saddr=Current+Location&daddr={{item.address}}">Get Directions</a>
     <p>
   		<strong>About</strong><br>
   		{{item.about}}
@@ -218,9 +197,150 @@
         </md-list>
 
 
-
 </md-content>
 </md-content>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<md-content layout="row" layout-align="center center">
+
+<md-content flex layout-padding ng-repeat="item in events" ng-show="currentDetail === item.$id" id="detailThing">
+
+  <h1 layout="column" layout-align="center center">{{item.eventName}}</h1>
+  <!-- UNCOMMENT THIS! -->
+  <img layout="column" layout-align="center center" src="{{item.image}}">
+
+<div layout="row">
+  <div flex>
+    <h2>{{item.venueName}}<br>
+        {{item.date}} @ {{item.time}}
+    </h2>
+    
+  <!-- <md-button ng-hide="hours" ng-click="hours=true" href="">
+    Show Hours
+  </md-button>
+  <md-button ng-show="hours" ng-click="hours=false" href="">
+    Hide Hours
+  </md-button> -->
+   <p>
+  </div>
+  <div flex>
+  <!-- USER RSVP FORM -->
+  <form ng-submit="newRSVP()" >
+    <md-content layout="row" layout-align="end center">
+      <md-content aria-label="Player Pin">
+        <img class="pinThumbCheckIn" src="media/pin.png"></img>
+      </md-content>
+    </md-content>
+    <div layout="" layout-sm="column" ng-hide="true">
+      <md-input-container flex="">
+        <label>category</label>
+        <input name="category"  ng-model="newRSVP.category" ng-init="newRSVP.category=item.category" ></input>
+      </md-input-container>
+      <md-input-container flex="">
+        <label>points</label>
+        <input name="points" ng-model="newRSVP.points" ng-init="newRSVP.points=item.points"></input>
+      </md-input-container>
+      <md-input-container flex="">
+        <label>user</label>
+        <input name="user" ng-model="newRSVP.user" ng-init="newRSVP.user=currentUser"></input>
+      </md-input-container>
+      <md-input-container flex="">
+        <label>{{userpin.label}}</label>
+        <!-- <input name="user" ng-model="newRSVP.pin" ng-init="newRSVP.pin=pins[item.$id].label"></input> -->
+        <input name="label" ng-model="newRSVP.pin" ng-init="newRSVP.pin=userpin.label"></input>
+      </md-input-container>
+      <md-input-container flex="">
+        <label>place/event</label>
+        <input name="venue" ng-model="currentDetail" ng-init="newRSVP.venue=currentDetail"></input>
+      </md-input-container>
+    </div>
+    <md-content layout="row" layout-align="end center">
+      <md-button type="submit" class="{{item.category}}">RSVP</md-button>
+    </md-content>
+  </form>
+  </div>
+</div>
+
+  <br>
+
+    <div>
+      <strong ng-show="hours">Monday</strong><em ng-show="hours">{{item.monday}}</em><br ng-show="hours">
+      <strong ng-show="hours">Tuesday</strong><em ng-show="hours">{{item.tuesday}}</em><br ng-show="hours">
+      <strong ng-show="hours">Wednesday</strong><em ng-show="hours">{{item.wednesday}}</em><br ng-show="hours">
+      <strong ng-show="hours">Thursday</strong><em ng-show="hours">{{item.thursday}}</em><br ng-show="hours">
+      <strong ng-show="hours">Friday</strong><em ng-show="hours">{{item.friday}}</em><br ng-show="hours">
+      <strong ng-show="hours">Saturday</strong><em ng-show="hours">{{item.saturday}}</em><br ng-show="hours">
+      <strong ng-show="hours">Sunday</strong><em ng-show="hours">{{item.sunday}}</em><br ng-show="hours">
+    </div>
+    <p>
+      <strong>Contact</strong> {{item.contact}}<br>
+    </p>
+    <p class="address">
+      <strong>Address</strong> {{item.address}}<br>
+    </p>
+    <a class="directions" href="https://maps.google.com?saddr=Current+Location&daddr={{item.address}}">Get Directions</a>
+    <p>
+      <strong>About</strong><br>
+      {{item.about}}
+    </p>
+        <!-- LIST OF CHECKINS -->
+        <md-list>
+          <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
+          <!-- <md-list-item ng-show="currentDetail === item.venue" ng-repeat="item in checkIn" class="md-3-line" > -->
+          <md-list-item ng-repeat="item in checkinsForPlace" class="md-3-line" >
+            <!-- <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar"> -->
+            <div class="md-list-item-text">
+              <!-- <h3>{{users[item.user].userName}}</h3>
+              <p>
+              user is {{item.user}}<br>
+              pin is {{item.pin}}<br>
+              </p> -->
+              <img ng-show="item.pin === 'Lipstick'" class="thumb" src="media/lipstick.png">
+              <img ng-show="item.pin === 'Chapstick'" class="thumb" src="media/chapstick.png">
+              <img ng-show="item.pin === 'Diesel'" class="thumb" src="media/diesel.png">
+              <img ng-show="item.pin === 'Twink'" class="thumb" src="media/twink.png">
+              <img ng-show="item.pin === 'Bear'" class="thumb" src="media/bear.png">
+              <img ng-show="item.pin === 'Otter'" class="thumb" src="media/otter.png">
+            </div>
+          </md-list-item>
+        </md-list>
+
+        <!-- LIST OF RSVPS -->
+        <md-list>
+          <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
+          <!-- <md-list-item ng-show="currentDetail === item.venue" ng-repeat="item in checkIn" class="md-3-line" > -->
+          <md-list-item ng-repeat="item in rsvpsForPlace" class="md-3-line" >
+            <!-- <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar"> -->
+            <div class="md-list-item-text">
+              <!-- <h3>{{users[item.user].userName}}</h3>
+              <p>
+              user is {{item.user}}<br>
+              pin is {{item.pin}}<br>
+              </p> -->
+              <img ng-show="item.pin === 'Lipstick'" class="thumb" src="media/lipstick.png">
+              <img ng-show="item.pin === 'Chapstick'" class="thumb" src="media/chapstick.png">
+              <img ng-show="item.pin === 'Diesel'" class="thumb" src="media/diesel.png">
+              <img ng-show="item.pin === 'Twink'" class="thumb" src="media/twink.png">
+              <img ng-show="item.pin === 'Bear'" class="thumb" src="media/bear.png">
+              <img ng-show="item.pin === 'Otter'" class="thumb" src="media/otter.png">
+            </div>
+          </md-list-item>
+        </md-list>
+
+
+</md-content>
+</md-content>
 
