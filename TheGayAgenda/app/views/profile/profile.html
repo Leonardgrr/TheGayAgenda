@@ -10,11 +10,13 @@
         <span>The Gay Agenda</span>
       </h2>
       <span flex></span>
-      <md-button href="#/profile" class="md-icon-button" aria-label="Favorite">
+      <!-- <md-button href="#/profile" class="md-icon-button" aria-label="Favorite">
         <md-icon class="material-icons">person_pin_circle</md-icon>
-      </md-button>
-      <md-button href="#/home" class="md-icon-button" aria-label="Home">
-        <md-icon class="material-icons">home</md-icon>
+        <md-tooltip>Profile</md-tooltip>
+      </md-button> -->
+      <md-button class="md-icon-button">
+        <a ng-href="#/home" ng-click="logout()"><md-icon class="material-icons">exit_to_app</md-icon></a>
+        <md-tooltip>Sign Out</md-tooltip>
       </md-button>
     </div>
   </md-toolbar>
@@ -46,7 +48,7 @@
       </md-button>
       </div>
       <p hide-md show-gt-md>
-        This sidenav, use it to explore the different categories acitivities. Each event and venue will have a color associated with it and level up your pin, have fun!.
+        This sidenav, use it to explore the different categories acitivities. Each event and venue will have a color associated with it and level up your pin, have fun!
       </p>
     </md-content>
   </md-sidenav>
@@ -57,7 +59,7 @@
       <md-content flex=""> 
         <md-list >
           <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
-          <md-list-item ng-show="userData.uid === item.user" ng-repeat="item in checkIn" class="md-3-line" >
+          <!-- <md-list-item ng-show="userData.uid === item.user" ng-repeat="item in checkIn" class="md-3-line" >
             <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar">
             <div class="md-list-item-text">
           <h3>{{users[item.user].userName}}</h3>
@@ -88,21 +90,20 @@
           <img ng-show="profile.label === 'Otter'" class="thumb" src="media/otter.png">
             </div>
           </md-list-item>
-        </md-list>
+        </md-list> -->
       </md-content> 
 
 
 
 <div layout="column" layout-align="center center" ng-controller="loginCtrl" ng-show="userData" flex="none">
-  <img ng-src="{{userData.twitter.profileImageURL}}" alt="{{userData.twitter.displayName}}" class="md-avatar">
-  <img ng-src="{{userData.google.profileImageURL}}" alt="{{userData.google.displayName}}" class="md-avatar">
+<!--   <img ng-src="{{userData.twitter.profileImageURL}}" alt="{{userData.twitter.displayName}}" class="md-avatar">
+  <img ng-src="{{userData.google.profileImageURL}}" alt="{{userData.google.displayName}}" class="md-avatar"> -->
   <h1>{{userData.google.displayName}}</h1>
   <h1>{{userData.twitter.displayName}}</h1>
-
-      <md-button class="md-icon-button">
+      <!-- <md-button class="md-icon-button">
         <a ng-href="#/home" ng-click="logout()"><md-icon class="material-icons">exit_to_app</md-icon></a>
         <md-tooltip>Sign Out</md-tooltip>
-      </md-button>
+      </md-button> -->
 <md-content class="md-padding" layout-xs="column" layout="row" flex="none">
 <div flex-xs="none" flex-gt-xs="50" layout="column">
 <!-- Profile Card -->

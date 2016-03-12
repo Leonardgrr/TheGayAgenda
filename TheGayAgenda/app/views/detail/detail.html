@@ -12,9 +12,7 @@
       <span flex></span>
       <md-button href="#/profile" class="md-icon-button" aria-label="Favorite">
         <md-icon class="material-icons">person_pin_circle</md-icon>
-      </md-button>
-      <md-button href="#/home" class="md-icon-button" aria-label="Home">
-        <md-icon class="material-icons">home</md-icon>
+        <md-tooltip>Profile</md-tooltip>
       </md-button>
       <!-- <md-button ng-controller="loginCtrl" ng-hide="userData" href="#/login" aria-label="signin">
         Sign In | Sign Up
@@ -93,7 +91,7 @@
 				<img class="pinThumbCheckIn" src="media/pin.png"></img>
 			</md-content>
 		</md-content>
-		<div layout="" layout-sm="column" ng-hide="false">
+		<div layout="" layout-sm="column" ng-hide="true">
       <md-input-container flex="">
         <label>category</label>
         <input name="category"  ng-model="newCheckIn.category" ng-init="newCheckIn.category=item.category" ></input>
@@ -244,7 +242,7 @@
         <img class="pinThumbCheckIn" src="media/pin.png"></img>
       </md-content>
     </md-content>
-    <div layout="" layout-sm="column" ng-hide="false">
+    <div layout="" layout-sm="column" ng-hide="true">
       <md-input-container flex="">
         <label>category</label>
         <input name="category"  ng-model="newRSVP.category" ng-init="newRSVP.category=item.category" ></input>
