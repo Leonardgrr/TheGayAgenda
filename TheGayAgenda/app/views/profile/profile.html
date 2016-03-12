@@ -117,7 +117,7 @@
 
         <md-card-title flex="none">
           <md-card-title-text>
-            <span ng-hide="profile.label" class="md-headline" >This is you player pin.</span>
+            <span ng-hide="profile.label" class="md-headline" >This is your player pin.</span>
             <span ng-show="profile.label" class="md-headline" >You are a {{ profile.label }}</span>
           </md-card-title-text>
         </md-card-title>
@@ -167,20 +167,21 @@
           </md-card-title-text>
         </md-card-title>
         <md-card-content flex="none">
-          <p ng-hide="currentUserRSVP">
+          <p ng-hide="rsvpExists">
             You have no RSVP! When you RSVP an event, it will be added here and organized by the most recent event.
           </p>
           <!-- <p ng-show="currentUserRSVP">
            {{currentUserRSVP | json}}
           </p> -->
           <md-list flex>
-            <md-subheader class="md-no-sticky" ng-show="currentUserRSVP">Your RSVPs</md-subheader>
+            <md-subheader class="md-no-sticky" ng-show="rsvpExists">Your RSVPs</md-subheader>
             <md-list-item class="md-3-line" ng-repeat="item in currentUserRSVP">
-              <img ng-src="{{ eventplace[item.venue].image }}" class="md-avatar" />
+              <img ng-src="{{ events[item.venue].image }}" class="md-avatar" />
               <div class="md-list-item-text" layout="column">
                 <!-- <h3>{{ item.venue}}</h3> -->
-                <h3>{{ eventplace[item.venue].eventName }}</h3>
-                <p>{{ eventplace[item.venue].venueName }}</p>
+                <h3>{{ events[item.venue].eventName }}</h3>
+                <p>{{ events[item.venue].date }} @ {{ events[item.venue].time }}</p>
+                <p>{{ events[item.venue].venueName }}</p>
               </div>
             </md-list-item>
           </md-list>
@@ -200,20 +201,23 @@
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
-          <p ng-hide="currentUserCheckIn">
+          <!-- <p ng-hide="currentUserCheckIn">
+            You have not checked in at any places yet! Any places that you check in will show up here, so you can revisit them later.
+          </p> -->
+          <p ng-hide="checkinExists">
             You have not checked in at any places yet! Any places that you check in will show up here, so you can revisit them later.
           </p>
           <!-- <p ng-show="currentUserCheckIn">
            {{currentUserRSVP | json}}
           </p> -->
           <md-list flex>
-            <md-subheader class="md-no-sticky" ng-show="currentUserCheckIn">Your Check Ins</md-subheader>
+            <md-subheader class="md-no-sticky" ng-show="rsvpExists">Your Check Ins</md-subheader>
             <md-list-item class="md-3-line" ng-repeat="item in currentUserCheckIn">
-              <img ng-src="{{ eventplace[item.venue].image }}" class="md-avatar" />
+              <img ng-src="{{ places[item.venue].image }}" class="md-avatar" />
               <div class="md-list-item-text" layout="column">
                 <!-- <h3>{{ item.venue}}</h3> -->
-                <h3>{{ eventplace[item.venue].venueName }}</h3>
-                <p>{{ eventplace[item.venue].eventName }}</p>
+                <h3>{{ places[item.venue].venueName }}</h3>
+                <p>{{ places[item.venue].eventName }}</p>
                 
               </div>
             </md-list-item>

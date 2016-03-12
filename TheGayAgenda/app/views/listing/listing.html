@@ -91,7 +91,7 @@
 					</md-card-title>
 					<md-card-content>
 						<p>
-						{{item.about}}
+						{{item.about| ellipsis:150}}
 						</p>
 						<!-- Player Pins -->
 						<md-card-actions layout="row" layout-align="start center">
@@ -141,7 +141,7 @@
 				</md-card-title>
 				<md-card-content>
 					<p>
-					{{item.about}}
+					{{item.about| ellipsis:150}}
 					</p>
 					<!-- Player Pins -->
 					<md-card-actions layout="row" layout-align="start center">

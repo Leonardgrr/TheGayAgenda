@@ -93,7 +93,7 @@
 				<img class="pinThumbCheckIn" src="media/pin.png"></img>
 			</md-content>
 		</md-content>
-		<div layout="" layout-sm="column" ng-hide="true">
+		<div layout="" layout-sm="column" ng-hide="false">
       <md-input-container flex="">
         <label>category</label>
         <input name="category"  ng-model="newCheckIn.category" ng-init="newCheckIn.category=item.category" ></input>
@@ -109,7 +109,7 @@
       <md-input-container flex="">
         <label>{{userpin.label}}</label>
         <!-- <input name="user" ng-model="newRSVP.pin" ng-init="newRSVP.pin=pins[item.$id].label"></input> -->
-        <input name="label" ng-model="newRSVP.pin" ng-init="newRSVP.pin=userpin.label"></input>
+        <input name="label" ng-model="newCheckIn.pin" ng-init="newCheckIn.pin=userpin.label"></input>
       </md-input-container>
       <md-input-container flex="">
         <label>place/event</label>
@@ -244,7 +244,7 @@
         <img class="pinThumbCheckIn" src="media/pin.png"></img>
       </md-content>
     </md-content>
-    <div layout="" layout-sm="column" ng-hide="true">
+    <div layout="" layout-sm="column" ng-hide="false">
       <md-input-container flex="">
         <label>category</label>
         <input name="category"  ng-model="newRSVP.category" ng-init="newRSVP.category=item.category" ></input>

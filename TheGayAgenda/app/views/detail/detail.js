@@ -75,7 +75,7 @@ angular.module('myApp.detail', ['ngRoute'])
 		// create a path for the rsvp for the current user
 		$scope.checkIn = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/pins/"+$scope.currentUser+"/checkins"));
 		// create a url to save the rsvp under the right place/event
-		$scope.allusercheckIn = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"+$scope.newCheckIn.venue+"/checkins"));
+		$scope.allusercheckIn = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"+$scope.newCheckIn.venue+"/checkins"));
 		console.log("You have checked in");
 		$scope.checkIn.$add({
 			category : $scope.newCheckIn.category,
@@ -95,8 +95,7 @@ angular.module('myApp.detail', ['ngRoute'])
 		// create a path for the rsvp for the current user
 		$scope.rsvp = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/pins/"+$scope.currentUser+"/rsvps"));
 		// create a url to save the rsvp under the right place/event
-		$scope.alluserrsvp = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"+$scope.newRSVP.venue+"/rsvps"));
-		console.log("You have RSVP an event");
+		$scope.alluserrsvp = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/events/"+$scope.newRSVP.venue+"/rsvps"));
 		$scope.rsvp.$add({
 			category : $scope.newRSVP.category,
 			points: $scope.newRSVP.points,
@@ -108,15 +107,17 @@ angular.module('myApp.detail', ['ngRoute'])
 			user: $scope.newRSVP.user,
 			pin: $scope.newRSVP.pin
 		})
+		console.log("You have RSVP an event");
 	}
 
-	// 	GET THE CURRENT CHECKINS FOR THE PLACE / EVENT SELECTED 
-	$scope.checkinsForPlace = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"+$routeParams.placeID+'/checkins/'));
+	// QUERY CURRENT CHECKINS FOR THE PLACE / EVENT SELECTED 
+	$scope.checkinsForPlace = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/places/"+$routeParams.placeID+'/checkins/'));
 	// console.log($scope.checkinsForPlace);
-	$scope.rsvpsForPlace = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"+$routeParams.placeID+'/rsvps/'));
+	$scope.rsvpsForPlace = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/events/"+$routeParams.placeID+'/rsvps/'));
 	// console.log($scope.rsvpsForPlace);
 
-	$scope.didtheycheckintho = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"+$routeParams.placeID+'/rsvps/'));
+	// working on a way to tell if user already checked in at a place or event
+	// $scope.didtheycheckintho = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/event/"+$routeParams.placeID+'/rsvps/'));
 
 
 

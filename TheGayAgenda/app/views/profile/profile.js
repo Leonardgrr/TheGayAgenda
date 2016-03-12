@@ -46,9 +46,17 @@ angular.module('myApp.profile', ['ngRoute'])
 		// QUERY TO GET ALL THE USER RSVPS
 		$scope.currentUserRSVP = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/pins/"+$rootScope.currentUser+"/rsvps/"));
 		console.log($scope.currentUserRSVP);
+		$scope.currentUserRSVP.$loaded(function() {
+		    $rootScope.rsvpExists = $scope.currentUserRSVP.$value !== null;
+		   console.log($rootScope.rsvpExists);
+		});
 	    // QUERY TO GET ALL THE USER CHECKINS
 		$scope.currentUserCheckIn = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/pins/"+$rootScope.currentUser+"/checkins/"));
 	    console.log($scope.currentUserCheckIn);
+	    $scope.currentUserCheckIn.$loaded(function() {
+		    $rootScope.checkinExists = $scope.currentUserCheckIn.$value !== null;
+		   console.log($rootScope.checkinExists);
+		});
 	    // calling $save() on the synchronized object syncs all data back to our database
 	    $scope.saveProfile = function() {
 	      $scope.profile.$save().then(function() {
@@ -118,9 +126,11 @@ angular.module('myApp.profile', ['ngRoute'])
 	];
 
 	// QUERY FOR GETTING THE CHECK CHECKINS/RSVPS FOR PLACES/EVENTS
-	$scope.eventplace = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"));
+	// $scope.eventplace = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"));
+	$scope.places = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/places/"));
+	$scope.events = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/events/"));
 	// console.log($scope.eventplace);
-
+		
 
 
 }]);

@@ -9,6 +9,16 @@ angular.module('myApp.listing', ['ngRoute'])
   });
 }])
 
+// JUST A SIMPLE FILTER TO SHORTEN THE ABOUT ON LISTING VIEW
+.filter('ellipsis', function () {
+    return function (text, length) {
+        if (text.length > length) {
+            return text.substr(0, length) + " ... ";
+        }
+        return text;
+    }
+}) 
+
 .controller('listingCtrl', ['$routeParams', '$rootScope', '$scope', '$firebaseAuth', '$firebaseObject', '$firebaseArray', '$route', 
 	function($routeParams, $rootScope, $scope, $firebaseAuth, $firebaseObject, $firebaseArray, $route, user, Auth) {
 	var ref = new Firebase("https://thegayagenda.firebaseio.com");
@@ -31,6 +41,8 @@ angular.module('myApp.listing', ['ngRoute'])
 	var listingRef = new Firebase("https://thegayagenda.firebaseio.com/eventplace/"+$routeParams.category);
 	
 	// console.log($scope.category);
+
+
 	
 
 }]);
