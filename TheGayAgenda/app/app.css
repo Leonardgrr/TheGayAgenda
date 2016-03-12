@@ -226,5 +226,49 @@ img {
   text-transform: uppercase;
 }
 
+#imagecontainer{ 
+  background: url(media/emberoptimized.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+/*  color: white;*/
+}
+
+#cardcontent{
+  color: white;
+  background-color: transparent;
+}
+
+.fillerContent{
+  color: white;
+  /*margin: 0 50px 0 50px ;*/
+  max-width: 400px;
+}
+
+.header{
+  margin-bottom: 200px;
+}
+
+.header2{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.headertext{
+  text-decoration: none;
+  color: #ED1E79;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.cardaction{
+  font-weight: 900;
+}
+/*.content{
+  min-height: 800px;
+}
+*/
 
 

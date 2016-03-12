@@ -1,9 +1,91 @@
-<div layout="column" layout-align="center center">
-	<h1>Welcome </h1>
-<!-- 	<md-button class="md-primary md-raised" ng-click="showAdvanced($event)" flex="100" flex-gt-md="auto">
-      Custom Dialog
-    </md-button> -->
+<div  id="imagecontainer">
+	<div layout="column" layout-align="center center" class="content"  >
+		<!-- <h1>Welcome  to Orlando</h1>
+	    <md-button id="btn0" href="#/login">Login</md-button> -->
+		<!-- <md-toolbar class="md-accent" layout="row" layout-align="center center">
+			<h2>The Gay Agenda</h2>
+		</md-toolbar> -->
+	<md-toolbar class="md-accent" >
+		<div class="md-toolbar-tools" >
+		  <h2>
+		    <span>The gay agenda</span>
+		  </h2>
+		  <span flex></span>
+		  <md-button href="#/login"  aria-label="Favorite">
+		    Log In
+		  </md-button>
+		  <!-- <md-button href="#/login"  aria-label="Home">
+		    Sign Up
+		  </md-button> -->
+		</div>
+	</md-toolbar>
 
-    <md-button id="btn0" href="#/login">Login</md-button>
 
+
+<md-content id="imagecontainer" >
+	<div class="fillerContent md-padding" layout="column" layout-align="center center" >
+		<h1 class="header">Welcome</h1>
+	</div>
+
+
+	<div class="fillerContent md-padding" layout="column" layout-align="center center" >
+  	<p>You are cordially invited to explore all that the city beautiful has to offer. You might notice that Orlando Doesn't have a formal Gayborhood </p>
+  	</div>
+
+    <md-card>
+      <img ng-hide="profile.label" class="thumb" src="media/pin.png">
+        <!-- <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"> -->
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Explore Places</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>
+            Wanna find places other than the typical LGBT night clubs and bars? Need a new wig for your next hot drog show? We gotchu girl! Looking for someplace to eat? We have that too. We have a list of shops and venues that are owned and operated by the LGBT or that are allies within the community. 
+          </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-accent cardaction" href="#/login">Sign Up</md-button>
+        </md-card-actions>
+      </md-card>
+		
+
+  <div class="fillerContent md-padding" layout="column" layout-align="center center" >
+  	<h2 class="header2">We have a listing curated by locals to get you the places to check out around town.</h2>
+  </div>
+
+
+    <md-card>
+      <img ng-hide="profile.label" class="thumb" src="media/calendar.png">
+        <!-- <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"> -->
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Attend Events</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>
+            Don't miss out on the hottest events around town, from PRIDE to GAY DAYS we know exactly when and where to be, no concierge needed.</p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-accent cardaction" href="#/login">Sign Up</md-button>
+        </md-card-actions>
+      </md-card>
+
+  <div class="fillerContent md-padding" layout="column" layout-align="center center" >
+  	<h1 class="header3 md-accent" ><a class="headertext" href="#/login">Sign Up</a></h1>
+  </div>
+
+  <div class="fillerContent md-padding" layout="column" layout-align="center center" >
+  	<h2 class="header2">What are you waiting for?</h2>
+  </div>	
+
+	   
+</md-content>
+
+
+
+
+	</div>
 </div>
