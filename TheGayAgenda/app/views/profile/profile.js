@@ -47,7 +47,7 @@ angular.module('myApp.profile', ['ngRoute'])
 		$scope.currentUserRSVP = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/pins/"+$rootScope.currentUser+"/rsvps/"));
 		console.log($scope.currentUserRSVP);
 		$scope.currentUserRSVP.$loaded(function() {
-		    $rootScope.rsvpExists = $scope.currentUserRSVP.$value !== null;
+		    $rootScope.rsvpExists = $scope.currentUserRSVP.$value == null;
 		   console.log($rootScope.rsvpExists);
 		});
 	    // QUERY TO GET ALL THE USER CHECKINS
@@ -85,28 +85,28 @@ angular.module('myApp.profile', ['ngRoute'])
 
 
 	//User Check In Function
-	$scope.newCheckIn = function(){
-		console.log("You have checked in");
-		$scope.checkIn.$add({
-			category : $scope.newCheckIn.category,
-			points: $scope.newCheckIn.points,
-			user: $scope.newCheckIn.user,
-			pin: $scope.newCheckIn.pin,
-			venue: $scope.newCheckIn.venue	
-		})
-	}
+	// $scope.newCheckIn = function(){
+	// 	console.log("You have checked in");
+	// 	$scope.checkIn.$add({
+	// 		category : $scope.newCheckIn.category,
+	// 		points: $scope.newCheckIn.points,
+	// 		user: $scope.newCheckIn.user,
+	// 		pin: $scope.newCheckIn.pin,
+	// 		venue: $scope.newCheckIn.venue	
+	// 	})
+	// }
 
 	// User RSVP Function
-	$scope.newRSVP = function(){
-		console.log("You have RSVP an event");
-		$scope.rsvp.$add({
-			category : $scope.newRSVP.category,
-			points: $scope.newRSVP.points,
-			user: $scope.newRSVP.user,
-			pin: $scope.newRSVP.pin,
-			venue: $scope.newRSVP.venue			
-		})
-	}
+	// $scope.newRSVP = function(){
+	// 	console.log("You have RSVP an event");
+	// 	$scope.rsvp.$add({
+	// 		category : $scope.newRSVP.category,
+	// 		points: $scope.newRSVP.points,
+	// 		user: $scope.newRSVP.user,
+	// 		pin: $scope.newRSVP.pin,
+	// 		venue: $scope.newRSVP.venue			
+	// 	})
+	// }
 	$scope.friller = $firebaseObject(ref.child('admins').child('users'));
 	
 	$scope.show = function(){

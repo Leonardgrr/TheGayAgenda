@@ -41,10 +41,10 @@ angular.module('myApp.login', ['ngRoute'])
 			  	user.$save();	
 		  	}
 		}
-		//  else {
-		//   	//if user not logged in
-		//   	$location.path('/');
-		// }
+		 else {
+		  	//if user not logged in
+		  	$location.path('#/home');
+		}
 	}
 
 	$scope.loginGoogle = function(){
@@ -55,6 +55,7 @@ angular.module('myApp.login', ['ngRoute'])
 		  $scope.userData = authData;
 		}).catch(function(error) {
 		  console.error("Authentication failed:", error);
+		  $location.path('#/home');
 		})
 	}
 

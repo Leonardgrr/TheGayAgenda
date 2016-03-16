@@ -5,7 +5,6 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.login',
   'myApp.home',
-  'myApp.view2',
   'myApp.profile',
   'myApp.listing',
   'myApp.detail',
@@ -22,15 +21,17 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/home'});
 }])
 
-.config(function (cloudinaryProvider) {
+.config(function (cloudinaryProvider, $mdThemingProvider) {
   cloudinaryProvider.config({
     upload_endpoint: 'https://api.cloudinary.com/v1_1/', // default
     cloud_name: 'dkkcd8ay6', // required
     upload_preset: 'o4r47vnw', // optional
   });
+
+  $mdThemingProvider.theme('default')
+    .primaryPalette('pink')
+    .accentPalette('indigo');
 })
-
-
   
 
 .controller('homeCtrl', function ($scope, $timeout, $mdSidenav, $log) {

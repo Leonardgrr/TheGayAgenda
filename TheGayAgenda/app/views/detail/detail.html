@@ -83,15 +83,16 @@
     </p>
    <p>
   </div>
+
 	<div flex>
   <!-- USER CHECK IN FORM -->
-	<form ng-submit="newCheckIn()" >
+	<form ng-submit="newCheckIn()" ng-hide="user_is_checked_in">
 		<md-content layout="row" layout-align="end center">
 			<md-content aria-label="Player Pin">
 				<img class="pinThumbCheckIn" src="media/pin.png"></img>
 			</md-content>
 		</md-content>
-		<div layout="" layout-sm="column" ng-hide="true">
+		<div layout="" layout-sm="column" ng-hide="true" >
       <md-input-container flex="">
         <label>category</label>
         <input name="category"  ng-model="newCheckIn.category" ng-init="newCheckIn.category=item.category" ></input>
@@ -145,7 +146,7 @@
     <p class="address">
       <strong>Address</strong> {{item.address}}<br>
     </p>
-    <a class="directions" href="https://maps.google.com?saddr=Current+Location&daddr={{item.address}}">Get Directions</a>
+    <a target="_blank" class="directions" href="https://maps.google.com?saddr=Current+Location&daddr={{item.address}}">Get Directions</a>
     <p>
   		<strong>About</strong><br>
   		{{item.about}}
