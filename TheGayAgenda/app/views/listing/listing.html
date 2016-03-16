@@ -69,24 +69,19 @@
 				<div flex layout="column" >
 				<!-- <div flex layout="column" ng-repeat="item in places"> -->
 				<div flex-xs flex-gt-xs="50" layout="column" ng-repeat="item in places">
-				<md-card class="{{item.category}}" ng-show="item.category === '{{category}}'" >
+				<a href="#/detail/{{item.$id}}" class="removeUnderline"><md-card class="{{item.category}}" ng-show="item.category === '{{category}}'" >
 				<!-- <md-card class="{{item.category}}" ng-show="item.category === '{{category}}'"> -->
 					<md-card-header>
 					  <md-card-avatar>
 					    <img src="media/mapThumb.png"/>
 					  </md-card-avatar>
 					  <md-card-header-text>
-					    <span class="md-title">{{item.eventName}}</span>
-					    <span class="mdsubhead">{{item.area}}</span>
+					    <span class=" mdsubhead">{{item.venueName}}</span>
+					    <span class="md-title">{{item.area}}</span>
 					  </md-card-header-text>
 					</md-card-header>
 					<!-- <img src="{{place.image}}" class="md-card-image" alt="Washed Out"> -->
 					<img src="{{item.image}}" class="md-card-image">
-					<md-card-title>
-					  <md-card-title-text>
-					    <span class="md-headline">{{item.venueName}}</span>
-					  </md-card-title-text>
-					</md-card-title>
 					<md-card-content>
 						<p>
 						{{item.about| ellipsis:150}}
@@ -107,10 +102,9 @@
 							</md-card-icon-actions>
 						</md-card-actions>
 					</md-card-content>
-				</md-card>
+				</md-card></a>
 				</div>
 				</div>
-
 			</md-content>
       </md-tab>
       <md-tab label="events">
@@ -119,24 +113,19 @@
 			<div flex layout="column" >
 			<!-- <div flex layout="column" ng-repeat="item in places"> -->
 			<div flex-xs flex-gt-xs="50" layout="column" ng-repeat="item in events">
-			<md-card class="{{item.category}}" ng-show="item.category === '{{category}}'" >
+			<a href="#/detail/{{item.$id}}" class="removeUnderline"><md-card class="{{item.category}}" ng-show="item.category === '{{category}}'" >
 			<!-- <md-card class="{{item.category}}" ng-show="item.category === '{{category}}'"> -->
 				<md-card-header>
 				  <md-card-avatar>
 				    <img src="media/calendarThumb.png"/>
 				  </md-card-avatar>
 				  <md-card-header-text>
-				    <span class="md-title">{{item.eventName}}</span>
-				    <span class="mdsubhead">{{item.area}}</span>
+				  	<span class=" mdsubhead">{{item.eventName}}</span>
+					<span class="md-title">{{item.area}}</span>
 				  </md-card-header-text>
 				</md-card-header>
 				<!-- <img src="{{place.image}}" class="md-card-image" alt="Washed Out"> -->
 				<img src="{{item.image}}" class="md-card-image">
-				<md-card-title>
-				  <md-card-title-text>
-				    <span class="md-headline">{{item.venueName}}</span>
-				  </md-card-title-text>
-				</md-card-title>
 				<md-card-content>
 					<p>
 					{{item.about| ellipsis:150}}
@@ -157,7 +146,7 @@
 						</md-card-icon-actions>
 					</md-card-actions>
 				</md-card-content>
-			</md-card>
+			</md-card></a>
 			</div>
 
 			</md-content>

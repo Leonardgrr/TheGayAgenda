@@ -247,12 +247,11 @@ img {
 }
 
 .header{
-  margin-bottom: 200px;
+  margin-bottom: 300px;
 }
 
-.header2{
-  margin-top: 100px;
-  margin-bottom: 100px;
+.header3{
+  margin-bottom: 350px;
 }
 
 .headertext{
@@ -266,10 +265,28 @@ img {
   font-weight: 900;
 }
 
-/*.content{
-  min-height: 800px;
+.landingcard{
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
-*/
+.content{
+  background-color: transparent;
+}
 
+
+.removeUnderline{
+  text-decoration: none;
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min--moz-device-pixel-ratio: 2),
+only screen and (-moz-min-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi),
+only screen and (min-resolution: 2dppx) { 
+    /* styles for Retina-type displays */
+}
 
 

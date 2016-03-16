@@ -68,7 +68,6 @@ angular.module('myApp.admin', ['ngRoute','angular-cloudinary', 'ngMaterialDatePi
 					friday : $scope.newplace.friday,
 					saturday : $scope.newplace.saturday,
 					sunday : $scope.newplace.sunday,
-					eventName : $scope.newplace.eventName,
 					about : $scope.newplace.about,
 					image : $scope.imageUrl
 				})

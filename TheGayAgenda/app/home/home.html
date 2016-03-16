@@ -1,5 +1,5 @@
-<div  id="imagecontainer">
-	<div layout="column" layout-align="center center" class="content"  >
+<div id="imagecontainer">
+	<div layout="column" layout-align="center center"   >
 		<!-- <h1>Welcome  to Orlando</h1>
 	    <md-button id="btn0" href="#/login">Login</md-button> -->
 		<!-- <md-toolbar class="md-accent" layout="row" layout-align="center center">
@@ -9,17 +9,22 @@
 
 
 
-<md-content id="imagecontainer" >
+<md-content   class="content">
 	<div class="fillerContent md-padding" layout="column" layout-align="center center" >
 		<h1 class="header">Welcome <br/> To the Gay Agenda</h1>
 	</div>
 
-
-	<div class="fillerContent md-padding" layout="column" layout-align="center center" >
-  	<p>You are cordially invited to explore all that the city beautiful has to offer. You might notice that Orlando Doesn't have a formal Gayborhood. But don't worry about that, because your sassy gay friend is here to help. </p>
+  <div layout="column" layout-align="center center" class="fillerContent">
+    <md-button href="#/login" class="md-raised md-primary">Sign In</md-button>
+  </div>
+  
+	<div class="fillerContent md-padding landingcard" layout="column" layout-align="center center" >
+  	<p>You are cordially invited to explore all that the city beautiful has to offer. You might notice that Orlando Doesn't have a formal Gayborhood. But don't worry about that, because your sassy gay friend is here to help. </p> </md-content>
   	</div>
+  
 
-    <md-card>
+
+    <md-card class="landingcard">
       <img ng-hide="profile.label" class="thumb" src="media/pin.png">
         <!-- <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"> -->
         <md-card-title>
@@ -43,7 +48,7 @@
   </div>
 
 
-    <md-card>
+    <md-card class="landingcard">
       <img ng-hide="profile.label" class="thumb" src="media/calendar.png">
         <!-- <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"> -->
         <md-card-title>
@@ -61,14 +66,13 @@
       </md-card>
 
   <div class="fillerContent md-padding" layout="column" layout-align="center center" >
-  	<h1 class="header3 md-accent" ><a class="headertext" href="#/login">Sign Up</a></h1>
+    <h2 class="header2">What are you waiting for?</h2>
+  </div>  
+
+  
+  <div layout="column" layout-align="center center" class="fillerContent header">
+    <md-button href="#/login" class="md-raised md-primary">Join Now</md-button>
   </div>
-
-  <div class="fillerContent md-padding" layout="column" layout-align="center center" >
-  	<h2 class="header2">What are you waiting for?</h2>
-  </div>	
-
-	   
 </md-content>
 
 
