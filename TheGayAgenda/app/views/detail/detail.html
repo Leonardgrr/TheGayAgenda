@@ -237,13 +237,13 @@
   </div>
   <div flex>
   <!-- USER RSVP FORM -->
-  <form ng-submit="newRSVP()" >
+  <form ng-submit="newRSVP()" ng-hide="user_has_rsvp">
     <md-content layout="row" layout-align="end center">
       <md-content aria-label="Player Pin">
         <img class="pinThumbCheckIn" src="media/pin.png"></img>
       </md-content>
     </md-content>
-    <div layout="" layout-sm="column" ng-hide="true">
+    <div layout="" layout-sm="column" ng-hide="false">
       <md-input-container flex="">
         <label>category</label>
         <input name="category"  ng-model="newRSVP.category" ng-init="newRSVP.category=item.category" ></input>
@@ -316,7 +316,6 @@
             </div>
           </md-list-item>
         </md-list>
-
         <!-- LIST OF RSVPS -->
         <md-list>
           <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->

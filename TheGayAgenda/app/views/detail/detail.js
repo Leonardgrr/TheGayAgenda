@@ -29,6 +29,16 @@ angular.module('myApp.detail', ['ngRoute'])
 		$rootScope.authorize(authData);
 		$scope.userData = authData;
 		// $rootScope.currentUser = authData.uid;
+		// get the users pin label
+		$scope.currentUserDone = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/places/"+$routeParams.placeID+'/checkins/'+$scope.currentUser));
+		console.log($scope.currentUserDone.$id);
+		var list = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"+$routeParams.placeID+'/checkins'));
+			console.log(list.$indexFor($scope.currentUser)); // 0
+		if ($scope.currentUser === $scope.currentUserDone.$id){
+			console.log("this user has already checked in");
+		}else{
+			console.log("this user did not check in");
+		}
 		
 		new Firebase("https://thegayagenda.firebaseio.com/pins/"+authData.uid).once('value', function(snap) {
 			$rootScope.userpin = snap.val();
@@ -47,6 +57,20 @@ angular.module('myApp.detail', ['ngRoute'])
 			}else{
 				// USER IS NOT CHECKED IN AT THE CURRENT PLACE
 				$scope.user_is_checked_in = false;
+			}
+		});
+
+		// CHECK TO SEE IF THE USER HAS RSVP
+		new Firebase("https://thegayagenda.firebaseio.com/events/"+$routeParams.placeID+'/rsvps/'+$scope.currentUser).once('value', function(snap) {
+			$rootScope.userpin = snap.val();
+			console.log('I fetched a user!', snap.val());
+			console.log("label for place ", $rootScope.userpin.user);
+			if($scope.currentUser === $rootScope.userpin.user){
+				// THE USER IS CHECKED IN AT THE CURRENT PLACE
+				$scope.user_has_rsvp = true;
+			}else{
+				// USER IS NOT CHECKED IN AT THE CURRENT PLACE
+				$scope.user_has_rsvp = false;
 			}
 		});
 
