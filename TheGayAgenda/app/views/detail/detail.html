@@ -56,25 +56,46 @@
 
 	<h1 layout="column" layout-align="center center">{{item.venueName}}</h1>
   <!-- UNCOMMENT THIS! -->
-	<img layout="column" layout-align="center center" src="{{item.image}}">
-
+	<img layout="column" layout-align="center center" ng-src="{{item.image}}">
 <div layout="row">
   <div flex>
-    
-    </h2>
-    <p>
-      <strong>Mon</strong><em>{{item.monday}}</em><br>
-      <strong>Tue</strong><em>{{item.tuesday}}</em><br>
-      <strong>Wed</strong><em>{{item.wednesday}}</em><br>
-      <strong>Thu</strong><em>{{item.thursday}}</em><br>
-      <strong>Fri</strong><em>{{item.friday}}</em><br>
-      <strong>Sat</strong><em>{{item.saturday}}</em><br>
-      <strong>Sun</strong><em>{{item.sunday}}</em><br>
-    </p>
-   <p>
+    <div layout="row" flex class="daywidth">
+      <div class="day"><p><strong>Mon</strong></p></div>
+      <div><p><em>{{item.monday}}</em></p></div>
+    </div>
+    <div layout="row" flex class="daywidth">
+      <div class="day"><p><strong>Tue</strong></p></div>
+      <div><p><em>{{item.tuesday}}</em></p></div>
+    </div>
+    <div layout="row" flex class="daywidth">
+      <div class="day"><p><strong>Wed</strong></p></div>
+      <div><p><em>{{item.wednesday}}</em></p></div>
+    </div>
+    <div layout="row" flex class="daywidth">
+      <div class="day"><p><strong>Thu</strong></p></div>
+      <div><p><em>{{item.thursday}}</em></p></div>
+    </div>
+    <div layout="row" flex class="daywidth">
+      <div class="day"><p><strong>Fri</strong></p></div>
+      <div><p><em>{{item.friday}}</em></p></div>
+    </div>
+    <div layout="row" flex class="daywidth">
+      <div class="day"><p><strong>Sat</strong></p></div>
+      <div><p><em>{{item.saturday}}</em></p></div>
+    </div>
+    <div layout="row" flex class="daywidth">
+      <div class="day"><p><strong>Sun</strong></p></div>
+      <div><p><em>{{item.sunday}}</em></p></div>
+    </div>
   </div>
 
 	<div flex>
+    <md-content layout="column" layout-align="end center" ng-show="user_is_checked_in">
+      <md-content aria-label="Player Pin">
+        <img class="pinThumbCheckIn" src="media/pin.png"></img>
+      </md-content>
+      <p>You have checked in</p>
+    </md-content>
   <!-- USER CHECK IN FORM -->
 	<form ng-submit="newCheckIn()" ng-hide="user_is_checked_in">
 		<md-content layout="row" layout-align="end center">
@@ -82,7 +103,7 @@
 				<img class="pinThumbCheckIn" src="media/pin.png"></img>
 			</md-content>
 		</md-content>
-		<div layout="" layout-sm="column" ng-hide="false" >
+		<div layout="" layout-sm="column" ng-hide="true" >
       <md-input-container flex="">
         <label>category</label>
         <input name="category"  ng-model="newCheckIn.category" ng-init="newCheckIn.category=item.category" ></input>
@@ -98,7 +119,7 @@
       <md-input-container flex="">
         <label>{{userpin.label}}</label>
         <!-- <input name="user" ng-model="newRSVP.pin" ng-init="newRSVP.pin=pins[item.$id].label"></input> -->
-        <input name="label" ng-model="newCheckIn.pin" ng-init="newCheckIn.pin=userpin.label"></input>
+        <input name="label" ng-model="userpin.label" ng-init="newCheckIn.pin=userpin.label"></input>
       </md-input-container>
       <md-input-container flex="">
         <label>place/event</label>
@@ -177,7 +198,7 @@
 
   <h1 layout="column" layout-align="center center">{{item.eventName}}</h1>
 
-  <img layout="column" layout-align="center center" src="{{item.image}}">
+  <img layout="column" layout-align="center center" ng-src="{{item.image}}">
 
 <div layout="row">
   <div flex>

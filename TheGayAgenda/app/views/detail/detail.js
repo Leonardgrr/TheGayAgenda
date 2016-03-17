@@ -60,6 +60,26 @@ angular.module('myApp.detail', ['ngRoute'])
 			}
 		});
 
+	var reffffff = new Firebase("https://thegayagenda.firebaseio.com/events/"+$routeParams.placeID+'/rsvps/'+$scope.currentUser).once('value', function(snap);
+
+     var objjjj = $firebaseObject(reffffff);
+
+     // to take an action after the data loads, use the $loaded() promise
+     objjjj.$loaded().then(function() {
+        console.log("loaded record:", objjjj.$id, objjjj.someOtherKeyInData);
+
+       // To iterate the key/value pairs of the object, use angular.forEach()
+       angular.forEach(objjjj, function(value, key) {
+          console.log(key, value);
+       });
+     });
+
+
+
+
+
+
+
 		// CHECK TO SEE IF THE USER HAS RSVP
 		new Firebase("https://thegayagenda.firebaseio.com/events/"+$routeParams.placeID+'/rsvps/'+$scope.currentUser).once('value', function(snap) {
 			$rootScope.userpin = snap.val();

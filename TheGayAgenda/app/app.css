@@ -285,4 +285,11 @@ img {
   background-repeat: no-repeat; /*Prevent showing multiple background images*/
 }
 
+.day{
+  width: 50px;
+}
+
+.daywidth{
+  height: 15px;
+}
 
