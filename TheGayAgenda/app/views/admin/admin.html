@@ -14,9 +14,6 @@
         <md-icon class="material-icons">person_pin_circle</md-icon>
         <md-tooltip>Profile</md-tooltip>
       </md-button>
-      <!-- <md-button ng-controller="loginCtrl" ng-hide="userData" href="#/login" aria-label="signin">
-        Sign In | Sign Up
-      </md-button> -->
     </div>
   </md-toolbar>
 </md-content>
@@ -24,17 +21,16 @@
 
 
 <section layout="row" flex>
-<!--  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"> -->
   <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="">
-    <md-toolbar class="md-theme-indigo">
-      <h1 layout="column" layout-align="center" class="md-toolbar-tools">Menu</h1>
+    <md-toolbar class="md-theme-indigo md-toolbar-tools" >
+      <md-button ng-click="close()" class="md-icon-button" ng-controller="LeftCtrl">
+          <md-icon class="material-icons">arrow_back</md-icon>
+      </md-button><span flex></span>
+      <h1 layout="column" layout-align="center center" class="md-toolbar-tools">Menu</h1>
     </md-toolbar>
-    <md-content layout-padding>
+    <md-content layout-padding class="navi">
       <ul>
-        <!-- <li><md-button href="#/view1">View 1</md-button></li>
-        <li><md-button href="#/view2">View 2</md-button></li> -->
-        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/admin">admin</md-button></li>
-        <!-- <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/listing">listing</md-button></li> -->
+        <li ng-show="userData.uid === friller.$value" layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/admin">admin</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/profile">Profile</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn1" href="#/listing/sports">Sports</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn2" href="#/listing/family">Family</md-button></li>
@@ -44,15 +40,6 @@
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn6" href="#/listing/volunteer">Volunteer</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn7" href="#/listing/safePlaces">Safe Places</md-button></li>
       </ul>
-
-<!--       <md-button ng-click="close()" class="md-primary" hide-gt-md>
-        Close Sidenav Left
-      </md-button> -->
-      <div>
-      <md-button ng-click="close()" class="md-primary" ng-controller="LeftCtrl">
-          Close Menu
-      </md-button>
-      </div>
       <p hide-md show-gt-md>
         This sidenav, use it to explore the different categories acitivities. Each event and venue will have a color associated with it and level up your pin, have fun!.
       </p>
@@ -111,10 +98,6 @@
                   <md-input-container>
                     Select a file<input  name="file" ngf-select="uploadFiles($files)" ng-model="newPlace.image">
                   </md-input-container>
-                  <!-- <md-input-container class="md-block" flex-gt-sm>
-                    <label>Image</label>
-                    <input type="file" ngf-select="uploadFiles($files)"  required ng-model="newEvent.image"> 
-                  </md-input-container> -->
                 </div>
                 <div layout-gt-sm="row">
                   <md-input-container class="md-block" flex-gt-sm>
@@ -211,16 +194,6 @@
                     </md-select>
                   </md-input-container>
                 </div>
-                <!-- <div layout-gt-sm="row">
-                  <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
-                </div>
-                <div layout-gt-sm="row">
-                  <md-input-container class="md-block" flex-gt-sm>
-                    <input mdc-datetime-picker="" date="false" time="true" type="text" id="time" short-time="true"
-                      placeholder="Time" min-date="minDate" format="hh:mm a" ng-model="time" class=" 
-                    md-input">
-                  </md-input-container>
-                </div> -->
                 <div layout-gt-sm="row">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Time</label>
@@ -281,40 +254,5 @@
     </md-tabs>
   </md-content>
 
-
-
-
-
-
-
-
-<!-- 
-<md-content layout="column">
-  <md-content class="md-padding">
-    <div>
-      <md-card-content>
-        <h2 class="md-title">Add an new admin</h2>
-        <br>
-        <br>
-      <form ng-submit="newAdmin()">
-        <h3>Wanna be an admin?</h3>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>user</label>
-            <input ng-model="newAdmin.admin"></input>
-          </md-input-container>
-        </div>
-        <div class="md-actions" layout="row" layout-align="end center">
-          <md-button type="submit">
-          Sumbit
-            <md-icon class="material-icons">send</md-icon>
-            <md-tooltip>Submit</md-tooltip>
-          </md-button>
-        </div>
-      </form>
-      </md-card-content>
-    </div>
-  </md-content>
-</md-content> -->
 
 

@@ -40,8 +40,7 @@ angular.module('myApp.login', ['ngRoute'])
 			  	user.userName = authData.facebook.displayName;
 			  	user.$save();	
 		  	}
-		}
-		 else {
+		}else {
 		  	//if user not logged in
 		  	$location.path('#/home');
 		}

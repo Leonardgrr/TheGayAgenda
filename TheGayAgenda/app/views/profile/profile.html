@@ -24,12 +24,15 @@
 
 
 
-<section layout="row">
+<section layout="row" flex>
   <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="">
-    <md-toolbar class="md-theme-indigo">
-      <h1 layout="column" layout-align="center" class="md-toolbar-tools">Menu</h1>
+    <md-toolbar class="md-theme-indigo md-toolbar-tools" >
+      <md-button ng-click="close()" class="md-icon-button" ng-controller="LeftCtrl">
+          <md-icon class="material-icons">arrow_back</md-icon>
+      </md-button><span flex></span>
+      <h1 layout="column" layout-align="center center" class="md-toolbar-tools">Menu</h1>
     </md-toolbar>
-    <md-content layout-padding>
+    <md-content layout-padding class="navi">
       <ul>
         <li ng-show="userData.uid === friller.$value" layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/admin">admin</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/profile">Profile</md-button></li>
@@ -41,14 +44,8 @@
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn6" href="#/listing/volunteer">Volunteer</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn7" href="#/listing/safePlaces">Safe Places</md-button></li>
       </ul>
-
-      <div>
-      <md-button ng-click="close()" class="md-primary" ng-controller="LeftCtrl">
-          Close Menu
-      </md-button>
-      </div>
       <p hide-md show-gt-md>
-        This sidenav, use it to explore the different categories acitivities. Each event and venue will have a color associated with it and level up your pin, have fun!
+        This sidenav, use it to explore the different categories acitivities. Each event and venue will have a color associated with it and level up your pin, have fun!.
       </p>
     </md-content>
   </md-sidenav>

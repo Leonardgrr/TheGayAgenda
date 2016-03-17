@@ -76,11 +76,10 @@ angular.module('myApp.profile', ['ngRoute'])
 		  	// $rootScope.currentUser = authData.uid;
 		  	// console.log($rootScope.currentUser);
 		  	var user = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"+authData.uid));
+		}else {
+		  	//if user not logged in
+		  	$location.path('#/home');
 		}
-		//  else {
-		//   	//if user not logged in
-		//   	$location.path('/');
-		// }
 	}
 
 

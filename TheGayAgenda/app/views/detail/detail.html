@@ -23,12 +23,14 @@
 
 
 <section layout="row" flex>
-<!--  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"> -->
   <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="">
-    <md-toolbar class="md-theme-indigo">
-      <h1 layout="column" layout-align="center" class="md-toolbar-tools">Menu</h1>
+    <md-toolbar class="md-theme-indigo md-toolbar-tools" >
+      <md-button ng-click="close()" class="md-icon-button" ng-controller="LeftCtrl">
+          <md-icon class="material-icons">arrow_back</md-icon>
+      </md-button><span flex></span>
+      <h1 layout="column" layout-align="center center" class="md-toolbar-tools">Menu</h1>
     </md-toolbar>
-    <md-content layout-padding>
+    <md-content layout-padding class="navi">
       <ul>
         <li ng-show="userData.uid === friller.$value" layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/admin">admin</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn0" href="#/profile">Profile</md-button></li>
@@ -41,11 +43,6 @@
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn7" href="#/listing/safePlaces">Safe Places</md-button></li>
       </ul>
 
-      <div>
-      <md-button ng-click="close()" class="md-primary" ng-controller="LeftCtrl">
-          Close Menu
-      </md-button>
-      </div>
       <p hide-md show-gt-md>
         This sidenav, use it to explore the different categories acitivities. Each event and venue will have a color associated with it and level up your pin, have fun!.
       </p>
@@ -53,24 +50,17 @@
   </md-sidenav>
 </section>
 <!-- End Tool Bar -->
-
-<!-- <li ng-repeat="item in admin | filter:name">{{ item | json }}</li> -->
-
-    <!-- <md-content >
-      <h2>{{currentDetail}}</h2>
-    </md-content> -->
-
 <md-content layout="row" layout-align="center center">
 
 <md-content flex layout-padding ng-repeat="item in places" ng-show="currentDetail === item.$id" id="detailThing">
 
-	<h1 layout="column" layout-align="center center">{{item.eventName}}</h1>
+	<h1 layout="column" layout-align="center center">{{item.venueName}}</h1>
   <!-- UNCOMMENT THIS! -->
 	<img layout="column" layout-align="center center" src="{{item.image}}">
 
 <div layout="row">
   <div flex>
-    <h2>{{item.venueName}}<br>
+    
     </h2>
     <p>
       <strong>Mon</strong><em>{{item.monday}}</em><br>
@@ -92,7 +82,7 @@
 				<img class="pinThumbCheckIn" src="media/pin.png"></img>
 			</md-content>
 		</md-content>
-		<div layout="" layout-sm="column" ng-hide="true" >
+		<div layout="" layout-sm="column" ng-hide="false" >
       <md-input-container flex="">
         <label>category</label>
         <input name="category"  ng-model="newCheckIn.category" ng-init="newCheckIn.category=item.category" ></input>
@@ -123,23 +113,6 @@
 </div>
 
   <br>
-
-    <!-- STILL WORKING ON A WAY TO BETTER DISPLAY HOURS OF OPERATION -->
-    <!-- <div>
-      <md-button ng-hide="hours" ng-click="hours=true" href="">
-        Open Times
-      </md-button><br>
-      <md-button ng-show="hours" ng-click="hours=false" href="">
-        Hide Hours
-      </md-button><br>
-      <strong ng-show="hours">Monday</strong><em ng-show="hours">{{item.monday}}</em><br ng-show="hours">
-      <strong ng-show="hours">Tuesday</strong><em ng-show="hours">{{item.tuesday}}</em><br ng-show="hours">
-      <strong ng-show="hours">Wednesday</strong><em ng-show="hours">{{item.wednesday}}</em><br ng-show="hours">
-      <strong ng-show="hours">Thursday</strong><em ng-show="hours">{{item.thursday}}</em><br ng-show="hours">
-      <strong ng-show="hours">Friday</strong><em ng-show="hours">{{item.friday}}</em><br ng-show="hours">
-      <strong ng-show="hours">Saturday</strong><em ng-show="hours">{{item.saturday}}</em><br ng-show="hours">
-      <strong ng-show="hours">Sunday</strong><em ng-show="hours">{{item.sunday}}</em><br ng-show="hours">
-    </div> -->
     <p class="contact">
       <strong>Contact</strong> {{item.contact}}<br>
     </p>
@@ -153,16 +126,9 @@
   	</p>
         <!-- LIST OF CHECKINS -->
         <md-list>
-          <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
-          <!-- <md-list-item ng-show="currentDetail === item.venue" ng-repeat="item in checkIn" class="md-3-line" > -->
           <md-list-item ng-repeat="item in checkinsForPlace" class="md-3-line" >
             <!-- <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar"> -->
             <div class="md-list-item-text">
-              <!-- <h3>{{users[item.user].userName}}</h3>
-              <p>
-              user is {{item.user}}<br>
-              pin is {{item.pin}}<br>
-              </p> -->
               <img ng-show="item.pin === 'Lipstick'" class="thumb" src="media/lipstick.png">
               <img ng-show="item.pin === 'Chapstick'" class="thumb" src="media/chapstick.png">
               <img ng-show="item.pin === 'Diesel'" class="thumb" src="media/diesel.png">
@@ -175,16 +141,8 @@
 
         <!-- LIST OF RSVPS -->
         <md-list>
-          <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
-          <!-- <md-list-item ng-show="currentDetail === item.venue" ng-repeat="item in checkIn" class="md-3-line" > -->
           <md-list-item ng-repeat="item in rsvpsForPlace" class="md-3-line" >
-            <!-- <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar"> -->
             <div class="md-list-item-text">
-              <!-- <h3>{{users[item.user].userName}}</h3>
-              <p>
-              user is {{item.user}}<br>
-              pin is {{item.pin}}<br>
-              </p> -->
               <img ng-show="item.pin === 'Lipstick'" class="thumb" src="media/lipstick.png">
               <img ng-show="item.pin === 'Chapstick'" class="thumb" src="media/chapstick.png">
               <img ng-show="item.pin === 'Diesel'" class="thumb" src="media/diesel.png">
@@ -218,7 +176,7 @@
 <md-content flex layout-padding ng-repeat="item in events" ng-show="currentDetail === item.$id" id="detailThing">
 
   <h1 layout="column" layout-align="center center">{{item.eventName}}</h1>
-  <!-- UNCOMMENT THIS! -->
+
   <img layout="column" layout-align="center center" src="{{item.image}}">
 
 <div layout="row">
@@ -226,13 +184,6 @@
     <h2>{{item.venueName}}<br>
         {{item.date}} @ {{item.time}}
     </h2>
-    
-  <!-- <md-button ng-hide="hours" ng-click="hours=true" href="">
-    Show Hours
-  </md-button>
-  <md-button ng-show="hours" ng-click="hours=false" href="">
-    Hide Hours
-  </md-button> -->
    <p>
   </div>
   <div flex>
@@ -295,18 +246,13 @@
       <strong>About</strong><br>
       {{item.about}}
     </p>
+    
         <!-- LIST OF CHECKINS -->
         <md-list>
           <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
-          <!-- <md-list-item ng-show="currentDetail === item.venue" ng-repeat="item in checkIn" class="md-3-line" > -->
           <md-list-item ng-repeat="item in checkinsForPlace" class="md-3-line" >
             <!-- <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar"> -->
             <div class="md-list-item-text">
-              <!-- <h3>{{users[item.user].userName}}</h3>
-              <p>
-              user is {{item.user}}<br>
-              pin is {{item.pin}}<br>
-              </p> -->
               <img ng-show="item.pin === 'Lipstick'" class="thumb" src="media/lipstick.png">
               <img ng-show="item.pin === 'Chapstick'" class="thumb" src="media/chapstick.png">
               <img ng-show="item.pin === 'Diesel'" class="thumb" src="media/diesel.png">
@@ -319,15 +265,9 @@
         <!-- LIST OF RSVPS -->
         <md-list>
           <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
-          <!-- <md-list-item ng-show="currentDetail === item.venue" ng-repeat="item in checkIn" class="md-3-line" > -->
           <md-list-item ng-repeat="item in rsvpsForPlace" class="md-3-line" >
             <!-- <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar"> -->
             <div class="md-list-item-text">
-              <!-- <h3>{{users[item.user].userName}}</h3>
-              <p>
-              user is {{item.user}}<br>
-              pin is {{item.pin}}<br>
-              </p> -->
               <img ng-show="item.pin === 'Lipstick'" class="thumb" src="media/lipstick.png">
               <img ng-show="item.pin === 'Chapstick'" class="thumb" src="media/chapstick.png">
               <img ng-show="item.pin === 'Diesel'" class="thumb" src="media/diesel.png">
