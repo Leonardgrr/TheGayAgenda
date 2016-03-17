@@ -17,19 +17,13 @@ angular.module('myApp.detail', ['ngRoute'])
 	$scope.authObj = $firebaseAuth(ref);
 	$scope.places = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"));
 	$scope.events = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/events/"));
-	// var list = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"));
-	// $scope.list = list;
 	var detailRef = new Firebase("https://thegayagenda.firebaseio.com/places/"+$routeParams.placeID);
 	$scope.currentDetail = $routeParams.placeID;
 	$scope.users = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"));
-	// $scope.player_pin = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/player_pin"));
-	// $scope.player_pins = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/player_pin/"));
-	// $scope.pins = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/player_pin/"));
 	$scope.authObj.$onAuth(function(authData) {
 		$rootScope.authorize(authData);
 		$scope.userData = authData;
-		// $rootScope.currentUser = authData.uid;
-		// get the users pin label
+		// GET USER LABEL
 		$scope.currentUserDone = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/places/"+$routeParams.placeID+'/checkins/'+$scope.currentUser));
 		console.log($scope.currentUserDone.$id);
 		var list = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"+$routeParams.placeID+'/checkins'));
@@ -40,11 +34,11 @@ angular.module('myApp.detail', ['ngRoute'])
 			console.log("this user did not check in");
 		}
 		
-		new Firebase("https://thegayagenda.firebaseio.com/pins/"+authData.uid).once('value', function(snap) {
-			$rootScope.userpin = snap.val();
-			console.log('I fetched a user!', snap.val());
-			console.log("label for place "+$rootScope.userpin.label);
-		});
+		// new Firebase("https://thegayagenda.firebaseio.com/pins/"+authData.uid).once('value', function(snap) {
+		// 	$rootScope.userpin = snap.val();
+		// 	console.log('I fetched a user!', snap.val());
+		// 	console.log("label for place "+$rootScope.userpin.label);
+		// });
 
 		// CHECK TO SEE IF THE USER IS CHECK IN
 		new Firebase("https://thegayagenda.firebaseio.com/places/"+$routeParams.placeID+'/checkins/'+$scope.currentUser).once('value', function(snap) {
@@ -59,25 +53,6 @@ angular.module('myApp.detail', ['ngRoute'])
 				$scope.user_is_checked_in = false;
 			}
 		});
-
-	var reffffff = new Firebase("https://thegayagenda.firebaseio.com/events/"+$routeParams.placeID+'/rsvps/'+$scope.currentUser).once('value', function(snap);
-
-     var objjjj = $firebaseObject(reffffff);
-
-     // to take an action after the data loads, use the $loaded() promise
-     objjjj.$loaded().then(function() {
-        console.log("loaded record:", objjjj.$id, objjjj.someOtherKeyInData);
-
-       // To iterate the key/value pairs of the object, use angular.forEach()
-       angular.forEach(objjjj, function(value, key) {
-          console.log(key, value);
-       });
-     });
-
-
-
-
-
 
 
 		// CHECK TO SEE IF THE USER HAS RSVP
@@ -105,10 +80,6 @@ angular.module('myApp.detail', ['ngRoute'])
 		if (authData) {
 		  	$scope.userData = authData;
 		  	$rootScope.currentUser = authData.uid;
-		  	
-		  	// console.log($scope.currentUser);
-
-		  	// console.log($rootScope.currentUser);
 		  	var user = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"+authData.uid));
 		  	if (authData.provider === "google"){
 			  	user.profilePic = authData.google.profileImageURL;
@@ -131,13 +102,11 @@ angular.module('myApp.detail', ['ngRoute'])
 	}
 
 	
-	//User Check In Function
-	// $scope.checkIn = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/checkIn"));
+	// USER CHECK IN FUNCTION
 	$scope.newCheckIn = function(){
 		// create a path for the rsvp for the current user
 		$scope.checkIn = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/pins/"+$scope.currentUser+"/checkins"));
 		// create a url to save the rsvp under the right place/event
-		
 		console.log("You have checked in");
 		$scope.checkIn.$add({
 			category : $scope.newCheckIn.category,
@@ -153,23 +122,12 @@ angular.module('myApp.detail', ['ngRoute'])
 				user: $scope.newCheckIn.user,
 				pin: $scope.newCheckIn.pin
 			}
-			// allusercheckIn.set(checkinDetails);
-			// allusercheckIn.$ref().child($scope.keepKey).set(checkinDetails);
 			allusercheckIn.$ref().child($scope.newCheckIn.user).set(checkinDetails);
 		});
 	}
 
-	// When you check in you want to save into pin/UserID/checkins 
-	// from the $add .then() grab the $uid of that checkin
-	// $scope.keepKey should equal that checkin's ID
-	// in the .then() save into $scope.alluserrsvp with data you want
-	// using both connects (User connect & Place connect)
-	// ng-hide=""
 
-
-
-
-	// User RSVP Function
+	// USER RSVP FUNCTION
 	$scope.newRSVP = function(){
 		// create a path for the rsvp for the current user
 		$scope.rsvp = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/pins/"+$scope.currentUser+"/rsvps"));

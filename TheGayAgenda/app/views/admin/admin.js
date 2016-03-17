@@ -18,6 +18,7 @@ angular.module('myApp.admin', ['ngRoute','angular-cloudinary', 'ngMaterialDatePi
 	$scope.events = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/events"));
 	$scope.admin = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/admin"));
 
+	// LIST OF CATEGORIES USERS CAN CHOOSE 
  	$scope.categories = [
 		"sports",
 		"family",
@@ -28,24 +29,27 @@ angular.module('myApp.admin', ['ngRoute','angular-cloudinary', 'ngMaterialDatePi
 		"safePlaces"
     ];
 
+    // LIST OF AREAS USERS CAN CHOOSE
     $scope.areas = [
 		"UpTown",
 		"MidTown",
 		"DownTown"
     ];
 
+    // LIST OF TYPES FOR CARD LISTING
     $scope.types = [
 		"place",
 		"event"
     ];
 
+    // LIST OF POINT VALUES
     $scope.points = [
 		5,
 		10,
 		15
     ];
 
-	//add new event and place function
+	// ADD A NEW PLACE FUNCTION
 	$scope.newplace = function(newPlace){
 		console.log("Did it add something?");
 		// newImage.image
@@ -94,10 +98,10 @@ angular.module('myApp.admin', ['ngRoute','angular-cloudinary', 'ngMaterialDatePi
 			});
 	}
 
-	//add new event function
+	// ADD NEW EVENT FUNCTION
 	$scope.newevent = function(newEvent){
 		console.log("new event function fired");
-		// newImage.image
+
 		var imageFile = newEvent.image;
 		console.log(imageFile);
 		cloudinary.upload(imageFile, { /* cloudinary options here */ })
@@ -147,7 +151,6 @@ angular.module('myApp.admin', ['ngRoute','angular-cloudinary', 'ngMaterialDatePi
 	$scope.upload = function(newEvent){
 		console.log(newEvent);
 		console.log(newEvent.image);
-		// $scope.imageUrl = 'http://res.cloudinary.com/dkkcd8ay6/image/upload/v1456528975/'+resp.public_id+'.'+resp.format;
 	}
 
 	

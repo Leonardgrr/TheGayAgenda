@@ -30,9 +30,7 @@ angular.module('myApp.profile', ['ngRoute'])
 	
 	$scope.testUsers = new Firebase("https://thegayagenda.firebaseio.com/users");
 	$scope.users = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"));
-	// $scope.player_pin = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/player_pin"));
 	$scope.player_pins = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/player_pin/"));
-	// $scope.pins = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/player_pin"));
 	$scope.checkIn = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/checkIn"));
 	$scope.rsvp = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/rsvp"));
 	$scope.authObj.$onAuth(function(authData) {
@@ -82,30 +80,7 @@ angular.module('myApp.profile', ['ngRoute'])
 		}
 	}
 
-
-	//User Check In Function
-	// $scope.newCheckIn = function(){
-	// 	console.log("You have checked in");
-	// 	$scope.checkIn.$add({
-	// 		category : $scope.newCheckIn.category,
-	// 		points: $scope.newCheckIn.points,
-	// 		user: $scope.newCheckIn.user,
-	// 		pin: $scope.newCheckIn.pin,
-	// 		venue: $scope.newCheckIn.venue	
-	// 	})
-	// }
-
-	// User RSVP Function
-	// $scope.newRSVP = function(){
-	// 	console.log("You have RSVP an event");
-	// 	$scope.rsvp.$add({
-	// 		category : $scope.newRSVP.category,
-	// 		points: $scope.newRSVP.points,
-	// 		user: $scope.newRSVP.user,
-	// 		pin: $scope.newRSVP.pin,
-	// 		venue: $scope.newRSVP.venue			
-	// 	})
-	// }
+	// GET THE DATA TO VERIFY THE ADMIN
 	$scope.friller = $firebaseObject(ref.child('admins').child('users'));
 	
 	$scope.show = function(){

@@ -14,9 +14,6 @@
         <md-icon class="material-icons">person_pin_circle</md-icon>
         <md-tooltip>Profile</md-tooltip>
       </md-button>
-      <!-- <md-button ng-controller="loginCtrl" ng-hide="userData" href="#/login" aria-label="signin">
-        Sign In | Sign Up
-      </md-button> -->
     </div>
   </md-toolbar>
 </md-content>
@@ -208,6 +205,12 @@
    <p>
   </div>
   <div flex>
+      <md-content layout="column" layout-align="end center" ng-show="user_has_rsvp">
+      <md-content aria-label="Player Pin">
+        <img class="pinThumbCheckIn" src="media/pin.png"></img>
+      </md-content>
+      <p>You have RSVP</p>
+    </md-content>
   <!-- USER RSVP FORM -->
   <form ng-submit="newRSVP()" ng-hide="user_has_rsvp">
     <md-content layout="row" layout-align="end center">

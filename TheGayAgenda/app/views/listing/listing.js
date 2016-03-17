@@ -23,13 +23,8 @@ angular.module('myApp.listing', ['ngRoute'])
 	function($routeParams, $rootScope, $scope, $firebaseAuth, $firebaseObject, $firebaseArray, $route, user, Auth) {
 	var ref = new Firebase("https://thegayagenda.firebaseio.com");
 	$scope.authObj = $firebaseAuth(ref);
-	// $scope.users = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"));
-	$scope.eventplace = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"));
 	$scope.places = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places"));
 	$scope.events = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/events"));
-
-	//console.log($scope.places);
-	// var listing = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"));
 	var listingPlaces = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"));
 	var listingEvents = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/events/"));
 	$scope.listingPlaces = listingPlaces;
@@ -38,7 +33,7 @@ angular.module('myApp.listing', ['ngRoute'])
 	console.log("list of events"+listingEvents);
 
 	$scope.category = $routeParams.category;
-	var listingRef = new Firebase("https://thegayagenda.firebaseio.com/eventplace/"+$routeParams.category);
+	
 	
 	// console.log($scope.category);
 
