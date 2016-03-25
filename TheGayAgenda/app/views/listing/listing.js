@@ -28,10 +28,9 @@ angular.module('myApp.listing', ['ngRoute'])
 	var listingPlaces = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"));
 	var listingEvents = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/events/"));
 	$scope.listingPlaces = listingPlaces;
-	console.log("list of places"+listingPlaces);
+	// console.log("list of places"+listingPlaces);
 	$scope.listingEvents = listingEvents;
-	console.log("list of events"+listingEvents);
-
+	// console.log("list of events"+listingEvents);
 	$scope.category = $routeParams.category;
 	
 	

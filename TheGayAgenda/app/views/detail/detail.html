@@ -37,7 +37,6 @@
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn4" href="#/listing/shopping">Shopping</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn5" href="#/listing/restaurants">Restaurants</md-button></li>
         <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn6" href="#/listing/volunteer">Volunteer</md-button></li>
-        <li layout="column" layout-align="center"><md-button ng-click="close()" id="btn7" href="#/listing/safePlaces">Safe Places</md-button></li>
       </ul>
 
       <p hide-md show-gt-md>
@@ -89,7 +88,7 @@
 	<div flex>
     <md-content layout="column" layout-align="end center" ng-show="user_is_checked_in">
       <md-content aria-label="Player Pin">
-        <img class="pinThumbCheckIn" src="media/pin.png"></img>
+        <img class="pinThumbCheckIn" src="media/done.png"></img>
       </md-content>
       <p>You have checked in</p>
     </md-content>
@@ -97,7 +96,8 @@
 	<form ng-submit="newCheckIn()" ng-hide="user_is_checked_in">
 		<md-content layout="row" layout-align="end center">
 			<md-content aria-label="Player Pin">
-				<img class="pinThumbCheckIn" src="media/pin.png"></img>
+				<!-- <img class="pinThumbCheckIn" src="media/pin.png"></img> -->
+        <img class="pinThumbCheckIn" ng-src="media/{{item.category}}pin.png"></img>
 			</md-content>
 		</md-content>
 		<div layout="" layout-sm="column" ng-hide="true" >
@@ -144,7 +144,9 @@
   	</p>
         <!-- LIST OF CHECKINS -->
         <md-list>
+
           <md-list-item ng-repeat="item in checkinsForPlace" class="md-3-line" >
+
             <!-- <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar"> -->
             <div class="md-list-item-text">
               <img ng-show="item.pin === 'Lipstick'" class="thumb" src="media/lipstick.png">
@@ -207,7 +209,7 @@
   <div flex>
       <md-content layout="column" layout-align="end center" ng-show="user_has_rsvp">
       <md-content aria-label="Player Pin">
-        <img class="pinThumbCheckIn" src="media/pin.png"></img>
+        <img class="pinThumbCheckIn" src="media/done.png"></img>
       </md-content>
       <p>You have RSVP</p>
     </md-content>
@@ -215,10 +217,10 @@
   <form ng-submit="newRSVP()" ng-hide="user_has_rsvp">
     <md-content layout="row" layout-align="end center">
       <md-content aria-label="Player Pin">
-        <img class="pinThumbCheckIn" src="media/pin.png"></img>
+        <img class="pinThumbCheckIn" ng-src="media/{{item.category}}pin.png"></img>
       </md-content>
     </md-content>
-    <div layout="" layout-sm="column" ng-hide="false">
+    <div layout="" layout-sm="column" ng-hide="true">
       <md-input-container flex="">
         <label>category</label>
         <input name="category"  ng-model="newRSVP.category" ng-init="newRSVP.category=item.category" ></input>
@@ -234,7 +236,7 @@
       <md-input-container flex="">
         <label>{{userpin.label}}</label>
         <!-- <input name="user" ng-model="newRSVP.pin" ng-init="newRSVP.pin=pins[item.$id].label"></input> -->
-        <input name="label" ng-model="newRSVP.pin" ng-init="newRSVP.pin=userpin.label"></input>
+        <input name="label" ng-model="userpin.label" ng-init="newRSVP.pin=userpin.label"></input>
       </md-input-container>
       <md-input-container flex="">
         <label>place/event</label>
@@ -271,8 +273,10 @@
       {{item.about}}
     </p>
     
+
         <!-- LIST OF CHECKINS -->
         <md-list>
+
           <!-- NG-SHOW WILL ONLY SHOW CHECKIN WITH AN USERID THAT MATCH THE USERID OF THE CHECKIN -->
           <md-list-item ng-repeat="item in checkinsForPlace" class="md-3-line" >
             <!-- <img ng-src="{{users[item.user].profilePic}}" alt="{{item.who}}" class="md-avatar"> -->
