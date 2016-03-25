@@ -14,7 +14,7 @@ angular.module('myApp.login', ['ngRoute'])
   function($firebaseObject) {
     return function(username) {
       // create a reference to the database node where we will store our data
-      var ref = new Firebase("https://thegayagenda.firebaseio.com/pins/");
+      var ref = new Firebase(FIREBASE_URL+"pins/");
       var profileRef = ref.child(username);
       // return it as a synchronized object
       return $firebaseObject(profileRef);
@@ -23,37 +23,26 @@ angular.module('myApp.login', ['ngRoute'])
 ])
 
 
-.controller('loginCtrl', ['$rootScope', '$scope', '$firebaseAuth', '$firebaseObject', '$firebaseArray', '$route', '$routeParams', 'Profile', '$location',
-	function($rootScope, $scope, $firebaseAuth, $firebaseObject, $firebaseArray, $route, $routeParams, Profile, $location, user, Auth) {
-
-	// var auth = $firebaseAuth(ref);
-	var ref = new Firebase("https://thegayagenda.firebaseio.com");
+.controller('loginCtrl', ['$rootScope', '$scope', '$firebaseAuth', '$firebaseObject', '$firebaseArray', '$route', '$routeParams', 'Profile', '$location', 'FIREBASE_URL',
+	function($rootScope, $scope, $firebaseAuth, $firebaseObject, $firebaseArray, $route, $routeParams, Profile, $location, FIREBASE_URL, user, Auth) {
+	var ref = new Firebase(FIREBASE_URL);
 	$scope.authObj = $firebaseAuth(ref);
-	// $scope.users = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"));
 	$scope.users = $firebaseObject(ref,"/users/");
 	$scope.authObj.$onAuth(function(authData) {
 		$rootScope.authorize(authData);
 		$scope.userData = authData;
 		$rootScope.currentUser = authData.uid;
-
-
-		// PROFILE JS CODE
-
 		// CRU USER PIN ALSO AKA USER PROFILE
 		$scope.profile = Profile($rootScope.currentUser);
 		// QUERY TO GET ALL THE USER RSVPS
-		$scope.currentUserRSVP = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/pins/"+$rootScope.currentUser+"/rsvps/"));
-		// console.log($scope.currentUserRSVP);
+		$scope.currentUserRSVP = $firebaseObject(new Firebase(FIREBASE_URL+"pins/"+$rootScope.currentUser+"/rsvps/"));
 		$scope.currentUserRSVP.$loaded(function() {
 		    $rootScope.rsvpExists = $scope.currentUserRSVP.$value !== null;
-		   // console.log($rootScope.rsvpExists);
 		});
 	    // QUERY TO GET ALL THE USER CHECKINS
-		$scope.currentUserCheckIn = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/pins/"+$rootScope.currentUser+"/checkins/"));
-	    // console.log($scope.currentUserCheckIn);
+		$scope.currentUserCheckIn = $firebaseObject(new Firebase(FIREBASE_URL+"pins/"+$rootScope.currentUser+"/checkins/"));
 	    $scope.currentUserCheckIn.$loaded(function() {
 		    $rootScope.checkinExists = $scope.currentUserCheckIn.$value !== null;
-		   // console.log($rootScope.checkinExists);
 		});
 	    // calling $save() on the synchronized object syncs all data back to our database
 	    $scope.saveProfile = function() {
@@ -64,12 +53,9 @@ angular.module('myApp.login', ['ngRoute'])
 	      });
 	    };
 
-// DETAIL.JS CODE
 		// GET USER LABEL
-		new Firebase("https://thegayagenda.firebaseio.com/pins/"+authData.uid).once('value', function(snap) {
+		new Firebase(FIREBASE_URL+"pins/"+authData.uid).once('value', function(snap) {
 			$rootScope.userpin = snap.val();
-			// console.log('I fetched a user!', snap.val());
-			// console.log("label for place ", $rootScope.userpin);
 		});
 
 
@@ -79,7 +65,7 @@ angular.module('myApp.login', ['ngRoute'])
 	$rootScope.authorize = function(authData){
 		if (authData) {
 		  	$scope.userData = authData;
-		  	var user = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"+authData.uid));
+		  	var user = $firebaseObject(new Firebase(FIREBASE_URL+"users/"+authData.uid));
 		  	if (authData.provider === "google"){
 			  	user.profilePic = authData.google.profileImageURL;
 			  	user.userName = authData.google.displayName;
@@ -90,9 +76,6 @@ angular.module('myApp.login', ['ngRoute'])
 			  	user.$save();
 		  	}
 
-		}else {
-		  	//if user not logged in
-		  	// $location.path('#/home');
 		}
 	}
 
@@ -105,7 +88,6 @@ angular.module('myApp.login', ['ngRoute'])
 
 		}).catch(function(error) {
 		  console.error("Authentication failed:", error);
-		  // $location.path('#/home');
 		})
 	}
 

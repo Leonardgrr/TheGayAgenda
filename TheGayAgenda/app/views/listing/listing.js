@@ -19,24 +19,13 @@ angular.module('myApp.listing', ['ngRoute'])
     }
 }) 
 
-.controller('listingCtrl', ['$routeParams', '$rootScope', '$scope', '$firebaseAuth', '$firebaseObject', '$firebaseArray', '$route', 
-	function($routeParams, $rootScope, $scope, $firebaseAuth, $firebaseObject, $firebaseArray, $route, user, Auth) {
-	var ref = new Firebase("https://thegayagenda.firebaseio.com");
+.controller('listingCtrl', ['$routeParams', '$rootScope', '$scope', '$firebaseAuth', '$firebaseObject', '$firebaseArray', '$route', 'FIREBASE_URL',
+	function($routeParams, $rootScope, $scope, $firebaseAuth, $firebaseObject, $firebaseArray, $route, FIREBASE_URL, user, Auth) {
+	var ref = new Firebase(FIREBASE_URL);
 	$scope.authObj = $firebaseAuth(ref);
-	$scope.places = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places"));
-	$scope.events = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/events"));
-	var listingPlaces = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places/"));
-	var listingEvents = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/events/"));
-	$scope.listingPlaces = listingPlaces;
-	// console.log("list of places"+listingPlaces);
-	$scope.listingEvents = listingEvents;
-	// console.log("list of events"+listingEvents);
+	$scope.places = $firebaseArray(new Firebase(FIREBASE_URL+"places"));
+	$scope.events = $firebaseArray(new Firebase(FIREBASE_URL+"events"));
+	$scope.listingPlaces = $firebaseArray(new Firebase(FIREBASE_URL+"places/"));
+	$scope.listingEvents = $firebaseArray(new Firebase(FIREBASE_URL+"events/"));
 	$scope.category = $routeParams.category;
-	
-	
-	// console.log($scope.category);
-
-
-	
-
 }]);

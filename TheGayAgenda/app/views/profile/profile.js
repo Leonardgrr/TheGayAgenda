@@ -9,12 +9,12 @@ angular.module('myApp.profile', ['ngRoute'])
   });
 }])
 
-// THIS FACTORY IS USED TO CREATE A USER PIN OBJECT TO BE USED AS
-.factory("Profile", ["$firebaseObject",
-  function($firebaseObject) {
+// THIS FACTORY IS USED TO CREATE A USER PIN OBJECT
+.factory("Profile", ["$firebaseObject", "FIREBASE_URL",
+  function($firebaseObject, FIREBASE_URL) {
     return function(username) {
       // create a reference to the database node where we will store our data
-      var ref = new Firebase("https://thegayagenda.firebaseio.com/pins/");
+      var ref = new Firebase(FIREBASE_URL+"pins/");
       var profileRef = ref.child(username);
       // return it as a synchronized object
       return $firebaseObject(profileRef);
@@ -22,73 +22,20 @@ angular.module('myApp.profile', ['ngRoute'])
   }
 ])
 
-.controller('profileCtrl', [ '$rootScope', '$scope', '$firebaseAuth', '$firebaseObject', '$firebaseArray', '$route', 'Profile',
-	function($rootScope, $scope, $firebaseAuth, $firebaseObject, $firebaseArray, $route, Profile, user, Auth) {
+.controller('profileCtrl', [ '$rootScope', '$scope', '$firebaseAuth', '$firebaseObject', '$firebaseArray', '$route', 'Profile', 'FIREBASE_URL',
+	function($rootScope, $scope, $firebaseAuth, $firebaseObject, $firebaseArray, $route, Profile, FIREBASE_URL, Auth) {
 	// var auth = $firebaseAuth(ref);
-	var ref = new Firebase("https://thegayagenda.firebaseio.com");
+	var ref = new Firebase(FIREBASE_URL);
 	$scope.authObj = $firebaseAuth(ref);
-	
-	$scope.testUsers = new Firebase("https://thegayagenda.firebaseio.com/users");
-	$scope.users = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"));
-	$scope.player_pins = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/player_pin/"));
-	$scope.checkIn = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/checkIn"));
-	$scope.rsvp = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/rsvp"));
-	// $scope.authObj.$onAuth(function(authData) {
-	// 	$rootScope.authorize(authData);
-	// 	$scope.userData = authData;
-	// 	$rootScope.currentUser = authData.uid;
-	// 	// console.log($rootScope.currentUser);
-
-	// 	// CRU USER PIN ALSO AKA USER PROFILE
-	// 	$scope.profile = Profile($rootScope.currentUser);
-	// 	// QUERY TO GET ALL THE USER RSVPS
-	// 	$scope.currentUserRSVP = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/pins/"+$rootScope.currentUser+"/rsvps/"));
-	// 	// console.log($scope.currentUserRSVP);
-	// 	$scope.currentUserRSVP.$loaded(function() {
-	// 	    $rootScope.rsvpExists = $scope.currentUserRSVP.$value !== null;
-	// 	   // console.log($rootScope.rsvpExists);
-	// 	});
-	//     // QUERY TO GET ALL THE USER CHECKINS
-	// 	$scope.currentUserCheckIn = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/pins/"+$rootScope.currentUser+"/checkins/"));
-	//     // console.log($scope.currentUserCheckIn);
-	//     $scope.currentUserCheckIn.$loaded(function() {
-	// 	    $rootScope.checkinExists = $scope.currentUserCheckIn.$value !== null;
-	// 	   // console.log($rootScope.checkinExists);
-	// 	});
-	//     // calling $save() on the synchronized object syncs all data back to our database
-	//     $scope.saveProfile = function() {
-	//       $scope.profile.$save().then(function() {
-	//         alert('Profile saved!');
-	//       }).catch(function(error) {
-	//         alert('Error!');
-	//       });
-	//     };
-
-	// });
-
-
-
-	// $rootScope.authorize = function(authData){
-	// 	if (authData) {
-	// 	  	$scope.userData = authData;
-	// 	  	// $rootScope.currentUser = authData.uid;
-	// 	  	// // console.log($rootScope.currentUser);
-	// 	  	var user = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/users/"+authData.uid));
-	// 	}else {
-	// 	  	//if user not logged in
-	// 	  	$location.path('#/home');
-	// 	}
-	// }
+	$scope.users = $firebaseObject(new Firebase(FIREBASE_URL+"users/"));
+	$scope.player_pins = $firebaseArray(new Firebase(FIREBASE_URL+"player_pin/"));
+	$scope.checkIn = $firebaseArray(new Firebase(FIREBASE_URL+"checkIn"));
+	$scope.rsvp = $firebaseArray(new Firebase(FIREBASE_URL+"rsvp"));
 
 	// GET THE DATA TO VERIFY THE ADMIN
 	$scope.friller = $firebaseObject(ref.child('admins').child('users'));
-	
-	$scope.show = function(){
-		// console.log("hi there");
-		// console.log("Admin user is", $scope.friller.$value);
-		// console.log("Current user is ", $scope.userData.uid);
-	}
 
+	// LABELS FOR DROPDOWN SELECTION
 	$scope.labels = 
 	[
 	 'Lipstick' ,
@@ -100,11 +47,17 @@ angular.module('myApp.profile', ['ngRoute'])
 	];
 
 	// QUERY FOR GETTING THE CHECK CHECKINS/RSVPS FOR PLACES/EVENTS
-	// $scope.eventplace = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/eventplace/"));
-	$scope.places = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/places/"));
-	$scope.events = $firebaseObject(new Firebase("https://thegayagenda.firebaseio.com/events/"));
-	// // console.log($scope.eventplace);
-		
+	$scope.places = $firebaseObject(new Firebase(FIREBASE_URL+"places/"));
+	$scope.events = $firebaseObject(new Firebase(FIREBASE_URL+"events/"));
+
+	// use this to get user data instead! SAVE FOR REFERENCE LATER
+	// var currentUser = $scope.authObj.$getAuth();
+	// if (currentUser) {
+	// 	console.log("Logged in as:", currentUser.uid);
+	// } else {
+	//   console.log("Logged out");
+	// }
+
 
 
 }]);

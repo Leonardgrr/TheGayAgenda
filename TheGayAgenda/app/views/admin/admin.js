@@ -10,13 +10,13 @@ angular.module('myApp.admin', ['ngRoute','angular-cloudinary', 'ngMaterialDatePi
 }])
 
 
-.controller('adminCtrl', ['$rootScope', '$scope', '$firebaseAuth', '$firebaseObject', '$firebaseArray', '$route', "$routeParams", "cloudinary" , 
-	function($rootScope, $scope, $firebaseAuth, $firebaseObject, $firebaseArray, $route, $routeParams, cloudinary,  user, Auth) {
-	var ref = new Firebase("https://thegayagenda.firebaseio.com");
+.controller('adminCtrl', ['$rootScope', '$scope', '$firebaseAuth', '$firebaseObject', '$firebaseArray', '$route', "$routeParams", "cloudinary" , "FIREBASE_URL", 
+	function($rootScope, $scope, $firebaseAuth, $firebaseObject, $firebaseArray, $route, $routeParams, cloudinary, FIREBASE_URL,  user, Auth) {
+	var ref = new Firebase(FIREBASE_URL);
 	$scope.authObj = $firebaseAuth(ref);
-	$scope.places = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/places"));
-	$scope.events = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/events"));
-	$scope.admin = $firebaseArray(new Firebase("https://thegayagenda.firebaseio.com/admin"));
+	$scope.places = $firebaseArray(new Firebase(FIREBASE_URL+"places"));
+	$scope.events = $firebaseArray(new Firebase(FIREBASE_URL+"events"));
+	$scope.admin = $firebaseArray(new Firebase(FIREBASE_URL+"admin"));
 
 	// LIST OF CATEGORIES USERS CAN CHOOSE 
  	$scope.categories = [
@@ -138,14 +138,6 @@ angular.module('myApp.admin', ['ngRoute','angular-cloudinary', 'ngMaterialDatePi
 				alert("New event has successfully been added!");
 
 			});
-	}
-
-	//add a new admin
-	$scope.newAdmin = function(){
-		console.log("admin added");
-		$scope.admin.$add({
-			admin : $scope.newAdmin.admin
-		})
 	}
 
 	$scope.upload = function(newEvent){

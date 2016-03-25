@@ -21,6 +21,8 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/home'});
 }])
 
+
+
 .config(function (cloudinaryProvider, $mdThemingProvider) {
   cloudinaryProvider.config({
     upload_endpoint: 'https://api.cloudinary.com/v1_1/', // default
@@ -94,4 +96,7 @@ config(['$routeProvider', function($routeProvider) {
 	      $log.debug("close RIGHT is done");
 	    });
 	};
-});
+})
+
+//CREATED A CONSTANT SO THAT THIS VARIABLE IS DYNAMIC IF I WANTED TO USE ANOTHER DATABASE
+.constant('FIREBASE_URL', 'https://thegayagenda.firebaseio.com/');
